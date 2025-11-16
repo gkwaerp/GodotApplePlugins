@@ -22,19 +22,10 @@ enum AppleLeaderboardType: Int, CaseIterable {
 
 @Godot
 class AppleLeaderboard: RefCounted, @unchecked Sendable {
-    var board: GKLeaderboard
+    var board: GKLeaderboard = GKLeaderboard()
 
-    required init(_ context: InitContext) {
-        board = GKLeaderboard()
-        super.init(context)
-    }
-
-    init?(board: GKLeaderboard) {
-        self.board = board
-        guard let ctx = InitContext.createObject(className: AppleLeaderboard.godotClassName) else {
-            return nil
-        }
-        super.init(ctx)
+    convenience init(board: GKLeaderboard) {
+        self.init()
     }
 
     @Export var title: String { board.title ?? "" }

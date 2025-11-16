@@ -16,18 +16,10 @@ import GameKit
 
 @Godot
 class AppleLeaderboardSet: RefCounted, @unchecked Sendable {
-    var boardset: GKLeaderboardSet
+    var boardset = GKLeaderboardSet()
 
-    required init(_ context: InitContext) {
-        boardset = GKLeaderboardSet()
-        super.init(context)
-    }
-
-    init?(boardset: GKLeaderboardSet) {
+    convenience init?(boardset: GKLeaderboardSet) {
+        self.init()
         self.boardset = boardset
-        guard let ctx = InitContext.createObject(className: AppleLeaderboardSet.godotClassName) else {
-            return nil
-        }
-        super.init(ctx)
     }
 }

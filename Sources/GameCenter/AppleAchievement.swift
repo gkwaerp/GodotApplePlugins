@@ -17,24 +17,16 @@ import GameKit
 
 @Godot
 class AppleAchievement: RefCounted, @unchecked Sendable {
-    let achievement: GKAchievement
+    var achievement: GKAchievement = GKAchievement()
 
-    required init(_ context: InitContext) {
-        achievement = GKAchievement()
-        super.init(context)
-    }
+    convenience init(identifier: String, player: ApplePlayer?) {
+        self.init()
 
-    init?(identifier: String, player: ApplePlayer?) {
         if let player {
             self.achievement = GKAchievement(identifier: identifier, player: player.player)
         } else {
             self.achievement = GKAchievement(identifier: identifier)
         }
-        guard let ctx = InitContext.createObject(className: AppleAchievement.godotClassName) else {
-            return nil
-        }
-
-        super.init(ctx)
     }
 
     @Export var identifier: String { achievement.identifier }
@@ -47,19 +39,11 @@ class AppleAchievement: RefCounted, @unchecked Sendable {
 
 @Godot
 class AppleAchievementDescription: RefCounted, @unchecked Sendable {
-    var achievementDescription: GKAchievementDescription
-    required init(_ context: InitContext) {
-        achievementDescription = GKAchievementDescription()
-        super.init(context)
-    }
+    var achievementDescription: GKAchievementDescription = GKAchievementDescription()
 
-    init?(_ ad: GKAchievementDescription) {
+    convenience init(_ ad: GKAchievementDescription) {
+        self.init()
         self.achievementDescription = ad
-        guard let ctx = InitContext.createObject(className: AppleAchievementDescription.godotClassName) else {
-            return nil
-        }
-
-        super.init(ctx)
     }
 
     @Export var identifier: String { achievementDescription.identifier }

@@ -17,7 +17,16 @@ import GameKit
 
 @Godot
 class ApplePlayer: RefCounted, @unchecked Sendable {
-    var player: GKPlayer
+    var player: GKPlayer = GKPlayer()
+
+    init(player: GKPlayer) {
+        self.player = player
+        guard let ctxt = InitContext.createObject(className: ApplePlayer.godotClassName) else {
+            fatalError("Could not create object")
+        }
+        super.init(ctxt)
+    }
+
     required init(_ context: InitContext) {
         player = GKPlayer()
         super.init(context)
@@ -48,13 +57,9 @@ class ApplePlayer: RefCounted, @unchecked Sendable {
         }
     }
 
-    init(player: GKPlayer) {
-        self.player = player
-        guard let ctxt = InitContext.createObject(className: ApplePlayer.godotClassName) else {
-            fatalError("Could not create object")
-        }
-        super.init(ctxt)
-    }
+//    @Callable static func demo(name: String, age: Int) {
+//        GD.print("called ApplePlayer.demo for player=[\(name)] aged \(age)")
+//    }
 }
 
 @Godot
@@ -63,7 +68,7 @@ class AppleLocalPlayer: ApplePlayer, @unchecked Sendable {
         super.init(context)
         player = GKLocalPlayer.local
     }
-
+    
     init() {
         super.init(player: GKLocalPlayer.local)
     }

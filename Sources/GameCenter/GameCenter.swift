@@ -58,9 +58,8 @@ class GameCenterManager: RefCounted, @unchecked Sendable {
             let wrapped = VariantArray()
             if let result {
                 for l in result {
-                    if let wrap = AppleLeaderboard(board: l) {
-                        wrapped.append(Variant(wrap))
-                    }
+                    let wrap = AppleLeaderboard(board: l)
+                    wrapped.append(Variant(wrap))
                 }
             }
             _ = callback.call(Variant(wrapped))
@@ -106,9 +105,8 @@ class GameCenterManager: RefCounted, @unchecked Sendable {
             } else if let achievementDescriptions {
                 let res = VariantArray()
                 for ad in achievementDescriptions {
-                    if let ad = AppleAchievementDescription(ad) {
-                        res.append(Variant(ad))
-                    }
+                    let ad = AppleAchievementDescription(ad)
+                    res.append(Variant(ad))
                 }
                 _ = callback.call(Variant(res))
             } else {
