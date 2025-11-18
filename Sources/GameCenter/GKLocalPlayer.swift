@@ -37,7 +37,7 @@ class GKLocalPlayer: GKPlayer, @unchecked Sendable {
 
     func friendDispatch(_ callback: Callable, _ friends: [GameKit.GKPlayer]?, _ error: (any Error)?) {
         if let error {
-            _ = callback.call(Variant(error.localizedDescription))
+            _ = callback.call(nil, Variant(error.localizedDescription))
         } else {
             let array = VariantArray()
             if let friends {
@@ -46,40 +46,46 @@ class GKLocalPlayer: GKPlayer, @unchecked Sendable {
                     array.append(Variant(gkplayer))
                 }
             }
-            _ = callback.call(Variant(array))
+            _ = callback.call(Variant(array), nil)
         }
     }
-    /// Loads the friends, on error you get a string back, on success an array containing GKPlayer objects
+    /// Loads the friends, the callback receives two arguments an array of GKPlayers and a String error
+    /// either one can be null
     @Callable func load_friends(callback: Callable) {
         local.loadFriends { friends, error in
             self.friendDispatch(callback, friends, error)
         }
     }
 
-    /// Loads the friends, on error you get a string back, on success an array containing GKPlayer objects
+    /// Loads the challengeable friends, the callback receives two arguments an array of GKPlayers and a String error
+    /// either one can be null
     @Callable func load_challengeable_friends(callback: Callable) {
         local.loadChallengableFriends { friends, error in
             self.friendDispatch(callback, friends, error)
         }
     }
 
-    /// Loads the friends, on error you get a string back, on success an array containing GKPlayer objects
+    /// Loads the recent friends, the callback receives two arguments an array of GKPlayers and a String error
+    /// either one can be null
     @Callable func load_recent_friends(callback: Callable) {
         local.loadRecentPlayers  { friends, error in
             self.friendDispatch(callback, friends, error)
         }
     }
 
-    /// On error, you get called with a string parameter
+    /// You get two return values back an array containing the result values and an error.
+    /// Either one can be null.
+    ///
     /// On success, you get an array with the following values:
     /// - String: The URL for the public encryption key.
     /// - PackedByteArray: verification signature that GameKit generates, or nil
     /// - PackedByteArray: A random NSString that GameKit uses to compute the hash and randomize it.
     /// - Int: The signature’s creation date and time timestamp
+    ///
     func fetch_items_for_identity_verification_signature(callback: Callable) {
         local.fetchItems { url, data, salt, timestamp, error in
             if let error {
-                _ = callback.call(Variant(error.localizedDescription))
+                _ = callback.call(nil, Variant(error.localizedDescription))
             } else {
                 let encodeData = data?.toPackedByteArray()
                 let encodeSalt = salt?.toPackedByteArray()
@@ -90,7 +96,7 @@ class GKLocalPlayer: GKPlayer, @unchecked Sendable {
                 result.append(encodeSalt != nil ? Variant(encodeSalt) : nil)
                 result.append(Variant(timestamp))
 
-                _ = callback.call(Variant(result))
+                _ = callback.call(Variant(result), nil)
             }
         }
     }

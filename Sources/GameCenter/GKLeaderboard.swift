@@ -75,18 +75,19 @@ class GKLeaderboard: RefCounted, @unchecked Sendable {
         }
     }
 
-    /// Loads the image for the leaderboard, and on error invokes the callback with a string description, on sucess the callback is invoked
-    /// with a PackedByteArray containing a PNG image.
+    /// Loads the image for the leaderboard, the call back is invoked with two arguments
+    /// a PackedByteArray with the image as the first argument, an any error as the second.
+    /// either one can be nil.
     @Callable()
     func load_image(callback: Callable) {
         board.loadImage { image, error in
             if let image, let png = image.pngData() {
                 let array = PackedByteArray([UInt8](png))
-                _ = callback.call(Variant(array))
+                _ = callback.call(Variant(array), nil)
             } else if let error {
-                _ = callback.call(Variant(error.localizedDescription))
+                _ = callback.call(nil, Variant(error.localizedDescription))
             } else {
-                _ = callback.call(Variant("Could not load leaderboard image"))
+                _ = callback.call(nil Variant("Could not load leaderboard image"))
             }
         }
     }
@@ -105,13 +106,17 @@ class GKLeaderboard: RefCounted, @unchecked Sendable {
         }
         GameKit.GKLeaderboard.loadLeaderboards(IDs: sids) { result, error in
             let wrapped = VariantArray()
-            if let result {
+            if let error {
+                _ callback.call(nil, Variant(String(describing: error)))
+            } else if let result {
                 for l in result {
                     let wrap = GKLeaderboard(board: l)
                     wrapped.append(Variant(wrap))
                 }
             }
-            _ = callback.call(Variant(wrapped))
+            _ = callback.call(Variant(wrapped), nil)
+        } else {
+            _ = callback.call(Variant(VariantArray()), nil)
         }
     }
 }

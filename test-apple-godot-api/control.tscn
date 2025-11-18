@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo8mk4s2810bd"]
+[gd_scene load_steps=3 format=3 uid="uid://bo8mk4s2810bd"]
 
 [ext_resource type="Script" uid="uid://k565oj0kotti" path="res://control.gd" id="1_0fbet"]
+[ext_resource type="Texture2D" uid="uid://cbxsxk1je7s3g" path="res://icon.svg" id="2_62e2m"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,29 +14,37 @@ script = ExtResource("1_0fbet")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 399.0
-offset_top = 242.0
-offset_right = 508.0
-offset_bottom = 273.0
+offset_left = 64.0
+offset_top = 99.0
+offset_right = 272.0
+offset_bottom = 152.0
 theme_override_font_sizes/font_size = 32
 text = "Authenticate"
 
 [node name="auth_result" type="Label" parent="."]
 layout_mode = 0
-offset_left = 406.0
-offset_top = 311.0
-offset_right = 1028.0
-offset_bottom = 356.0
+offset_left = 71.0
+offset_top = 168.0
+offset_right = 693.0
+offset_bottom = 213.0
 theme_override_font_sizes/font_size = 32
 text = "Auth Error:"
 
 [node name="auth_state" type="Label" parent="."]
 layout_mode = 0
-offset_left = 405.0
-offset_top = 379.0
-offset_right = 642.0
-offset_bottom = 424.0
+offset_left = 70.0
+offset_top = 236.0
+offset_right = 307.0
+offset_bottom = 281.0
 theme_override_font_sizes/font_size = 32
 text = "Authenticated: "
+
+[node name="texture_rect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 46.0
+offset_right = 967.0
+offset_bottom = 494.0
+texture = ExtResource("2_62e2m")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

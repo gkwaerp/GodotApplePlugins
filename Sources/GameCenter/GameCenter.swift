@@ -42,7 +42,6 @@ class GameCenterManager: RefCounted, @unchecked Sendable {
                 }
 
                 if let error = error {
-                    GD.print("God an error: \(error)")
                     self.authentication_error.emit(String(describing: error))
                 }
                 GD.print("Raising events")

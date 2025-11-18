@@ -44,16 +44,23 @@ class GKPlayer: RefCounted, @unchecked Sendable {
         player.scopedIDsArePersistent()
     }
 
+    /// Callback is invoked with two parameters:
+    /// (imageData: PackedByteArray, erro: String)
+    ///
+    /// One of those two is nil.
     @Callable
     func load_photo(_ small: Bool, _ callback: Callable) {
         GD.print("request to load photo")
         player.loadPhoto(for: small ? .small : .normal) { img, error in
             GD.print("Result from loadPhoto: \(String(describing: img)) \(String(describing: error))")
-            if let img, let png = img.pngData() {
-                let array = PackedByteArray([UInt8](png))
-                DispatchQueue.main.async {
-                    _ = callback.call(Variant(array))
+            DispatchQueue.main.async {
+                if let img, let png = img.pngData() {
+                    let array = PackedByteArray([UInt8](png))
+                    _ = callback.call(Variant(array), nil)
+                    return
                 }
+                _ = callback.call(nil, Variant(String(describing: error)))
+                return
             }
         }
     }

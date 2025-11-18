@@ -66,20 +66,22 @@ class GKAchievement: RefCounted, @unchecked Sendable {
         }
     }
 
+    /// Callback is invoked with two arguments an array of GKAchivementDescriptions and an error argument
+    /// either one can be nil.
     @Callable
     func load_achievement_descriptions(callback: Callable) {
         GameKit.GKAchievementDescription.loadAchievementDescriptions { achievementDescriptions, error in
             if let error {
-                _ = callback.call(Variant(error.localizedDescription))
+                _ = callback.call(nil, Variant(error.localizedDescription))
             } else if let achievementDescriptions {
                 let res = VariantArray()
                 for ad in achievementDescriptions {
                     let ad = GKAchievementDescription(ad)
                     res.append(Variant(ad))
                 }
-                _ = callback.call(Variant(res))
+                _ = callback.call(Variant(res), nil)
             } else {
-                _ = callback.call(Variant(VariantArray()))
+                _ = callback.call(Variant(VariantArray()), nil)
             }
         }
     }
@@ -110,17 +112,18 @@ class GKAchievementDescription: RefCounted, @unchecked Sendable {
         }
     }
 
-    /// Callback is invoked with either a string message on error or a PackedByteArray with the contents of a PNG image
+    /// Callback is invoked with two arguments an PackedByteArray witht he image and an error argument
+    /// either one can be nil.
     @Callable
     func load_image(callback: Callable) {
         achievementDescription.loadImage { image, error in
             if let error {
-                _ = callback.call(Variant(error.localizedDescription))
+                _ = callback.call(nil, Variant(error.localizedDescription))
             } else if let image, let png = image.pngData() {
                 let array = PackedByteArray([UInt8](png))
-                _ = callback.call(Variant(array))
+                _ = callback.call(Variant(array), nil)
             } else {
-                _ = callback.call(Variant("Could not load image"))
+                _ = callback.call(nil, Variant("Could not load image"))
             }
         }
     }

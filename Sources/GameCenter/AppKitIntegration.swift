@@ -8,6 +8,7 @@
 #if canImport(AppKit)
 import AppKit
 
+@MainActor
 func presentOnTop(_ vc: NSViewController) {
     guard let window = NSApp.keyWindow ?? NSApp.mainWindow else {
         // Fallback: frontmost window if needed

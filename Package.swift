@@ -36,7 +36,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/migueldeicaza/SwiftGodot", branch: "barebone-split")
         // For local development:
-        //.package(path: "../splitSwiftGodot")
+//        .package(path: "../splitSwiftGodot")
     ],
     targets: [
         .target(

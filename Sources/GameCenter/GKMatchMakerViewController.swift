@@ -55,6 +55,8 @@ class GKMatchmakerViewController: RefCounted, @unchecked Sendable {
         guard let vc else {
             return
         }
-        presentOnTop(vc)
+        MainActor.assumeIsolated {
+            presentOnTop(vc)
+        }
     }
 }
