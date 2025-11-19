@@ -19,3 +19,11 @@ extension Data {
         return PackedByteArray(byteArray)
     }
 }
+
+/// Wraps a platform error into a variant with the result, for now we send back a string, but we could provide another version
+func mapError(_ error: (any Error)?) -> Variant? {
+    if let error {
+        return Variant(error.localizedDescription)
+    }
+    return nil
+}

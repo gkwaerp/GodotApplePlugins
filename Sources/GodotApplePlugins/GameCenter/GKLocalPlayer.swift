@@ -36,21 +36,20 @@ class GKLocalPlayer: GKPlayer, @unchecked Sendable {
     @Export var isPersonalizedCommunicationRestricted: Bool { local.isPersonalizedCommunicationRestricted }
 
     func friendDispatch(_ callback: Callable, _ friends: [GameKit.GKPlayer]?, _ error: (any Error)?) {
-        if let error {
-            _ = callback.call(nil, Variant(error.localizedDescription))
-        } else {
-            let array = VariantArray()
-            if let friends {
-                for friend in friends {
-                    let gkplayer = GKPlayer(player: friend)
-                    array.append(Variant(gkplayer))
-                }
+        let array = TypedArray<GKPlayer?>()
+
+        if let friends {
+            for friend in friends {
+                let gkplayer = GKPlayer(player: friend)
+                array.append(gkplayer)
             }
-            _ = callback.call(Variant(array), nil)
         }
+
+        _ = callback.call(Variant(array), mapError(error))
     }
-    /// Loads the friends, the callback receives two arguments an array of GKPlayers and a String error
-    /// either one can be null
+
+    /// Loads the friends, the callback receives two arguments an `Array[GKPlayer]` and Variant
+    /// if the variant value is not nil, it contains a string with the error message
     @Callable func load_friends(callback: Callable) {
         local.loadFriends { friends, error in
             self.friendDispatch(callback, friends, error)
@@ -73,31 +72,29 @@ class GKLocalPlayer: GKPlayer, @unchecked Sendable {
         }
     }
 
-    /// You get two return values back an array containing the result values and an error.
-    /// Either one can be null.
+    /// You get two return values back a dictionary containing the result values and an error.
     ///
-    /// On success, you get an array with the following values:
-    /// - String: The URL for the public encryption key.
-    /// - PackedByteArray: verification signature that GameKit generates, or nil
-    /// - PackedByteArray: A random NSString that GameKit uses to compute the hash and randomize it.
-    /// - Int: The signature’s creation date and time timestamp
+    /// If the error is not nil:
+    /// - "url": The URL for the public encryption key.
+    /// - "data": PackedByteArray containing verification signature that GameKit generates, or nil
+    /// - "salt": PackedByteArray containing a random NSString that GameKit uses to compute the hash and randomize it.
+    /// - "timestamp": Int with signature’s creation date and time timestamp
     ///
+    @Callable
     func fetch_items_for_identity_verification_signature(callback: Callable) {
         local.fetchItems { url, data, salt, timestamp, error in
-            if let error {
-                _ = callback.call(nil, Variant(error.localizedDescription))
-            } else {
+            let result = VariantDictionary();
+
+            if error == nil {
                 let encodeData = data?.toPackedByteArray()
                 let encodeSalt = salt?.toPackedByteArray()
 
-                let result = VariantArray();
-                result.append(Variant(url?.description ?? ""))
-                result.append(encodeData != nil ? Variant(encodeData) : nil)
-                result.append(encodeSalt != nil ? Variant(encodeSalt) : nil)
-                result.append(Variant(timestamp))
-
-                _ = callback.call(Variant(result), nil)
+                result["url"] = (Variant(url?.description ?? ""))
+                result["data"]  = encodeData != nil ? Variant(encodeData) : nil
+                result["salt"] = encodeSalt != nil ? Variant(encodeSalt) : nil
+                result["timestamp"] = Variant(timestamp)
             }
+            _ = callback.call(Variant(result), mapError(error))
         }
     }
 }

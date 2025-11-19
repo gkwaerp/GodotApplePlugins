@@ -29,10 +29,25 @@ class GKAchievement: RefCounted, @unchecked Sendable {
         }
     }
 
-    @Export var identifier: String { achievement.identifier }
+    convenience init(achievement: GameKit.GKAchievement) {
+        self.init()
+        self.achievement = achievement
+    }
+
+    @Export var identifier: String {
+        get { achievement.identifier }
+        set { achievement.identifier = newValue }
+    }
     @Export var player: GKPlayer { GKPlayer(player: achievement.player) }
-    @Export var percentComplete: Double { achievement.percentComplete }
+    @Export var percentComplete: Double {
+        get { achievement.percentComplete }
+        set { achievement.percentComplete = newValue }
+    }
     @Export var isCompleted: Bool { achievement.isCompleted }
+    @Export var showsCompletionBanner: Bool {
+        get { achievement.showsCompletionBanner }
+        set { achievement.showsCompletionBanner = newValue }
+    }
     // TODO: lastReportedDate - how to encode Dates in Godot
 
     /// The callback is invoked with nil on success, or a string with a description of the error
@@ -46,11 +61,7 @@ class GKAchievement: RefCounted, @unchecked Sendable {
             }
         }
         GameKit.GKAchievement.report(array) { error in
-            if let error {
-                _ = callback.call(Variant(error.localizedDescription))
-            } else {
-                _ = callback.call(nil)
-            }
+            _ = callback.call(mapError(error))
         }
     }
 
@@ -58,31 +69,24 @@ class GKAchievement: RefCounted, @unchecked Sendable {
     @Callable
     static func reset_achivements(callback: Callable) {
         GameKit.GKAchievement.resetAchievements { error in
-            if let error {
-                _ = callback.call(Variant(error.localizedDescription))
-            } else {
-                _ = callback.call(nil)
-            }
+            _ = callback.call(mapError(error))
         }
     }
 
-    /// Callback is invoked with two arguments an array of GKAchivementDescriptions and an error argument
-    /// either one can be nil.
+    /// Callback is invoked with two arguments an `Array[GKAchivement]` and an error argument
+    /// on success the error i snil
     @Callable
-    func load_achievement_descriptions(callback: Callable) {
-        GameKit.GKAchievementDescription.loadAchievementDescriptions { achievementDescriptions, error in
-            if let error {
-                _ = callback.call(nil, Variant(error.localizedDescription))
-            } else if let achievementDescriptions {
-                let res = VariantArray()
-                for ad in achievementDescriptions {
-                    let ad = GKAchievementDescription(ad)
-                    res.append(Variant(ad))
+    static func load_achievements(callback: Callable) {
+        GameKit.GKAchievement.loadAchievements { achievements, error in
+            let res = TypedArray<GKAchievement?>()
+
+            if let achievements {
+                for ad in achievements {
+                    let ad = GKAchievement(achievement: ad)
+                    res.append(ad)
                 }
-                _ = callback.call(Variant(res), nil)
-            } else {
-                _ = callback.call(Variant(VariantArray()), nil)
             }
+            _ = callback.call(Variant(res), mapError(error))
         }
     }
 }
@@ -99,6 +103,7 @@ class GKAchievementDescription: RefCounted, @unchecked Sendable {
     @Export var identifier: String { achievementDescription.identifier }
     @Export var title: String { achievementDescription.title }
     @Export var unachievedDescription: String { achievementDescription.unachievedDescription }
+    @Export var achievedDescription: String { achievementDescription.achievedDescription }
     @Export var maximumPoints: Int { achievementDescription.maximumPoints }
     @Export var isHidden: Bool { achievementDescription.isHidden }
     @Export var isReplayable: Bool { achievementDescription.isReplayable }
@@ -118,12 +123,29 @@ class GKAchievementDescription: RefCounted, @unchecked Sendable {
     func load_image(callback: Callable) {
         achievementDescription.loadImage { image, error in
             if let error {
-                _ = callback.call(nil, Variant(error.localizedDescription))
+                _ = callback.call(nil, mapError(error))
             } else if let image, let godotImage = image.asGodotImage() {
                 _ = callback.call(godotImage, nil)
             } else {
                 _ = callback.call(nil, Variant("Could not load image"))
             }
+        }
+    }
+
+    /// Callback is invoked with two arguments an array of GKAchivementDescriptions and an error argument
+    /// either one can be nil.
+    @Callable
+    static func load_achievement_descriptions(callback: Callable) {
+        GameKit.GKAchievementDescription.loadAchievementDescriptions { achievementDescriptions, error in
+            let res = TypedArray<GKAchievementDescription?>()
+
+            if let achievementDescriptions {
+                for ad in achievementDescriptions {
+                    let ad = GKAchievementDescription(ad)
+                    res.append(ad)
+                }
+            }
+            _ = callback.call(Variant(res), mapError(error))
         }
     }
 }

@@ -110,14 +110,126 @@ local_player.load_photo(true, func(image: Image, error: Variant)->void:
 )
 ```
 
-### Loading the Friends List
+### Friends
 
 ```gdscript
-local_player.load_friends(func(friends: Variant, error: Variant)->void:
+# Loads the local player's friends list if the local player and their friends grant access.
+local_player.load_friends(func(friends: Array[GKPlayer], error: Variant)->void:
 	if error:
 		print(error)
 	else:
 		for friend in friends:
 			print(friend.displayName)
 )
+
+# Loads players to whom the local player can issue a challenge.
+local_player.local.load_challengeable_friends(func(friends: Array[GKPlayer], error: Variant)->void:
+    if error:
+        print(error)
+    else:
+        for friend in friends:
+            print(friend.displayName)
+)
+
+# Loads players from the friends list or players that recently participated in a game with the local player.
+local.load_recent_friends(func(friends: Array[GKPlayer], error: Variant)->void:
+    if error:
+        print(error)
+    else:
+        for friend in friends:
+            print(friend.displayName)
+)
 ```
+
+### FetchItemsForIdentityVerificationSignature
+
+* [Apple Documentation](https://developer.apple.com/documentation/gamekit/gklocalplayer/3516283-fetchitems)
+
+```
+local.fetch_items_for_identity_verification_signature(func(values: Dictionary, error: Variant)->void:
+    if error:
+        print(error)
+    else:
+        print("Identity dictionary")
+        print(values)
+)
+```
+
+## Achievements
+
+* [GKAchievement](https://developer.apple.com/documentation/gamekit/gkachievement)
+* [GKAchievementDescription](https://developer.apple.com/documentation/gamekit/gkachievementdescription)
+
+### List all achievements
+
+Note: This only returns achievements with progress that the player has reported. Use GKAchievementDescription for a list of all available achievements.
+
+```gdscript
+GKAchievement.load_achievements(func(achievements: Array[GKAchievement], error: Variant)->void:
+    if error:
+        print("Load Achivement error %s" % error)
+    else:
+        for achievement in achievements:
+            print("Achievement: %s" % achievement.identifier)
+)
+```
+
+### List Descriptions
+
+```gdscript
+GKAchievementDescription.load_achievement_descriptions(func(adescs: Array[GKAchievementDescription], error: Variant)->void:
+    if error:
+        print("Load AchivementDescription error %s" % error)
+    else:
+        for adesc in adescs:
+            print("Achievement Description ID: %s" % adesc.identifier)
+            print("    Unachieved: %s" % adesc.unachieved_description)
+            print("    Achieved: %s" % adesc.achieved_description)
+)
+```
+
+### Load Achievement Description Image
+
+```gdscript
+adesc.load_image(func(image: Image, error: Variant)->void:
+    if error == null:
+        $texture_rect.texture = ImageTexture.create_from_image(image)
+    else:
+        print("Error loading achievement image %s" % error)                            
+```
+
+### Report Progress
+
+```gdscript
+var id = "a001"
+var percentage = 100
+
+GKAchievement.load_achievements(func(achievements: Array[GKAchievement], error: Variant)->void:
+    if error:
+        print("Load Achivement error %s" % error)
+    else:
+        for achievement in achievements:
+            if achievement.identifier == id:
+                if not achievement.is_completed:
+                    achievement.percent_complete = percentage
+                    achievement.show_completion_banner = true
+                GKAchievement.report_achivement([achievement], func(error: Variant)->void: 
+                    if error:
+                        print("Error submitting achievement")
+                    else:
+                        print("Success!")
+                )
+```
+
+### Reset All Achievements
+
+```gdscript
+GKAchievement.reset_achivements(func(error: Variant)->void:
+    if error:
+        print("Error resetting" % error)
+    else:
+        print("Success")
+)
+```
+
+

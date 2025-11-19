@@ -92,6 +92,7 @@ class GKLeaderboard: RefCounted, @unchecked Sendable {
         }
     }
 
+    /// Fetches the leaderboards and calls the provided callable with `Array[GKLeaderboard]` and an Variant that is null on success, or a string on error
     @Callable
     static func load_leaderboards(_ ids: PackedStringArray, callback: Callable) {
         var sids: [String]?
@@ -105,17 +106,15 @@ class GKLeaderboard: RefCounted, @unchecked Sendable {
             sids = result
         }
         GameKit.GKLeaderboard.loadLeaderboards(IDs: sids) { result, error in
-            let wrapped = VariantArray()
-            if let error {
-                _ = callback.call(nil, Variant(String(describing: error)))
-            } else if let result {
+            let wrapped = TypedArray<GKLeaderboard?>()
+
+            if let result {
                 for l in result {
                     let wrap = GKLeaderboard(board: l)
-                    wrapped.append(Variant(wrap))
+                    wrapped.append(wrap)
                 }
-            } else {
-                _ = callback.call(Variant(wrapped), nil)
             }
+            _ = callback.call(Variant(wrapped), error != nil ? Variant(String(describing: error)) : nil)
         }
     }
 }

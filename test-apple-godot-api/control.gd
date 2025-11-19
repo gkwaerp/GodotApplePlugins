@@ -30,16 +30,16 @@ func _on_button_pressed() -> void:
 				else:
 					print(error)
 				)
-			print("Loading friends...")
-			local.load_friends(func(friends: Variant, error: Variant) -> void:
-				print("Loaded friends with %s" % friends)
-				print("   ERRR friends with %s" % error)
+			local.load_friends(func(friends: Array[GKPlayer], error: Variant) -> void:
 				if error == null:
 					for friend in friends:
 						print("Found friend: %s" % friend.display_name)
 				else:
 					print("Error loading friends: %s" % error)
-					)
+			)
+			GKAchievement.reset_achivements(func(error: Variant)->void:
+				print("Reset status: %s" % error)
+				)
 		else:
 			$auth_state.text = "Not Authenticated"
 		)
