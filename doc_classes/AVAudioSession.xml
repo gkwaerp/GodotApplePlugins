@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="AVAudioSession" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Controls the shared iOS/tvOS audio session from GDScript.
+		Controls the shared iOS/tvOS audio session from GDScript.
 	</brief_description>
 	<description>
-	Use this helper to select one of Apple&#39;s predefined [code]AVAudioSession[/code] categories so your Godot project can mix or duck audio according to platform expectations. It is most useful on mobile builds where the engine needs to share the audio device with the system music player or with voice chat as described in [code]GameCenterGuide.md[/code]. See Apple&#39;s audio session overview at [url=https://developer.apple.com/documentation/avfaudio/avaudiosession]Apple&#39;s AVAudioSession reference[/url].
+		Use this helper to select one of Apple's predefined [code]AVAudioSession[/code] categories so your Godot project can mix or duck audio according to platform expectations. It is most useful on mobile builds where the engine needs to share the audio device with the system music player or with voice chat as described in [code]GameCenterGuide.md[/code]. See Apple's audio session overview at [url=https://developer.apple.com/documentation/avfaudio/avaudiosession]Apple's AVAudioSession reference[/url].
 	</description>
 	<tutorials>
 	</tutorials>

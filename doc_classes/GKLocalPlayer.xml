@@ -1,56 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GKLocalPlayer" inherits="GKPlayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents the signed-in Game Center player and exposes local-only APIs.
+		Represents the signed-in Game Center player and exposes local-only APIs.
 	</brief_description>
 	<description>
-	Use [code]GKLocalPlayer[/code] to inspect authentication flags and to fetch the local player&#39;s friends as shown in the "Players" section of [code]GameCenterGuide.md[/code]. Every asynchronous call mirrors Apple&#39;s API and invokes your [code]Callable[/code] with the requested data plus an optional error [code]Variant[/code]. Refer to Apple&#39;s documentation at [url=https://developer.apple.com/documentation/gamekit/gklocalplayer]Apple&#39;s GKLocalPlayer reference[/url] for platform-specific behavior.
+		Use [code]GKLocalPlayer[/code] to inspect authentication flags and to fetch the local player's friends as shown in the "Players" section of [code]GameCenterGuide.md[/code]. Every asynchronous call mirrors Apple's API and invokes your [code]Callable[/code] with the requested data plus an optional error [code]Variant[/code]. Refer to Apple's documentation at [url=https://developer.apple.com/documentation/gamekit/gklocalplayer]Apple's GKLocalPlayer reference[/url] for platform-specific behavior.
 
-	Sample from the guide that fetches the local player when your scene loads:
-	[codeblock]
-	[gdscript]
-	var game_center: GameCenterManager
-	var local: GKLocalPlayer
+		Sample from the guide that fetches the local player when your scene loads:
+		[codeblock]
+		var game_center: GameCenterManager
+		var local: GKLocalPlayer
 
-	func _ready() -> void:
-	    game_center = GameCenterManager.new()
-	    local = game_center.local_player
-	    print("ONREADY: local, is auth: %s" % local.is_authenticated)
-	    print("ONREADY: local, player ID: %s" % local.game_player_id)
-	[/gdscript]
-	[/codeblock]
+		func _ready() -&gt; void:
+		    game_center = GameCenterManager.new()
+		    local = game_center.local_player
+		    print("ONREADY: local, is auth: %s" % local.is_authenticated)
+		    print("ONREADY: local, player ID: %s" % local.game_player_id)
+		[/codeblock]
 
-	Friends-related helpers mirror the snippets in the guide (assuming you stored the player reference in [code]local[/code]):
-	[codeblock]
-	[gdscript]
-	# Loads the local player&#39;s friends list if access is granted.
-	local.load_friends(func(friends: Array[GKPlayer], error: Variant) -> void:
-	    if error:
-	        print(error)
-	    else:
-	        for friend in friends:
-	            print(friend.display_name)
-	)
+		Friends-related helpers mirror the snippets in the guide (assuming you stored the player reference in [code]local[/code]):
+		[codeblock]
+		# Loads the local player's friends list if access is granted.
+		local.load_friends(func(friends: Array[GKPlayer], error: Variant) -&gt; void:
+		    if error:
+		        print(error)
+		    else:
+		        for friend in friends:
+		            print(friend.display_name)
+		)
 
-	# Loads players the local user can challenge.
-	local.load_challengeable_friends(func(friends: Array[GKPlayer], error: Variant) -> void:
-	    if error:
-	        print(error)
-	    else:
-	        for friend in friends:
-	            print(friend.display_name)
-	)
+		# Loads players the local user can challenge.
+		local.load_challengeable_friends(func(friends: Array[GKPlayer], error: Variant) -&gt; void:
+		    if error:
+		        print(error)
+		    else:
+		        for friend in friends:
+		            print(friend.display_name)
+		)
 
-	# Loads the friends or recent players list.
-	local.load_recent_friends(func(friends: Array[GKPlayer], error: Variant) -> void:
-	    if error:
-	        print(error)
-	    else:
-	        for friend in friends:
-	            print(friend.display_name)
-	)
-	[/gdscript]
-	[/codeblock]
+		# Loads the friends or recent players list.
+		local.load_recent_friends(func(friends: Array[GKPlayer], error: Variant) -&gt; void:
+		    if error:
+		        print(error)
+		    else:
+		        for friend in friends:
+		            print(friend.display_name)
+		)
+		[/codeblock]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -59,7 +55,7 @@
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
-				Calls Apple&#39;s [code]fetchItems[/code] helper for server-side authentication. The callback receives [code](Dictionary data, Variant error)[/code]. The dictionary contains the [code]url[/code], [code]data[/code], [code]salt[/code], and [code]timestamp[/code] keys described in the inline Swift documentation, letting your backend verify the player&#39;s identity.
+				Calls Apple's [code]fetchItems[/code] helper for server-side authentication. The callback receives [code](Dictionary data, Variant error)[/code]. The dictionary contains the [code]url[/code], [code]data[/code], [code]salt[/code], and [code]timestamp[/code] keys described in the inline Swift documentation, letting your backend verify the player's identity.
 			</description>
 		</method>
 		<method name="load_challengeable_friends">
@@ -95,7 +91,7 @@
 			Indicates whether personalized communication is blocked for this account.
 		</member>
 		<member name="is_underage" type="bool" setter="" getter="get_is_underage" default="false">
-			Apple&#39;s [code]isUnderage[/code] flag for COPPA-compliant flows.
+			Apple's [code]isUnderage[/code] flag for COPPA-compliant flows.
 		</member>
 	</members>
 </class>

@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GKMatch" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents an active real-time Game Center match.
+		Represents an active real-time Game Center match.
 	</brief_description>
 	<description>
-	[code]GKMatch[/code] wraps Apple&#39;s realtime networking object. After starting matchmaking with [code]GKMatchmakerViewController[/code] (see the "Realtime Matchmaking" section of [code]GameCenterGuide.md[/code]) you will receive a [code]GKMatch[/code] instance and can send data, monitor players, and respond to disconnections via Godot signals. For platform specifics see [url=https://developer.apple.com/documentation/gamekit/gkmatch]Apple&#39;s GKMatch reference[/url].
+		[code]GKMatch[/code] wraps Apple's realtime networking object. After starting matchmaking with [code]GKMatchmakerViewController[/code] (see the "Realtime Matchmaking" section of [code]GameCenterGuide.md[/code]) you will receive a [code]GKMatch[/code] instance and can send data, monitor players, and respond to disconnections via Godot signals. For platform specifics see [url=https://developer.apple.com/documentation/gamekit/gkmatch]Apple's GKMatch reference[/url].
 
-	Guide sample showing matchmaking and signal hookups:
-	[codeblock]
-	[gdscript]
-	var request := GKMatchRequest.new()
-	request.max_players = 2
-	request.min_players = 1
-	request.invite_message = "Join me in a quest to fun"
+		Guide sample showing matchmaking and signal hookups:
+		[codeblock]
+		var request := GKMatchRequest.new()
+		request.max_players = 2
+		request.min_players = 1
+		request.invite_message = "Join me in a quest to fun"
 
-	GKMatchmakerViewController.request_match(request, func(game_match: GKMatch, error: Variant) -> void:
-	    if error:
-	        print("Could not request a match %s" % error)
-	        return
+		GKMatchmakerViewController.request_match(request, func(game_match: GKMatch, error: Variant) -&gt; void:
+		    if error:
+		        print("Could not request a match %s" % error)
+		        return
 
-	    print("Got a match!")
-	    game_match.data_received.connect(func(data: PackedByteArray, from_player: GKPlayer) -> void:
-	        print("Received data from %s" % from_player.display_name)
-	    )
-	    game_match.data_received_for_recipient_from_player.connect(func(data: PackedByteArray, for_recipient: GKPlayer, from_remote_player: GKPlayer) -> void:
-	        print("Forwarded data for %s from %s" % [for_recipient.display_name, from_remote_player.display_name])
-	    )
-	    game_match.did_fail_with_error.connect(func(match_error: String) -> void:
-	        print("Match failed with %s" % match_error)
-	    )
-	    game_match.should_reinvite_disconnected_player = func(player: GKPlayer) -> bool:
-	        return true
-	    game_match.player_changed.connect(func(player: GKPlayer, connected: bool) -> void:
-	        print("Player %s changed to %s" % [player.display_name, connected])
-	    )
-	)
-	[/gdscript]
-	[/codeblock]
+		    print("Got a match!")
+		    game_match.data_received.connect(func(data: PackedByteArray, from_player: GKPlayer) -&gt; void:
+		        print("Received data from %s" % from_player.display_name)
+		    )
+		    game_match.data_received_for_recipient_from_player.connect(func(data: PackedByteArray, for_recipient: GKPlayer, from_remote_player: GKPlayer) -&gt; void:
+		        print("Forwarded data for %s from %s" % [for_recipient.display_name, from_remote_player.display_name])
+		    )
+		    game_match.did_fail_with_error.connect(func(match_error: String) -&gt; void:
+		        print("Match failed with %s" % match_error)
+		    )
+		    game_match.should_reinvite_disconnected_player = func(player: GKPlayer) -&gt; bool:
+		        return true
+		    game_match.player_changed.connect(func(player: GKPlayer, connected: bool) -&gt; void:
+		        print("Player %s changed to %s" % [player.display_name, connected])
+		    )
+		)
+		[/codeblock]
 
-	Broadcast helper from the guide (assuming you keep the reference as [code]game_match[/code]):
-	[codeblock]
-	[gdscript]
-	var data := "How do you do fellow kids".to_utf8_buffer()
-	game_match.send_data_to_all_players(data, GKMatch.SendDataMode.reliable)
-	[/gdscript]
-	[/codeblock]
+		Broadcast helper from the guide (assuming you keep the reference as [code]game_match[/code]):
+		[codeblock]
+		var data := "How do you do fellow kids".to_utf8_buffer()
+		game_match.send_data_to_all_players(data, GKMatch.SendDataMode.reliable)
+		[/codeblock]
 
-	Send to a subset of players (still using the [code]game_match[/code] variable):
-	[codeblock]
-	[gdscript]
-	var payload := PackedByteArray([1, 2, 3])
-	var recipients := [first_player, second_player]
-	game_match.send(payload, recipients, GKMatch.SendDataMode.reliable)
-	[/gdscript]
-	[/codeblock]
+		Send to a subset of players (still using the [code]game_match[/code] variable):
+		[codeblock]
+		var payload := PackedByteArray([1, 2, 3])
+		var recipients := [first_player, second_player]
+		game_match.send(payload, recipients, GKMatch.SendDataMode.reliable)
+		[/codeblock]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -68,7 +62,7 @@
 			<return type="int" />
 			<param index="0" name="data" type="PackedByteArray" />
 			<param index="1" name="toPlayers" type="Array" />
-			<param index="2" name="dataMode" type="int" enum="GKMatch.SendDataMode" />
+			<param index="2" name="dataMode" type="int" enum="SendDataMode" />
 			<description>
 				Sends a payload to the specified [code]Array[GKPlayer][/code]. Returns a [enum @GlobalScope.Error] value ([code]OK[/code] on success, [code]FAILED[/code] when the payload could not be converted or Apple reported an error).
 			</description>
@@ -76,7 +70,7 @@
 		<method name="send_data_to_all_players">
 			<return type="int" />
 			<param index="0" name="data" type="PackedByteArray" />
-			<param index="1" name="dataMode" type="int" enum="GKMatch.SendDataMode" />
+			<param index="1" name="dataMode" type="int" enum="SendDataMode" />
 			<description>
 				Broadcasts the packed bytes to everyone in the match. Return value matches [method send].
 			</description>
@@ -125,10 +119,10 @@
 	</signals>
 	<constants>
 		<constant name="reliable" value="0" enum="SendDataMode">
-			Uses GameKit&#39;s reliable data channel (ordered delivery with retries).
+			Uses GameKit's reliable data channel (ordered delivery with retries).
 		</constant>
 		<constant name="unreliable" value="1" enum="SendDataMode">
-			Uses GameKit&#39;s unreliable channel, useful for latency-sensitive updates.
+			Uses GameKit's unreliable channel, useful for latency-sensitive updates.
 		</constant>
 	</constants>
 </class>

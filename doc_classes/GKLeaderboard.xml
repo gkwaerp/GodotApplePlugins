@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GKLeaderboard" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Accesses Apple Game Center leaderboards and their entries.
+		Accesses Apple Game Center leaderboards and their entries.
 	</brief_description>
 	<description>
-	[code]GKLeaderboard[/code] lets you fetch configured leaderboards, submit scores, and read player ranks as described in the Leaderboards section of [code]GameCenterGuide.md[/code]. All operations mirror Apple&#39;s asynchronous APIs, so every method expects a [code]Callable[/code] that receives the requested data plus an optional error [code]Variant[/code]. See Apple&#39;s reference at [url=https://developer.apple.com/documentation/gamekit/gkleaderboard]Apple&#39;s GKLeaderboard documentation[/url].
+		[code]GKLeaderboard[/code] lets you fetch configured leaderboards, submit scores, and read player ranks as described in the Leaderboards section of [code]GameCenterGuide.md[/code]. All operations mirror Apple's asynchronous APIs, so every method expects a [code]Callable[/code] that receives the requested data plus an optional error [code]Variant[/code]. See Apple's reference at [url=https://developer.apple.com/documentation/gamekit/gkleaderboard]Apple's GKLeaderboard documentation[/url].
 
-	Submitting a score (guide sample):
-	[codeblock]
-	[gdscript]
-	var local_player := GameCenterManager.new().local_player
+		Submitting a score (guide sample):
+		[codeblock]
+		var local_player := GameCenterManager.new().local_player
 
-	GKLeaderboard.load_leaderboards(["MyLeaderboard"], func(leaderboards: Array[GKLeaderboard], error: Variant) -> void:
-	    if error:
-	        print("Load leaderboard error %s" % error)
-	        return
+		GKLeaderboard.load_leaderboards(["MyLeaderboard"], func(leaderboards: Array[GKLeaderboard], error: Variant) -&gt; void:
+		    if error:
+		        print("Load leaderboard error %s" % error)
+		        return
 
-	    var score := 100
-	    var context := 0
-	    leaderboards[0].submit_score(score, context, local_player, func(submit_error: Variant) -> void:
-	        if submit_error:
-	            print("Error submitting leaderboard %s" % submit_error)
-	    )
-	)
-	[/gdscript]
-	[/codeblock]
+		    var score := 100
+		    var context := 0
+		    leaderboards[0].submit_score(score, context, local_player, func(submit_error: Variant) -&gt; void:
+		        if submit_error:
+		            print("Error submitting leaderboard %s" % submit_error)
+		    )
+		)
+		[/codeblock]
 
-	Loading all versus specific leaderboards:
-	[codeblock]
-	[gdscript]
-	# Loads all leaderboards configured for the app.
-	GKLeaderboard.load_leaderboards([], func(all_leaderboards: Array[GKLeaderboard], error: Variant) -> void:
-	    print("Received %d leaderboards" % all_leaderboards.size())
-	)
+		Loading all versus specific leaderboards:
+		[codeblock]
+		# Loads all leaderboards configured for the app.
+		GKLeaderboard.load_leaderboards([], func(all_leaderboards: Array[GKLeaderboard], error: Variant) -&gt; void:
+		    print("Received %d leaderboards" % all_leaderboards.size())
+		)
 
-	# Loads only the identifiers you pass in.
-	GKLeaderboard.load_leaderboards(["My leaderboard"], func(named_leaderboards: Array[GKLeaderboard], error: Variant) -> void:
-	    print("Received %d specific leaderboards" % named_leaderboards.size())
-	)
-	[/gdscript]
-	[/codeblock]
+		# Loads only the identifiers you pass in.
+		GKLeaderboard.load_leaderboards(["My leaderboard"], func(named_leaderboards: Array[GKLeaderboard], error: Variant) -&gt; void:
+		    print("Received %d specific leaderboards" % named_leaderboards.size())
+		)
+		[/codeblock]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -47,10 +43,10 @@
 		<method name="load_entries">
 			<return type="void" />
 			<param index="0" name="players" type="Array" />
-			<param index="1" name="timeScope" type="int" enum="GKLeaderboard.TimeScope" />
+			<param index="1" name="timeScope" type="int" enum="TimeScope" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
-				Loads the local player&#39;s score together with the specified [code]Array[/code] of [code]GKPlayer[/code] objects for the given time scope. The callback receives [code](GKLeaderboardEntry local, Array[GKLeaderboardEntry] scores, Variant error)[/code] where the first entry can be [code]null[/code] if the local player has not posted a score.
+				Loads the local player's score together with the specified [code]Array[/code] of [code]GKPlayer[/code] objects for the given time scope. The callback receives [code](GKLeaderboardEntry local, Array[GKLeaderboardEntry] scores, Variant error)[/code] where the first entry can be [code]null[/code] if the local player has not posted a score.
 			</description>
 		</method>
 		<method name="load_image">
@@ -84,7 +80,7 @@
 			Beta-only identifier for activity leaderboards (empty on platforms that do not expose the value).
 		</member>
 		<member name="activity_properties" type="Dictionary" setter="" getter="get_activity_properties" default="{}">
-			Dictionary copy of Apple&#39;s [code]activityProperties[/code], containing keys such as [code]eventStartDate[/code] when available.
+			Dictionary copy of Apple's [code]activityProperties[/code], containing keys such as [code]eventStartDate[/code] when available.
 		</member>
 		<member name="duration" type="float" setter="" getter="get_duration" default="0.0">
 			Leaderboard duration in seconds for recurring leaderboards.

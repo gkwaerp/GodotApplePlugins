@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GKMatchRequest" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Configures how many players Game Center should recruit for a realtime match.
+		Configures how many players Game Center should recruit for a realtime match.
 	</brief_description>
 	<description>
-	Instantiate [code]GKMatchRequest[/code], set the minimum/maximum player counts and invite message, then either create a [code]GKMatchmakerViewController[/code] (for full UI control) or call [method GKMatchmakerViewController.request_match] as shown in [code]GameCenterGuide.md[/code]. The optional [code]MatchType[/code] argument lets you switch between peer-to-peer, hosted, or turn-based matchmaking. Apple&#39;s guide is at [url=https://developer.apple.com/documentation/gamekit/gkmatchrequest]Apple&#39;s GKMatchRequest reference[/url].
+		Instantiate [code]GKMatchRequest[/code], set the minimum/maximum player counts and invite message, then either create a [code]GKMatchmakerViewController[/code] (for full UI control) or call [method GKMatchmakerViewController.request_match] as shown in [code]GameCenterGuide.md[/code]. The optional [code]MatchType[/code] argument lets you switch between peer-to-peer, hosted, or turn-based matchmaking. Apple's guide is at [url=https://developer.apple.com/documentation/gamekit/gkmatchrequest]Apple's GKMatchRequest reference[/url].
 
-	Configuration snippet from the guide:
-	[codeblock]
-	[gdscript]
-	var request := GKMatchRequest.new()
-	request.max_players = 2
-	request.min_players = 1
-	request.invite_message = "Join me in a quest to fun"
+		Configuration snippet from the guide:
+		[codeblock]
+		var request := GKMatchRequest.new()
+		request.max_players = 2
+		request.min_players = 1
+		request.invite_message = "Join me in a quest to fun"
 
-	var max_supported := GKMatchRequest.max_players_allowed_for_match(GKMatchRequest.MatchType.peerToPeer)
-	print("Peer-to-peer supports up to %d players" % max_supported)
-	[/gdscript]
-	[/codeblock]
+		var max_supported := GKMatchRequest.max_players_allowed_for_match(GKMatchRequest.MatchType.peerToPeer)
+		print("Peer-to-peer supports up to %d players" % max_supported)
+		[/codeblock]
 	</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="max_players_allowed_for_match" qualifiers="static">
 			<return type="int" />
-			<param index="0" name="forType" type="int" enum="GKMatchRequest.MatchType" />
+			<param index="0" name="forType" type="int" enum="MatchType" />
 			<description>
-				Returns Apple&#39;s maximum supported player count for the supplied match type ([code]peer_to_peer[/code], [code]hosted[/code], or [code]turn_based[/code]).
+				Returns Apple's maximum supported player count for the supplied match type ([code]peer_to_peer[/code], [code]hosted[/code], or [code]turn_based[/code]).
 			</description>
 		</method>
 	</methods>

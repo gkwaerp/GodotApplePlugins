@@ -1,0 +1,9 @@
+short_name = "GodotApplePlugins"
+name = "Godot Apple Plugins for MacOS and iOS"
+major = 4
+minor = 6
+patch = 0
+status = "dev"
+module_config = ""
+website = "https://migueldeicaza.github.io/GodotApplePlugins/"
+docs = "latest"

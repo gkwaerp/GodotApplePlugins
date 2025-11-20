@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GKPlayer" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents any Game Center player (local or remote).
+		Represents any Game Center player (local or remote).
 	</brief_description>
 	<description>
-	[code]GKPlayer[/code] is the shared base type for friends, opponents, and the local user. Use it to access Apple-provided identifiers plus helper methods such as [method load_photo], as referenced in the "Players" section of [code]GameCenterGuide.md[/code]. Apple&#39;s reference lives at [url=https://developer.apple.com/documentation/gamekit/gkplayer]Apple&#39;s GKPlayer documentation[/url].
+		[code]GKPlayer[/code] is the shared base type for friends, opponents, and the local user. Use it to access Apple-provided identifiers plus helper methods such as [method load_photo], as referenced in the "Players" section of [code]GameCenterGuide.md[/code]. Apple's reference lives at [url=https://developer.apple.com/documentation/gamekit/gkplayer]Apple's GKPlayer documentation[/url].
 
-	Loading a player photo (guide sample):
-	[codeblock]
-	[gdscript]
-	# Put the downloaded image inside a TextureRect named $texture_rect.
-	local_player.load_photo(true, func(image: Image, error: Variant) -> void:
-	    if error == null:
-	        $texture_rect.texture = ImageTexture.create_from_image(image)
-	    else:
-	        print("Could not load photo %s" % error)
-	)
-	[/gdscript]
-	[/codeblock]
+		Loading a player photo (guide sample):
+		[codeblock]
+		# Put the downloaded image inside a TextureRect named $texture_rect.
+		local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
+		    if error == null:
+		        $texture_rect.texture = ImageTexture.create_from_image(image)
+		    else:
+		        print("Could not load photo %s" % error)
+		)
+		[/codeblock]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -27,13 +25,13 @@
 			<param index="0" name="small" type="bool" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
-				Downloads the player&#39;s avatar. Pass [code]true[/code] for a small image or [code]false[/code] for the normal size. The callback receives [code](Image image, Variant error)[/code] and exactly one argument is [code]null[/code], mirroring the Swift inline documentation.
+				Downloads the player's avatar. Pass [code]true[/code] for a small image or [code]false[/code] for the normal size. The callback receives [code](Image image, Variant error)[/code] and exactly one argument is [code]null[/code], mirroring the Swift inline documentation.
 			</description>
 		</method>
 		<method name="scopedIDsArePersistent">
 			<return type="bool" />
 			<description>
-				Returns the result of Apple&#39;s [code]scopedIDsArePersistent()[/code] method, letting you detect whether scoped identifiers stay stable for the current device/account combination.
+				Returns the result of Apple's [code]scopedIDsArePersistent()[/code] method, letting you detect whether scoped identifiers stay stable for the current device/account combination.
 			</description>
 		</method>
 	</methods>
@@ -44,13 +42,13 @@
 		<member name="display_name" type="String" setter="" getter="get_display_name" default="&quot;&quot;">
 			Localized display name suited for UI.
 		</member>
-		<member name="game_player_id" type="String" setter="" getter="get_game_player_id" default="&quot;2437A06C5BAB4D0FD76710768A7790EA0E97ED560BA2B0D31A6F9C398EA52453&quot;">
+		<member name="game_player_id" type="String" setter="" getter="get_game_player_id" default="&quot;BE90FB664730690850B18B71A6B923985E57D83FA692AE05199F6E193D544877&quot;">
 			Stable, per-game identifier used by Apple to uniquely address the player.
 		</member>
 		<member name="is_invitable" type="bool" setter="" getter="get_is_invitable" default="false">
 			True if the player allows Game Center invitations.
 		</member>
-		<member name="team_player_id" type="String" setter="" getter="get_team_player_id" default="&quot;1CCC5A34E9526C320680E55D2E5E37848DC3A4A84E7A2D19C0D3B147F67234C3&quot;">
+		<member name="team_player_id" type="String" setter="" getter="get_team_player_id" default="&quot;E53CA6759B5D07EF1A16061BB10E4D4DC3BAB7506E1C7FFDF6C91D9E98E198DE&quot;">
 			Team-scoped identifier shared with other games from the same developer account.
 		</member>
 	</members>

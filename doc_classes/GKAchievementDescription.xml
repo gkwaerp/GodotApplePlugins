@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GKAchievementDescription" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Metadata for every achievement that is defined in App Store Connect.
+		Metadata for every achievement that is defined in App Store Connect.
 	</brief_description>
 	<description>
-	[code]GKAchievementDescription[/code] exposes the localized text, group assignments, and icon that you configure for each achievement. Use [method load_achievement_descriptions] as shown in [code]GameCenterGuide.md[/code] to list everything the player can unlock, even before they have reported progress. Apple&#39;s documentation lives at [url=https://developer.apple.com/documentation/gamekit/gkachievementdescription]Apple&#39;s GKAchievementDescription reference[/url].
+		[code]GKAchievementDescription[/code] exposes the localized text, group assignments, and icon that you configure for each achievement. Use [method load_achievement_descriptions] as shown in [code]GameCenterGuide.md[/code] to list everything the player can unlock, even before they have reported progress. Apple's documentation lives at [url=https://developer.apple.com/documentation/gamekit/gkachievementdescription]Apple's GKAchievementDescription reference[/url].
 
-	Listing descriptions (guide sample):
-	[codeblock]
-	[gdscript]
-	GKAchievementDescription.load_achievement_descriptions(func(descriptions: Array[GKAchievementDescription], error: Variant) -> void:
-	    if error:
-	        print("Load achievement description error %s" % error)
-	    else:
-	        for description in descriptions:
-	            print("Achievement Description ID: %s" % description.identifier)
-	            print("    Unachieved: %s" % description.unachieved_description)
-	            print("    Achieved: %s" % description.achieved_description)
-	)
-	[/gdscript]
-	[/codeblock]
+		Listing descriptions (guide sample):
+		[codeblock]
+		GKAchievementDescription.load_achievement_descriptions(func(descriptions: Array[GKAchievementDescription], error: Variant) -&gt; void:
+		    if error:
+		        print("Load achievement description error %s" % error)
+		    else:
+		        for description in descriptions:
+		            print("Achievement Description ID: %s" % description.identifier)
+		            print("    Unachieved: %s" % description.unachieved_description)
+		            print("    Achieved: %s" % description.achieved_description)
+		)
+		[/codeblock]
 
-	Loading an image sample (assuming [code]description[/code] is one of the loaded entries):
-	[codeblock]
-	[gdscript]
-	description.load_image(func(image: Image, error: Variant) -> void:
-	    if error == null:
-	        $texture_rect.texture = ImageTexture.create_from_image(image)
-	    else:
-	        print("Error loading achievement image %s" % error)
-	)
-	[/gdscript]
-	[/codeblock]
+		Loading an image sample (assuming [code]description[/code] is one of the loaded entries):
+		[codeblock]
+		description.load_image(func(image: Image, error: Variant) -&gt; void:
+		    if error == null:
+		        $texture_rect.texture = ImageTexture.create_from_image(image)
+		    else:
+		        print("Error loading achievement image %s" % error)
+		)
+		[/codeblock]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -47,7 +43,7 @@
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
-				Downloads the image for this description. The callback receives [code](Image image, Variant error)[/code] where exactly one argument is [code]null[/code], matching the helper described in the guide&#39;s "Load Achievement Description Image" section.
+				Downloads the image for this description. The callback receives [code](Image image, Variant error)[/code] where exactly one argument is [code]null[/code], matching the helper described in the guide's "Load Achievement Description Image" section.
 			</description>
 		</method>
 	</methods>
@@ -71,10 +67,10 @@
 			The point value that Apple shows when this achievement is completed.
 		</member>
 		<member name="rarity_percent" type="Variant" setter="" getter="get_rarity_percent">
-			Either a double with Apple&#39;s reported rarity or [code]null[/code] on platforms that do not expose this data.
+			Either a double with Apple's reported rarity or [code]null[/code] on platforms that do not expose this data.
 		</member>
 		<member name="title" type="String" setter="" getter="get_title" default="&quot;&quot;">
-			Display title, localized according to the player&#39;s language.
+			Display title, localized according to the player's language.
 		</member>
 		<member name="unachieved_description" type="String" setter="" getter="get_unachieved_description" default="&quot;&quot;">
 			Text shown before the player meets the completion criteria.

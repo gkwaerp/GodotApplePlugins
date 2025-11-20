@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="GameCenterManager" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Entry point for authenticating the Apple Game Center local player.
+		Entry point for authenticating the Apple Game Center local player.
 	</brief_description>
 	<description>
-	Create a [code]GameCenterManager[/code] when your game starts to present Apple&#39;s authentication UI and track whether the player is signed in, as described in [code]GameCenterGuide.md[/code]. Once authenticated you can fetch the [member local_player] to access achievements, leaderboards, friends, and matchmaking helpers. See Apple&#39;s documentation for [url=https://developer.apple.com/documentation/gamekit/gklocalplayer]Apple&#39;s GKLocalPlayer reference[/url] to learn more about the underlying authentication flow.
+		Create a [code]GameCenterManager[/code] when your game starts to present Apple's authentication UI and track whether the player is signed in, as described in [code]GameCenterGuide.md[/code]. Once authenticated you can fetch the [member local_player] to access achievements, leaderboards, friends, and matchmaking helpers. See Apple's documentation for [url=https://developer.apple.com/documentation/gamekit/gklocalplayer]Apple's GKLocalPlayer reference[/url] to learn more about the underlying authentication flow.
 
-	Authentication example from the guide:
-	[codeblock]
-	[gdscript]
-	var game_center: GameCenterManager
+		Authentication example from the guide:
+		[codeblock]
+		var game_center: GameCenterManager
 
-	func _ready() -> void:
-	    game_center = GameCenterManager.new()
+		func _ready() -&gt; void:
+		    game_center = GameCenterManager.new()
 
-	    game_center.authentication_error.connect(func(error: String) -> void:
-	        print("Received error %s" % error)
-	    )
-	    game_center.authentication_result.connect(func(status: bool) -> void:
-	        print("Authentication updated, status: %s" % status)
-	    )
-	[/gdscript]
-	[/codeblock]
+		    game_center.authentication_error.connect(func(error: String) -&gt; void:
+		        print("Received error %s" % error)
+		    )
+		    game_center.authentication_result.connect(func(status: bool) -&gt; void:
+		        print("Authentication updated, status: %s" % status)
+		    )
+		[/codeblock]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -29,7 +27,7 @@
 		<method name="authenticate">
 			<return type="void" />
 			<description>
-				Triggers [code]GKLocalPlayer.authenticateHandler[/code], presenting Apple&#39;s login sheet when needed. Emits [signal authentication_result] with the new status and [signal authentication_error] if GameKit reports a failure.
+				Triggers [code]GKLocalPlayer.authenticateHandler[/code], presenting Apple's login sheet when needed. Emits [signal authentication_result] with the new status and [signal authentication_error] if GameKit reports a failure.
 			</description>
 		</method>
 	</methods>
