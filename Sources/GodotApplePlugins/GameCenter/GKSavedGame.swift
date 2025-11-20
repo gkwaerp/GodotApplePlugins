@@ -38,9 +38,11 @@ class GKSavedGame: GKPlayer, @unchecked Sendable {
             return
         }
         saved.loadData { data, error in
-            var ret: Variant? = nil
+            var ret: Variant
             if let data {
                 ret = Variant(data.toPackedByteArray())
+            } else {
+                ret = Variant(PackedByteArray())
             }
             _ = done.call(ret, mapError(error))
         }

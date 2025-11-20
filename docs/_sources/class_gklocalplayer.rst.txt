@@ -95,15 +95,21 @@ Methods
 .. table::
    :widths: auto
 
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`fetch_items_for_identity_verification_signature<class_GKLocalPlayer_method_fetch_items_for_identity_verification_signature>`\ (\ callback\: :ref:`Callable<class_Callable>`\ ) |
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`load_challengeable_friends<class_GKLocalPlayer_method_load_challengeable_friends>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                           |
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`load_friends<class_GKLocalPlayer_method_load_friends>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                                                       |
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`load_recent_friends<class_GKLocalPlayer_method_load_recent_friends>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                                         |
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`delete_saved_games<class_GKLocalPlayer_method_delete_saved_games>`\ (\ named\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ )                                                  |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`fetch_items_for_identity_verification_signature<class_GKLocalPlayer_method_fetch_items_for_identity_verification_signature>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                             |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`fetch_saved_games<class_GKLocalPlayer_method_fetch_saved_games>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                                                                         |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`load_challengeable_friends<class_GKLocalPlayer_method_load_challengeable_friends>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                                                       |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`load_friends<class_GKLocalPlayer_method_load_friends>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                                                                                   |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`load_recent_friends<class_GKLocalPlayer_method_load_recent_friends>`\ (\ callback\: :ref:`Callable<class_Callable>`\ )                                                                                     |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`save_game_data<class_GKLocalPlayer_method_save_game_data>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, withName\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ ) |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -183,6 +189,20 @@ Apple's ``isUnderage`` flag for COPPA-compliant flows.
 Method Descriptions
 -------------------
 
+.. _class_GKLocalPlayer_method_delete_saved_games:
+
+.. rst-class:: classref-method
+
+|void| **delete_saved_games**\ (\ named\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_GKLocalPlayer_method_delete_saved_games>`
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_GKLocalPlayer_method_fetch_items_for_identity_verification_signature:
 
 .. rst-class:: classref-method
@@ -190,6 +210,22 @@ Method Descriptions
 |void| **fetch_items_for_identity_verification_signature**\ (\ callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_GKLocalPlayer_method_fetch_items_for_identity_verification_signature>`
 
 Calls Apple's ``fetchItems`` helper for server-side authentication. The callback receives ``(Dictionary data, Variant error)``. The dictionary contains the ``url``, ``data``, ``salt``, and ``timestamp`` keys described in the inline Swift documentation, letting your backend verify the player's identity.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GKLocalPlayer_method_fetch_saved_games:
+
+.. rst-class:: classref-method
+
+|void| **fetch_saved_games**\ (\ callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_GKLocalPlayer_method_fetch_saved_games>`
+
+Use this API to retrieve the list of saved games, upon completion, this
+
+                method invokes the provided callback with both an array of GKSavedGame objects
+
+                and a variant error, if not nil it contains a string describing the problem.
 
 .. rst-class:: classref-item-separator
 
@@ -226,6 +262,24 @@ Fetches the friends list. The callback receives ``(Array[GKPlayer] friends, Vari
 |void| **load_recent_friends**\ (\ callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_GKLocalPlayer_method_load_recent_friends>`
 
 Loads friends that recently played together with the local player. The callback signature matches :ref:`load_challengeable_friends()<class_GKLocalPlayer_method_load_challengeable_friends>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GKLocalPlayer_method_save_game_data:
+
+.. rst-class:: classref-method
+
+|void| **save_game_data**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, withName\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_GKLocalPlayer_method_save_game_data>`
+
+Saves the packed byte array as the game data with the specified name, upon
+
+                completion the callback is invoked with both a GKSavedObject parameter and
+
+                a Variant parameter for the error.   The GKSavedObject is not-nil on success,
+
+                and on error, the second parameter is not-nil and contains the error message.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

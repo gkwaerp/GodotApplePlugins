@@ -51,11 +51,27 @@
 	<tutorials>
 	</tutorials>
 	<methods>
+		<method name="delete_saved_games">
+			<return type="void" />
+			<param index="0" name="named" type="String" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
 		<method name="fetch_items_for_identity_verification_signature">
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
 				Calls Apple's [code]fetchItems[/code] helper for server-side authentication. The callback receives [code](Dictionary data, Variant error)[/code]. The dictionary contains the [code]url[/code], [code]data[/code], [code]salt[/code], and [code]timestamp[/code] keys described in the inline Swift documentation, letting your backend verify the player's identity.
+			</description>
+		</method>
+		<method name="fetch_saved_games">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+                Use this API to retrieve the list of saved games, upon completion, this
+                method invokes the provided callback with both an array of GKSavedGame objects
+                and a variant error, if not nil it contains a string describing the problem.
 			</description>
 		</method>
 		<method name="load_challengeable_friends">
@@ -77,6 +93,18 @@
 			<param index="0" name="callback" type="Callable" />
 			<description>
 				Loads friends that recently played together with the local player. The callback signature matches [method load_challengeable_friends].
+			</description>
+		</method>
+		<method name="save_game_data">
+			<return type="void" />
+			<param index="0" name="data" type="PackedByteArray" />
+			<param index="1" name="withName" type="String" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+                Saves the packed byte array as the game data with the specified name, upon
+                completion the callback is invoked with both a GKSavedObject parameter and
+                a Variant parameter for the error.   The GKSavedObject is not-nil on success,
+                and on error, the second parameter is not-nil and contains the error message.
 			</description>
 		</method>
 	</methods>

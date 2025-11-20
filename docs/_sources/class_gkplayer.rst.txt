@@ -12,7 +12,7 @@ GKPlayer
 
 **Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`GKLocalPlayer<class_GKLocalPlayer>`
+**Inherited By:** :ref:`GKLocalPlayer<class_GKLocalPlayer>`, :ref:`GKSavedGame<class_GKSavedGame>`
 
 Represents any Game Center player (local or remote).
 
@@ -50,11 +50,11 @@ Properties
    +-----------------------------+---------------------------------------------------------------+------------------------------------------------------------------------+
    | :ref:`String<class_String>` | :ref:`display_name<class_GKPlayer_property_display_name>`     | ``""``                                                                 |
    +-----------------------------+---------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`game_player_id<class_GKPlayer_property_game_player_id>` | ``"BE90FB664730690850B18B71A6B923985E57D83FA692AE05199F6E193D544877"`` |
+   | :ref:`String<class_String>` | :ref:`game_player_id<class_GKPlayer_property_game_player_id>` | ``"52625AD328F28BA6A3D1841E2BFCE9684C786F4C8D79D023B56E3489D0DC3949"`` |
    +-----------------------------+---------------------------------------------------------------+------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`     | :ref:`is_invitable<class_GKPlayer_property_is_invitable>`     | ``false``                                                              |
    +-----------------------------+---------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`team_player_id<class_GKPlayer_property_team_player_id>` | ``"E53CA6759B5D07EF1A16061BB10E4D4DC3BAB7506E1C7FFDF6C91D9E98E198DE"`` |
+   | :ref:`String<class_String>` | :ref:`team_player_id<class_GKPlayer_property_team_player_id>` | ``"A57B130BF9BE99A80E913E757E561079DE0AEE8CD7F6C27CD3221EEB665B6170"`` |
    +-----------------------------+---------------------------------------------------------------+------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
@@ -116,7 +116,7 @@ Localized display name suited for UI.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **game_player_id** = ``"BE90FB664730690850B18B71A6B923985E57D83FA692AE05199F6E193D544877"`` :ref:`🔗<class_GKPlayer_property_game_player_id>`
+:ref:`String<class_String>` **game_player_id** = ``"52625AD328F28BA6A3D1841E2BFCE9684C786F4C8D79D023B56E3489D0DC3949"`` :ref:`🔗<class_GKPlayer_property_game_player_id>`
 
 .. rst-class:: classref-property-setget
 
@@ -148,7 +148,7 @@ True if the player allows Game Center invitations.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **team_player_id** = ``"E53CA6759B5D07EF1A16061BB10E4D4DC3BAB7506E1C7FFDF6C91D9E98E198DE"`` :ref:`🔗<class_GKPlayer_property_team_player_id>`
+:ref:`String<class_String>` **team_player_id** = ``"A57B130BF9BE99A80E913E757E561079DE0AEE8CD7F6C27CD3221EEB665B6170"`` :ref:`🔗<class_GKPlayer_property_team_player_id>`
 
 .. rst-class:: classref-property-setget
 

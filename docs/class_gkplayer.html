@@ -15,7 +15,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SignalProxy" href="class_signalproxy.html" />
+    <link rel="next" title="GKSavedGame" href="class_gksavedgame.html" />
     <link rel="prev" title="GKMatchRequest" href="class_gkmatchrequest.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
@@ -25,7 +25,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="class_signalproxy.html" title="SignalProxy"
+          <a href="class_gksavedgame.html" title="GKSavedGame"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="class_gkmatchrequest.html" title="GKMatchRequest"
@@ -43,7 +43,7 @@
   <section id="gkplayer">
 <span id="class-gkplayer"></span><h1>GKPlayer<a class="headerlink" href="#gkplayer" title="Link to this heading">¶</a></h1>
 <p><strong>Inherits:</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
-<p><strong>Inherited By:</strong> <a class="reference internal" href="class_gklocalplayer.html#class-gklocalplayer"><span class="std std-ref">GKLocalPlayer</span></a></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_gklocalplayer.html#class-gklocalplayer"><span class="std std-ref">GKLocalPlayer</span></a>, <a class="reference internal" href="class_gksavedgame.html#class-gksavedgame"><span class="std std-ref">GKSavedGame</span></a></p>
 <p>Represents any Game Center player (local or remote).</p>
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -73,7 +73,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </tr>
 <tr class="row-odd"><td><p><span class="xref std std-ref">String</span></p></td>
 <td><p><a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">game_player_id</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;BE90FB664730690850B18B71A6B923985E57D83FA692AE05199F6E193D544877&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;52625AD328F28BA6A3D1841E2BFCE9684C786F4C8D79D023B56E3489D0DC3949&quot;</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="xref std std-ref">bool</span></p></td>
 <td><p><a class="reference internal" href="#class-gkplayer-property-is-invitable"><span class="std std-ref">is_invitable</span></a></p></td>
@@ -81,7 +81,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </tr>
 <tr class="row-odd"><td><p><span class="xref std std-ref">String</span></p></td>
 <td><p><a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">team_player_id</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;E53CA6759B5D07EF1A16061BB10E4D4DC3BAB7506E1C7FFDF6C91D9E98E198DE&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;A57B130BF9BE99A80E913E757E561079DE0AEE8CD7F6C27CD3221EEB665B6170&quot;</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -114,7 +114,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </ul>
 <p>Localized display name suited for UI.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkplayer-property-game-player-id"><span class="xref std std-ref">String</span> <strong>game_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;BE90FB664730690850B18B71A6B923985E57D83FA692AE05199F6E193D544877&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkplayer-property-game-player-id"><span class="xref std std-ref">String</span> <strong>game_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;52625AD328F28BA6A3D1841E2BFCE9684C786F4C8D79D023B56E3489D0DC3949&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
 <li><p><span class="xref std std-ref">String</span> <strong>get_game_player_id</strong>()</p></li>
 </ul>
@@ -126,7 +126,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </ul>
 <p>True if the player allows Game Center invitations.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkplayer-property-team-player-id"><span class="xref std std-ref">String</span> <strong>team_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;E53CA6759B5D07EF1A16061BB10E4D4DC3BAB7506E1C7FFDF6C91D9E98E198DE&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkplayer-property-team-player-id"><span class="xref std std-ref">String</span> <strong>team_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;A57B130BF9BE99A80E913E757E561079DE0AEE8CD7F6C27CD3221EEB665B6170&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
 <li><p><span class="xref std std-ref">String</span> <strong>get_team_player_id</strong>()</p></li>
 </ul>
@@ -171,8 +171,8 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="class_signalproxy.html"
-                          title="next chapter">SignalProxy</a></p>
+    <p class="topless"><a href="class_gksavedgame.html"
+                          title="next chapter">GKSavedGame</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -202,7 +202,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="class_signalproxy.html" title="SignalProxy"
+          <a href="class_gksavedgame.html" title="GKSavedGame"
              >next</a> |</li>
         <li class="right" >
           <a href="class_gkmatchrequest.html" title="GKMatchRequest"

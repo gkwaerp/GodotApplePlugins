@@ -29,5 +29,6 @@ Other objects
     class_gkmatchmakerviewcontroller
     class_gkmatchrequest
     class_gkplayer
+    class_gksavedgame
     class_signalproxy
 

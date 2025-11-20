@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GKSavedGame &#8212; Godot Apple Plugins for MacOS and iOS 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=2bf1fcf8" />
+    
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SignalProxy" href="class_signalproxy.html" />
+    <link rel="prev" title="GKPlayer" href="class_gkplayer.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="class_signalproxy.html" title="SignalProxy"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="class_gkplayer.html" title="GKPlayer"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins for MacOS and iOS 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GKSavedGame</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="gksavedgame">
+<span id="class-gksavedgame"></span><h1>GKSavedGame<a class="headerlink" href="#gksavedgame" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_gkplayer.html#class-gkplayer"><span class="std std-ref">GKPlayer</span></a> <strong>&lt;</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
+<p>Represents a saved game</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>Instances of this class are returned after you save a game with GKLocalPlayer’s save_game_data, or</p>
+<blockquote>
+<div><p>after you load the game data with GKLocalPlayer fetch_saved_games</p>
+</div></blockquote>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="xref std std-ref">String</span></p></td>
+<td><p><a class="reference internal" href="#class-gksavedgame-property-device-name"><span class="std std-ref">device_name</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="xref std std-ref">String</span></p></td>
+<td><p><a class="reference internal" href="#class-gksavedgame-property-name"><span class="std std-ref">name</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-gksavedgame-method-load-data"><span class="std std-ref">load_data</span></a>(done: <span class="xref std std-ref">Callable</span>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-gksavedgame-property-device-name"><span class="xref std std-ref">String</span> <strong>device_name</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-gksavedgame-property-device-name"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><span class="xref std std-ref">String</span> <strong>get_device_name</strong>()</p></li>
+</ul>
+<p>Name of the saved game.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gksavedgame-property-name"><span class="xref std std-ref">String</span> <strong>name</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-gksavedgame-property-name"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><span class="xref std std-ref">String</span> <strong>get_name</strong>()</p></li>
+</ul>
+<p>The name of the device where the player saved the game.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-gksavedgame-method-load-data"><abbr title="No return value.">void</abbr> <strong>load_data</strong>(done: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gksavedgame-method-load-data"><span class="std std-ref">🔗</span></a></p>
+<p>Loads the game data, and invokes the provided callbacj with the first argument</p>
+<blockquote>
+<div><p>being a PackedByteArray and the second argument being a Variant encoding an error,</p>
+<p>if not-nil it contains a string description of the problem.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">GKSavedGame</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#property-descriptions">Property Descriptions</a></li>
+<li><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="class_gkplayer.html"
+                          title="previous chapter">GKPlayer</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="class_signalproxy.html"
+                          title="next chapter">SignalProxy</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class_gksavedgame.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="class_signalproxy.html" title="SignalProxy"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="class_gkplayer.html" title="GKPlayer"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Godot Apple Plugins for MacOS and iOS 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GKSavedGame</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Miguel de Icaza.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

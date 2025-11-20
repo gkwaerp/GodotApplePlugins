@@ -116,7 +116,13 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-delete-saved-games"><span class="std std-ref">delete_saved_games</span></a>(named: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><span class="std std-ref">fetch_items_for_identity_verification_signature</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-fetch-saved-games"><span class="std std-ref">fetch_saved_games</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">load_challengeable_friends</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
@@ -126,6 +132,9 @@
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-gklocalplayer-method-load-recent-friends"><span class="std std-ref">load_recent_friends</span></a>(callback: <span class="xref std std-ref">Callable</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-gklocalplayer-method-save-game-data"><span class="std std-ref">save_game_data</span></a>(data: <span class="xref std std-ref">PackedByteArray</span>, withName: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -160,8 +169,20 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="method-descriptions">
 <h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-gklocalplayer-method-delete-saved-games"><abbr title="No return value.">void</abbr> <strong>delete_saved_games</strong>(named: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-delete-saved-games"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
+<hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><abbr title="No return value.">void</abbr> <strong>fetch_items_for_identity_verification_signature</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-fetch-items-for-identity-verification-signature"><span class="std std-ref">🔗</span></a></p>
 <p>Calls Apple’s <code class="docutils literal notranslate"><span class="pre">fetchItems</span></code> helper for server-side authentication. The callback receives <code class="docutils literal notranslate"><span class="pre">(Dictionary</span> <span class="pre">data,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code>. The dictionary contains the <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">salt</span></code>, and <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> keys described in the inline Swift documentation, letting your backend verify the player’s identity.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-gklocalplayer-method-fetch-saved-games"><abbr title="No return value.">void</abbr> <strong>fetch_saved_games</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-fetch-saved-games"><span class="std std-ref">🔗</span></a></p>
+<p>Use this API to retrieve the list of saved games, upon completion, this</p>
+<blockquote>
+<div><p>method invokes the provided callback with both an array of GKSavedGame objects</p>
+<p>and a variant error, if not nil it contains a string describing the problem.</p>
+</div></blockquote>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-gklocalplayer-method-load-challengeable-friends"><abbr title="No return value.">void</abbr> <strong>load_challengeable_friends</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">🔗</span></a></p>
 <p>Loads players whom the local user can challenge. The callback receives <code class="docutils literal notranslate"><span class="pre">(Array[GKPlayer]</span> <span class="pre">friends,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code> where either argument can be <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
@@ -171,6 +192,14 @@
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-gklocalplayer-method-load-recent-friends"><abbr title="No return value.">void</abbr> <strong>load_recent_friends</strong>(callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-load-recent-friends"><span class="std std-ref">🔗</span></a></p>
 <p>Loads friends that recently played together with the local player. The callback signature matches <a class="reference internal" href="#class-gklocalplayer-method-load-challengeable-friends"><span class="std std-ref">load_challengeable_friends()</span></a>.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-gklocalplayer-method-save-game-data"><abbr title="No return value.">void</abbr> <strong>save_game_data</strong>(data: <span class="xref std std-ref">PackedByteArray</span>, withName: <span class="xref std std-ref">String</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gklocalplayer-method-save-game-data"><span class="std std-ref">🔗</span></a></p>
+<p>Saves the packed byte array as the game data with the specified name, upon</p>
+<blockquote>
+<div><p>completion the callback is invoked with both a GKSavedObject parameter and</p>
+<p>a Variant parameter for the error.   The GKSavedObject is not-nil on success,</p>
+<p>and on error, the second parameter is not-nil and contains the error message.</p>
+</div></blockquote>
 </section>
 </section>
 
