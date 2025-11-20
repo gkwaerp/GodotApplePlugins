@@ -1,0 +1,31 @@
+name: Build and Release Addons
+
+on:
+  push:
+
+jobs:
+  package:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build xcframework package
+        run: make package
+
+      - name: Archive addons directory
+        run: |
+          PACKAGE_NAME="GodotApplePlugins-addons-${GITHUB_SHA}.zip"
+          zip -r "$PACKAGE_NAME" addons
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> "$GITHUB_ENV"
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/heads/')
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: build-${{ github.sha }}
+          name: Addons build for ${{ github.sha }}
+          body: Automated build triggered by ${{ github.ref }}
+          files: ${{ env.PACKAGE_NAME }}
