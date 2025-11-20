@@ -21,6 +21,7 @@ import SwiftGodotRuntime
         GKMatchmakerViewController.self,
         GKMatchRequest.self,
         GKPlayer.self,
+        GKSavedGame.self
     ],
     enums: [
         GKLeaderboard.TimeScope.self,

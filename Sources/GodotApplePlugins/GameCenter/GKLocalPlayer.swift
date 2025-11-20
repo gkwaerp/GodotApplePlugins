@@ -97,4 +97,39 @@ class GKLocalPlayer: GKPlayer, @unchecked Sendable {
             _ = callback.call(Variant(result), mapError(error))
         }
     }
+
+    @Callable
+    func save_game_data(data: PackedByteArray, withName: String, callback: Callable) {
+        guard let converted = data.asData() else {
+            _ = callback.call(nil, Variant(String("Could not convert the packed array to Data)")))
+            return
+        }
+        local.saveGameData(converted, withName: withName) { savedGame, error in
+            var savedV: Variant? = nil
+            if let savedGame = savedGame {
+                savedV = Variant(GKSavedGame(saved: savedGame))
+            }
+            _ = callback.call(savedV, mapError(error))
+        }
+    }
+
+    @Callable
+    func fetch_saved_games(callback: Callable) {
+        local.fetchSavedGames { savedGames, error in
+            let ret = TypedArray<GKSavedGame?>()
+            if let savedGames = savedGames {
+                for sg in savedGames {
+                    ret.append(GKSavedGame(saved: sg))
+                }
+            }
+            _ = callback.call(Variant(ret), mapError(error))
+        }
+    }
+
+    @Callable
+    func delete_saved_games(named: String, callback: Callable) {
+        local.deleteSavedGames(withName: named) { error in
+            _ = callback.call(mapError(nil))
+        }
+    }
 }
