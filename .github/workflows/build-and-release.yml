@@ -5,7 +5,9 @@ on:
 
 jobs:
   package:
-    runs-on: macos-latest
+    runs-on:
+      - self-hosted
+      - macos
     permissions:
       contents: write
     steps:
