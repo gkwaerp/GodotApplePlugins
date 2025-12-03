@@ -30,5 +30,6 @@ import SwiftGodotRuntime
         GKLeaderboard.TimeScope.self,
         GKLeaderboard.PlayerScope.self,
         GKMatch.SendDataMode.self,
+        GKMatchRequest.MatchType.self,
         AVAudioSession.SessionCategory.self,
     ])

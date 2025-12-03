@@ -14,22 +14,22 @@ import AppKit
 #endif
 import GameKit
 
-enum MatchType: Int, CaseIterable {
-    case peerToPeer
-    case hosted
-    case turnBased
-    func toGameKit() -> GameKit.GKMatchType {
-        switch self {
-        case .peerToPeer: return .peerToPeer
-        case .hosted: return .hosted
-        case .turnBased: return .turnBased
-        }
-    }
-}
-
 @Godot
 class GKMatchRequest: RefCounted, @unchecked Sendable {
     var request = GameKit.GKMatchRequest()
+
+    enum MatchType: Int, CaseIterable {
+        case peerToPeer
+        case hosted
+        case turnBased
+        func toGameKit() -> GameKit.GKMatchType {
+            switch self {
+            case .peerToPeer: return .peerToPeer
+            case .hosted: return .hosted
+            case .turnBased: return .turnBased
+            }
+        }
+    }
 
     @Export var minPlayers: Int {
         get { request.minPlayers }
