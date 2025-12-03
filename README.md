@@ -25,7 +25,7 @@ quarantine attribute from them.
 So you need to run this on the binaries after you unpack them:
 
 ```
-xattr -dr com.apple.quarantine addons/GodotApplePlugins/bin/*framework/GodotApplePlugins
+xattr -dr com.apple.quarantine addons/GodotApplePlugins/bin/*framework
 ```
 
 # Sizes
