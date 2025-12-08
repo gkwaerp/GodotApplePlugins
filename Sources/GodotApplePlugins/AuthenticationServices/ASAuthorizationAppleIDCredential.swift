@@ -69,16 +69,16 @@ class ASAuthorizationAppleIDCredential: RefCounted, @unchecked Sendable {
     }
 
     enum UserAgeRange: Int, CaseIterable {
-        case unknown = 0
+        case notknown = 0
         case child = 1
         case notChild = 2
         
         static func from(_ range: ASUserAgeRange) -> UserAgeRange {
             switch range {
-            case .unknown: return .unknown
+            case .unknown: return .notknown
             case .child: return .child
             case .notChild: return .notChild
-            @unknown default: return .unknown
+            @unknown default: return .notknown
             }
         }
     }

@@ -32,7 +32,7 @@
 	</methods>
 	<signals>
 		<signal name="products_request_completed">
-			<param index="0" name="arg1" type="Array" />
+			<param index="0" name="arg1" type="Array[StoreProduct]" />
 			<param index="1" name="arg2" type="int" />
 			<description>
 				Emitted when a product request finishes. `arg1` is an Array of [StoreProduct]s. `arg2` is a [enum StoreKitStatus] indicating success or failure.
