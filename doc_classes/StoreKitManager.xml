@@ -32,10 +32,10 @@
 	</methods>
 	<signals>
 		<signal name="products_request_completed">
-			<param index="0" name="arg1" type="Array[StoreProduct]" />
-			<param index="1" name="arg2" type="int" />
+			<param index="0" name="products" type="Array" />
+			<param index="1" name="status" type="int" enum="StoreKitManager.StoreKitStatus" />
 			<description>
-				Emitted when a product request finishes. `arg1` is an Array of [StoreProduct]s. `arg2` is a [enum StoreKitStatus] indicating success or failure.
+				Emitted when a product request finishes. [param products] is an [code]Array[/code] of [StoreProduct]s. [param status] is a [enum StoreKitStatus] indicating success or failure.
 			</description>
 		</signal>
 		<signal name="purchase_completed">
