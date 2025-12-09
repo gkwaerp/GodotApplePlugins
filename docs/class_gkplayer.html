@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GKPlayer &#8212; Godot Apple Plugins docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GKSavedGame" href="class_gksavedgame.html" />
+    <link rel="prev" title="GKMatchRequest" href="class_gkmatchrequest.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gkplayer">
+<span id="class-gkplayer"></span><h1>GKPlayer<a class="headerlink" href="#gkplayer" title="Link to this heading">¶</a></h1>
+<p><strong>Inherits:</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
+<p><strong>Inherited By:</strong> <a class="reference internal" href="class_gklocalplayer.html#class-gklocalplayer"><span class="std std-ref">GKLocalPlayer</span></a>, <a class="reference internal" href="class_gksavedgame.html#class-gksavedgame"><span class="std std-ref">GKSavedGame</span></a></p>
+<p>Represents any Game Center player (local or remote).</p>
+<section class="classref-introduction-group" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">GKPlayer</span></code> is the shared base type for friends, opponents, and the local user. Use it to access Apple-provided identifiers plus helper methods such as <a class="reference internal" href="#class-gkplayer-method-load-photo"><span class="std std-ref">load_photo()</span></a>, as referenced in the “Players” section of <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code>. Apple’s reference lives at <a class="reference external" href="https://developer.apple.com/documentation/gamekit/gkplayer">Apple’s GKPlayer documentation</a>.</p>
+<p>Loading a player photo (guide sample):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Put the downloaded image inside a TextureRect named $texture_rect.
+local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
+    if error == null:
+        $texture_rect.texture = ImageTexture.create_from_image(image)
+    else:
+        print(&quot;Could not load photo %s&quot; % error)
+)
+</pre></div>
+</div>
+</section>
+<section class="classref-reftable-group" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><span class="xref std std-ref">String</span></p></td>
+<td><p><a class="reference internal" href="#class-gkplayer-property-alias"><span class="std std-ref">alias</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;Unknown&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="xref std std-ref">String</span></p></td>
+<td><p><a class="reference internal" href="#class-gkplayer-property-display-name"><span class="std std-ref">display_name</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">String</span></p></td>
+<td><p><a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">game_player_id</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;9F31B2199A50C5AA2BA6510115C6FF8AF9C58199A72E932588A22851592BF177&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="xref std std-ref">bool</span></p></td>
+<td><p><a class="reference internal" href="#class-gkplayer-property-is-invitable"><span class="std std-ref">is_invitable</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">String</span></p></td>
+<td><p><a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">team_player_id</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;CA10FCEB250BA34BF85C48058F8582E4AE1D75EF8E42E03E684849C0D8C4AAB8&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="classref-reftable-group" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
+<td><p><a class="reference internal" href="#class-gkplayer-method-load-photo"><span class="std std-ref">load_photo</span></a>(small: <span class="xref std std-ref">bool</span>, callback: <span class="xref std std-ref">Callable</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="xref std std-ref">bool</span></p></td>
+<td><p><a class="reference internal" href="#class-gkplayer-method-scopedidsarepersistent"><span class="std std-ref">scopedIDsArePersistent</span></a>()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="property-descriptions">
+<h2>Property Descriptions<a class="headerlink" href="#property-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-property" id="class-gkplayer-property-alias"><span class="xref std std-ref">String</span> <strong>alias</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;Unknown&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-alias"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><span class="xref std std-ref">String</span> <strong>get_alias</strong>()</p></li>
+</ul>
+<p>Player-specified nickname.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gkplayer-property-display-name"><span class="xref std std-ref">String</span> <strong>display_name</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-display-name"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><span class="xref std std-ref">String</span> <strong>get_display_name</strong>()</p></li>
+</ul>
+<p>Localized display name suited for UI.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gkplayer-property-game-player-id"><span class="xref std std-ref">String</span> <strong>game_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;9F31B2199A50C5AA2BA6510115C6FF8AF9C58199A72E932588A22851592BF177&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><span class="xref std std-ref">String</span> <strong>get_game_player_id</strong>()</p></li>
+</ul>
+<p>Stable, per-game identifier used by Apple to uniquely address the player.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gkplayer-property-is-invitable"><span class="xref std std-ref">bool</span> <strong>is_invitable</strong> = <code class="docutils literal notranslate"><span class="pre">false</span></code> <a class="reference internal" href="#class-gkplayer-property-is-invitable"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><span class="xref std std-ref">bool</span> <strong>get_is_invitable</strong>()</p></li>
+</ul>
+<p>True if the player allows Game Center invitations.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-property" id="class-gkplayer-property-team-player-id"><span class="xref std std-ref">String</span> <strong>team_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;CA10FCEB250BA34BF85C48058F8582E4AE1D75EF8E42E03E684849C0D8C4AAB8&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">🔗</span></a></p>
+<ul class="classref-property-setget simple">
+<li><p><span class="xref std std-ref">String</span> <strong>get_team_player_id</strong>()</p></li>
+</ul>
+<p>Team-scoped identifier shared with other games from the same developer account.</p>
+</section>
+<hr class="classref-section-separator docutils" />
+<section class="classref-descriptions-group" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
+<p class="classref-method" id="class-gkplayer-method-load-photo"><abbr title="No return value.">void</abbr> <strong>load_photo</strong>(small: <span class="xref std std-ref">bool</span>, callback: <span class="xref std std-ref">Callable</span>) <a class="reference internal" href="#class-gkplayer-method-load-photo"><span class="std std-ref">🔗</span></a></p>
+<p>Downloads the player’s avatar. Pass <code class="docutils literal notranslate"><span class="pre">true</span></code> for a small image or <code class="docutils literal notranslate"><span class="pre">false</span></code> for the normal size. The callback receives <code class="docutils literal notranslate"><span class="pre">(Image</span> <span class="pre">image,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code> and exactly one argument is <code class="docutils literal notranslate"><span class="pre">null</span></code>, mirroring the Swift inline documentation.</p>
+<hr class="classref-item-separator docutils" />
+<p class="classref-method" id="class-gkplayer-method-scopedidsarepersistent"><span class="xref std std-ref">bool</span> <strong>scopedIDsArePersistent</strong>() <a class="reference internal" href="#class-gkplayer-method-scopedidsarepersistent"><span class="std std-ref">🔗</span></a></p>
+<p>Returns the result of Apple’s <code class="docutils literal notranslate"><span class="pre">scopedIDsArePersistent()</span></code> method, letting you detect whether scoped identifiers stay stable for the current device/account combination.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Godot Apple Plugins docs</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkachievementdescription.html">GKAchievementDescription</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkgamecenterviewcontroller.html">GKGameCenterViewController</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboard.html">GKLeaderboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardentry.html">GKLeaderboardEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkleaderboardset.html">GKLeaderboardSet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gklocalplayer.html">GKLocalPlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkmatch.html">GKMatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkmatchmakerviewcontroller.html">GKMatchmakerViewController</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gkmatchrequest.html">GKMatchRequest</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GKPlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_gksavedgame.html">GKSavedGame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_productview.html">ProductView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_signalproxy.html">SignalProxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_storekitmanager.html">StoreKitManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_storeproduct.html">StoreProduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_storetransaction.html">StoreTransaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_storeview.html">StoreView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_subscriptionofferview.html">SubscriptionOfferView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_subscriptionstoreview.html">SubscriptionStoreView</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="class_gkmatchrequest.html" title="previous chapter">GKMatchRequest</a></li>
+      <li>Next: <a href="class_gksavedgame.html" title="next chapter">GKSavedGame</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/class_gkplayer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
