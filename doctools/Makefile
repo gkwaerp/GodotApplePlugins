@@ -5,3 +5,5 @@ run:
 
 html: run
 	sphinx-build -b html docs ../docs
+	# Ensure GitHub Pages serves directories prefixed with "_".
+	touch ../docs/.nojekyll
