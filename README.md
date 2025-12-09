@@ -9,9 +9,9 @@ export your iOS project and run.
 
 This add-on currently includes comprehensive support for:
 
-* GameCenter [GameCenter Integration Guide](Sources/GodotApplePlugins/GameCenter/GameCenterGuide.md)
-* StoreKit2 
-* Apple Sign-In (AuthenticationServices)
+* GameCenter [API Docs](https://migueldeicaza.github.io/GodotApplePlugins/class_gamecentermanager.html)[GameCenter Integration Guide](Sources/GodotApplePlugins/GameCenter/GameCenterGuide.md)
+* StoreKit2 [API Docs](https://migueldeicaza.github.io/GodotApplePlugins/class_storekitmanager.html)
+* AuthenticationServices ("sign-in with Apple")
 
 The release contains both binaries for MacOS as dynamic libraries and
 an iOS xcframework compiled with the "Mergeable Library" feature.
@@ -108,9 +108,10 @@ where `entitlements.plist` contains again:
 </array>
 ```
 
-# Sizes
+# Size
 
-This compares the size of a Godot iOS export when you add this addon.
+This addon adds 2.5 megabytes to your executable for release builds, but it is
+larger during development to speed up your development.
 
 Plain Godot Export, empty:
 
