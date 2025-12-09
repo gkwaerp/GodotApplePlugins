@@ -22,19 +22,19 @@ Methods
 .. table::
    :widths: auto
 
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`show_achievement<class_GKGameCenterViewController_method_show_achievement>`\ (\ id\: :ref:`String<class_String>`\ ) |static|                                                                                                                                                 |
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`show_leaderboard<class_GKGameCenterViewController_method_show_leaderboard>`\ (\ leaderboard\: :ref:`GKLeaderboard<class_GKLeaderboard>`, scope\: :ref:`PlayerScope<enum_GKLeaderboard_PlayerScope>`\ ) |static|                                                              |
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`show_leaderboard_time_period<class_GKGameCenterViewController_method_show_leaderboard_time_period>`\ (\ id\: :ref:`String<class_String>`, scope\: :ref:`PlayerScope<enum_GKLeaderboard_PlayerScope>`, timeScope\: :ref:`TimeScope<enum_GKLeaderboard_TimeScope>`\ ) |static| |
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`show_leaderboardset<class_GKGameCenterViewController_method_show_leaderboardset>`\ (\ id\: :ref:`String<class_String>`\ ) |static|                                                                                                                                           |
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`show_player<class_GKGameCenterViewController_method_show_player>`\ (\ player\: :ref:`GKPlayer<class_GKPlayer>`\ ) |static|                                                                                                                                                   |
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`show_type<class_GKGameCenterViewController_method_show_type>`\ (\ type\: :ref:`State<enum_GKGameCenterViewController_State>`\ ) |static|                                                                                                                                     |
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`show_achievement<class_GKGameCenterViewController_method_show_achievement>`\ (\ id\: :ref:`String<class_String>`\ ) |static|                                                                                           |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`show_leaderboard<class_GKGameCenterViewController_method_show_leaderboard>`\ (\ leaderboard\: :ref:`GKLeaderboard<class_GKLeaderboard>`, scope\: :ref:`int<class_int>`\ ) |static|                                     |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`show_leaderboard_time_period<class_GKGameCenterViewController_method_show_leaderboard_time_period>`\ (\ id\: :ref:`String<class_String>`, scope\: :ref:`int<class_int>`, timeScope\: :ref:`int<class_int>`\ ) |static| |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`show_leaderboardset<class_GKGameCenterViewController_method_show_leaderboardset>`\ (\ id\: :ref:`String<class_String>`\ ) |static|                                                                                     |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`show_player<class_GKGameCenterViewController_method_show_player>`\ (\ player\: :ref:`GKPlayer<class_GKPlayer>`\ ) |static|                                                                                             |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`show_type<class_GKGameCenterViewController_method_show_type>`\ (\ type\: :ref:`int<class_int>`\ ) |static|                                                                                                             |
+   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -124,7 +124,7 @@ Presents an achivement to the user, the id is the identifier of the achievement.
 
 .. rst-class:: classref-method
 
-|void| **show_leaderboard**\ (\ leaderboard\: :ref:`GKLeaderboard<class_GKLeaderboard>`, scope\: :ref:`PlayerScope<enum_GKLeaderboard_PlayerScope>`\ ) |static| :ref:`🔗<class_GKGameCenterViewController_method_show_leaderboard>`
+|void| **show_leaderboard**\ (\ leaderboard\: :ref:`GKLeaderboard<class_GKLeaderboard>`, scope\: :ref:`int<class_int>`\ ) |static| :ref:`🔗<class_GKGameCenterViewController_method_show_leaderboard>`
 
 Shows a leaderboard with the players on the specified scope. Use one of the :ref:`PlayerScope<enum_GKLeaderboard_PlayerScope>` values.
 
@@ -136,7 +136,7 @@ Shows a leaderboard with the players on the specified scope. Use one of the :ref
 
 .. rst-class:: classref-method
 
-|void| **show_leaderboard_time_period**\ (\ id\: :ref:`String<class_String>`, scope\: :ref:`PlayerScope<enum_GKLeaderboard_PlayerScope>`, timeScope\: :ref:`TimeScope<enum_GKLeaderboard_TimeScope>`\ ) |static| :ref:`🔗<class_GKGameCenterViewController_method_show_leaderboard_time_period>`
+|void| **show_leaderboard_time_period**\ (\ id\: :ref:`String<class_String>`, scope\: :ref:`int<class_int>`, timeScope\: :ref:`int<class_int>`\ ) |static| :ref:`🔗<class_GKGameCenterViewController_method_show_leaderboard_time_period>`
 
 Shows a leaderboard with the players on the specified scope and the time period. The scope should match :ref:`PlayerScope<enum_GKLeaderboard_PlayerScope>` and the time scope should match :ref:`TimeScope<enum_GKLeaderboard_TimeScope>`.
 
@@ -172,7 +172,7 @@ Shows the specified player's GameCenter profile.
 
 .. rst-class:: classref-method
 
-|void| **show_type**\ (\ type\: :ref:`State<enum_GKGameCenterViewController_State>`\ ) |static| :ref:`🔗<class_GKGameCenterViewController_method_show_type>`
+|void| **show_type**\ (\ type\: :ref:`int<class_int>`\ ) |static| :ref:`🔗<class_GKGameCenterViewController_method_show_type>`
 
 Used to present one of the different Game Center dashboards specified by the type parameter.
 

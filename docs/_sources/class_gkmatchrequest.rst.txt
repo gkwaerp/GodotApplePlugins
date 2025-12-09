@@ -61,9 +61,9 @@ Methods
 .. table::
    :widths: auto
 
-   +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`max_players_allowed_for_match<class_GKMatchRequest_method_max_players_allowed_for_match>`\ (\ forType\: :ref:`MatchType<enum_GKMatchRequest_MatchType>`\ ) |static| |
-   +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>` | :ref:`max_players_allowed_for_match<class_GKMatchRequest_method_max_players_allowed_for_match>`\ (\ forType\: :ref:`int<class_int>`\ ) |static| |
+   +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -202,7 +202,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **max_players_allowed_for_match**\ (\ forType\: :ref:`MatchType<enum_GKMatchRequest_MatchType>`\ ) |static| :ref:`🔗<class_GKMatchRequest_method_max_players_allowed_for_match>`
+:ref:`int<class_int>` **max_players_allowed_for_match**\ (\ forType\: :ref:`int<class_int>`\ ) |static| :ref:`🔗<class_GKMatchRequest_method_max_players_allowed_for_match>`
 
 Returns Apple's maximum supported player count for the supplied match type (``peer_to_peer``, ``hosted``, or ``turn_based``).
 

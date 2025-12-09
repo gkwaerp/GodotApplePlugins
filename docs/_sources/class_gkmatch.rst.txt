@@ -97,13 +97,13 @@ Methods
 .. table::
    :widths: auto
 
-   +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                | :ref:`disconnect<class_GKMatch_method_disconnect>`\ (\ )                                                                                                                                              |
-   +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`send<class_GKMatch_method_send>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, toPlayers\: :ref:`Array<class_Array>`, dataMode\: :ref:`SendDataMode<enum_GKMatch_SendDataMode>`\ )  |
-   +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`send_data_to_all_players<class_GKMatch_method_send_data_to_all_players>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, dataMode\: :ref:`SendDataMode<enum_GKMatch_SendDataMode>`\ ) |
-   +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                | :ref:`disconnect<class_GKMatch_method_disconnect>`\ (\ )                                                                                                                     |
+   +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>` | :ref:`send<class_GKMatch_method_send>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, toPlayers\: :ref:`Array<class_Array>`, dataMode\: :ref:`int<class_int>`\ )  |
+   +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>` | :ref:`send_data_to_all_players<class_GKMatch_method_send_data_to_all_players>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, dataMode\: :ref:`int<class_int>`\ ) |
+   +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -268,7 +268,7 @@ Calls ``GKMatch.disconnect()`` to leave the match immediately.
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **send**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, toPlayers\: :ref:`Array<class_Array>`, dataMode\: :ref:`SendDataMode<enum_GKMatch_SendDataMode>`\ ) :ref:`🔗<class_GKMatch_method_send>`
+:ref:`int<class_int>` **send**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, toPlayers\: :ref:`Array<class_Array>`, dataMode\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GKMatch_method_send>`
 
 Sends a payload to the specified ``Array[GKPlayer]``. Returns a :ref:`Error<enum_@GlobalScope_Error>` value (``OK`` on success, ``FAILED`` when the payload could not be converted or Apple reported an error). Choose a :ref:`SendDataMode<enum_GKMatch_SendDataMode>` constant for ``dataMode``.
 
@@ -280,7 +280,7 @@ Sends a payload to the specified ``Array[GKPlayer]``. Returns a :ref:`Error<enum
 
 .. rst-class:: classref-method
 
-:ref:`int<class_int>` **send_data_to_all_players**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, dataMode\: :ref:`SendDataMode<enum_GKMatch_SendDataMode>`\ ) :ref:`🔗<class_GKMatch_method_send_data_to_all_players>`
+:ref:`int<class_int>` **send_data_to_all_players**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`, dataMode\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GKMatch_method_send_data_to_all_players>`
 
 Broadcasts the packed bytes to everyone in the match. Return value matches :ref:`send()<class_GKMatch_method_send>`. Use the :ref:`SendDataMode<enum_GKMatch_SendDataMode>` constants.
 

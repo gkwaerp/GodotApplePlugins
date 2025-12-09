@@ -50,9 +50,13 @@ Signals
 
 .. rst-class:: classref-signal
 
-**products_request_completed**\ (\ products\: :ref:`Array<class_Array>`, status\: :ref:`StoreKitStatus<enum_StoreKitManager_StoreKitStatus>`\ ) :ref:`🔗<class_StoreKitManager_signal_products_request_completed>`
+**products_request_completed**\ (\ products\: :ref:`Array<class_Array>`, status\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StoreKitManager_signal_products_request_completed>`
 
-Emitted when a product request finishes. ``products`` is an ``Array`` of :ref:`StoreProduct<class_StoreProduct>`\ s. ``status`` is a :ref:`StoreKitStatus<enum_StoreKitManager_StoreKitStatus>` indicating success or failure.
+Emitted when a product request completes.
+
+\ ``products`` is an Array of :ref:`StoreProduct<class_StoreProduct>`\ s (or nulls).
+
+\ ``status`` indicates success or failure.
 
 .. rst-class:: classref-item-separator
 
@@ -62,9 +66,15 @@ Emitted when a product request finishes. ``products`` is an ``Array`` of :ref:`S
 
 .. rst-class:: classref-signal
 
-**purchase_completed**\ (\ arg1\: :ref:`StoreTransaction<class_StoreTransaction>`, arg2\: :ref:`int<class_int>`, arg3\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StoreKitManager_signal_purchase_completed>`
+**purchase_completed**\ (\ transaction\: :ref:`StoreTransaction<class_StoreTransaction>`, status\: :ref:`int<class_int>`, error_message\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StoreKitManager_signal_purchase_completed>`
 
-Emitted when a purchase completes. `arg1` is the :ref:`StoreTransaction<class_StoreTransaction>` (can be null on failure), `arg2` is the :ref:`StoreKitStatus<enum_StoreKitManager_StoreKitStatus>`, and `arg3` is an error message if applicable.
+Emitted when a purchase completes.
+
+\ ``transaction`` is the :ref:`StoreTransaction<class_StoreTransaction>` on success.
+
+\ ``status`` indicates the result (OK, cancelled, invalid product, etc.).
+
+\ ``error_message`` contains error details if failed.
 
 .. rst-class:: classref-item-separator
 
@@ -74,9 +84,9 @@ Emitted when a purchase completes. `arg1` is the :ref:`StoreTransaction<class_St
 
 .. rst-class:: classref-signal
 
-**restore_completed**\ (\ arg1\: :ref:`int<class_int>`, arg2\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StoreKitManager_signal_restore_completed>`
+**restore_completed**\ (\ status\: :ref:`int<class_int>`, error_message\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StoreKitManager_signal_restore_completed>`
 
-Emitted when the restore process completes. `arg1` is the :ref:`StoreKitStatus<enum_StoreKitManager_StoreKitStatus>`, and `arg2` is an error message if applicable.
+Emitted when the restore process completes. ``status`` is the :ref:`StoreKitStatus<enum_StoreKitManager_StoreKitStatus>`, and ``error_message`` is an error string if applicable.
 
 .. rst-class:: classref-item-separator
 
@@ -86,9 +96,9 @@ Emitted when the restore process completes. `arg1` is the :ref:`StoreKitStatus<e
 
 .. rst-class:: classref-signal
 
-**transaction_updated**\ (\ arg1\: :ref:`StoreTransaction<class_StoreTransaction>`\ ) :ref:`🔗<class_StoreKitManager_signal_transaction_updated>`
+**transaction_updated**\ (\ transaction\: :ref:`StoreTransaction<class_StoreTransaction>`\ ) :ref:`🔗<class_StoreKitManager_signal_transaction_updated>`
 
-Emitted when a transaction is updated (e.g., a subscription renews or a purchase is approved externally). `arg1` is the updated :ref:`StoreTransaction<class_StoreTransaction>`.
+Emitted when a transaction is updated (e.g., a subscription renews or a purchase is approved externally). ``transaction`` is the updated :ref:`StoreTransaction<class_StoreTransaction>`.
 
 .. rst-class:: classref-section-separator
 

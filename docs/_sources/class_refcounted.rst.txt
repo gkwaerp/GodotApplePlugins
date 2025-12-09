@@ -1,0 +1,9 @@
+:orphan:
+:github_url: hide
+
+.. _class_RefCounted:
+
+RefCounted (Godot builtin)
+===========================
+
+See `RefCounted on docs.godotengine.org <https://docs.godotengine.org/en/stable/classes/class_refcounted.html>`_.

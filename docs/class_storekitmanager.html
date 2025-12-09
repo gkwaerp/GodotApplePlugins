@@ -35,7 +35,7 @@
             
   <section id="storekitmanager">
 <span id="class-storekitmanager"></span><h1>StoreKitManager<a class="headerlink" href="#storekitmanager" title="Link to this heading">¶</a></h1>
-<p><strong>Inherits:</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
 <p>Manages StoreKit interactions such as requesting products, purchasing, and restoring purchases.</p>
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -49,7 +49,7 @@
 <td><p><a class="reference internal" href="#class-storekitmanager-method-purchase"><span class="std std-ref">purchase</span></a>(product: <a class="reference internal" href="class_storeproduct.html#class-storeproduct"><span class="std std-ref">StoreProduct</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-storekitmanager-method-request-products"><span class="std std-ref">request_products</span></a>(productIds: <span class="xref std std-ref">PackedStringArray</span>)</p></td>
+<td><p><a class="reference internal" href="#class-storekitmanager-method-request-products"><span class="std std-ref">request_products</span></a>(productIds: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
 <td><p><a class="reference internal" href="#class-storekitmanager-method-restore-purchases"><span class="std std-ref">restore_purchases</span></a>()</p></td>
@@ -60,17 +60,22 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="signals">
 <h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
-<p class="classref-signal" id="class-storekitmanager-signal-products-request-completed"><strong>products_request_completed</strong>(products: <span class="xref std std-ref">Array</span>, status: <a class="reference internal" href="#enum-storekitmanager-storekitstatus"><span class="std std-ref">StoreKitStatus</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-products-request-completed"><span class="std std-ref">🔗</span></a></p>
-<p>Emitted when a product request finishes. <code class="docutils literal notranslate"><span class="pre">products</span></code> is an <code class="docutils literal notranslate"><span class="pre">Array</span></code> of <a class="reference internal" href="class_storeproduct.html#class-storeproduct"><span class="std std-ref">StoreProduct</span></a>s. <code class="docutils literal notranslate"><span class="pre">status</span></code> is a <a class="reference internal" href="#enum-storekitmanager-storekitstatus"><span class="std std-ref">StoreKitStatus</span></a> indicating success or failure.</p>
+<p class="classref-signal" id="class-storekitmanager-signal-products-request-completed"><strong>products_request_completed</strong>(products: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, status: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-products-request-completed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a product request completes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">products</span></code> is an Array of <a class="reference internal" href="class_storeproduct.html#class-storeproduct"><span class="std std-ref">StoreProduct</span></a>s (or nulls).</p>
+<p><code class="docutils literal notranslate"><span class="pre">status</span></code> indicates success or failure.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-storekitmanager-signal-purchase-completed"><strong>purchase_completed</strong>(arg1: <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a>, arg2: <span class="xref std std-ref">int</span>, arg3: <span class="xref std std-ref">String</span>) <a class="reference internal" href="#class-storekitmanager-signal-purchase-completed"><span class="std std-ref">🔗</span></a></p>
-<p>Emitted when a purchase completes. <cite>arg1</cite> is the <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a> (can be null on failure), <cite>arg2</cite> is the <a class="reference internal" href="#enum-storekitmanager-storekitstatus"><span class="std std-ref">StoreKitStatus</span></a>, and <cite>arg3</cite> is an error message if applicable.</p>
+<p class="classref-signal" id="class-storekitmanager-signal-purchase-completed"><strong>purchase_completed</strong>(transaction: <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a>, status: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, error_message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-purchase-completed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a purchase completes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">transaction</span></code> is the <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a> on success.</p>
+<p><code class="docutils literal notranslate"><span class="pre">status</span></code> indicates the result (OK, cancelled, invalid product, etc.).</p>
+<p><code class="docutils literal notranslate"><span class="pre">error_message</span></code> contains error details if failed.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-storekitmanager-signal-restore-completed"><strong>restore_completed</strong>(arg1: <span class="xref std std-ref">int</span>, arg2: <span class="xref std std-ref">String</span>) <a class="reference internal" href="#class-storekitmanager-signal-restore-completed"><span class="std std-ref">🔗</span></a></p>
-<p>Emitted when the restore process completes. <cite>arg1</cite> is the <a class="reference internal" href="#enum-storekitmanager-storekitstatus"><span class="std std-ref">StoreKitStatus</span></a>, and <cite>arg2</cite> is an error message if applicable.</p>
+<p class="classref-signal" id="class-storekitmanager-signal-restore-completed"><strong>restore_completed</strong>(status: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, error_message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-restore-completed"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when the restore process completes. <code class="docutils literal notranslate"><span class="pre">status</span></code> is the <a class="reference internal" href="#enum-storekitmanager-storekitstatus"><span class="std std-ref">StoreKitStatus</span></a>, and <code class="docutils literal notranslate"><span class="pre">error_message</span></code> is an error string if applicable.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-storekitmanager-signal-transaction-updated"><strong>transaction_updated</strong>(arg1: <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-transaction-updated"><span class="std std-ref">🔗</span></a></p>
-<p>Emitted when a transaction is updated (e.g., a subscription renews or a purchase is approved externally). <cite>arg1</cite> is the updated <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a>.</p>
+<p class="classref-signal" id="class-storekitmanager-signal-transaction-updated"><strong>transaction_updated</strong>(transaction: <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-transaction-updated"><span class="std std-ref">🔗</span></a></p>
+<p>Emitted when a transaction is updated (e.g., a subscription renews or a purchase is approved externally). <code class="docutils literal notranslate"><span class="pre">transaction</span></code> is the updated <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a>.</p>
 </section>
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="enumerations">
@@ -97,7 +102,7 @@
 <p class="classref-method" id="class-storekitmanager-method-purchase"><abbr title="No return value.">void</abbr> <strong>purchase</strong>(product: <a class="reference internal" href="class_storeproduct.html#class-storeproduct"><span class="std std-ref">StoreProduct</span></a>) <a class="reference internal" href="#class-storekitmanager-method-purchase"><span class="std std-ref">🔗</span></a></p>
 <p>Initiates the purchase of a specific product, e.g. <code class="docutils literal notranslate"><span class="pre">purchase(product)</span></code>.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-storekitmanager-method-request-products"><abbr title="No return value.">void</abbr> <strong>request_products</strong>(productIds: <span class="xref std std-ref">PackedStringArray</span>) <a class="reference internal" href="#class-storekitmanager-method-request-products"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-storekitmanager-method-request-products"><abbr title="No return value.">void</abbr> <strong>request_products</strong>(productIds: <a class="reference internal" href="class_packedstringarray.html#class-packedstringarray"><span class="std std-ref">PackedStringArray</span></a>) <a class="reference internal" href="#class-storekitmanager-method-request-products"><span class="std std-ref">🔗</span></a></p>
 <p>Requests product information for a list of product identifiers, e.g. <code class="docutils literal notranslate"><span class="pre">request_products([&quot;com.example.product1&quot;,</span> <span class="pre">&quot;com.example.product2&quot;])</span></code>.</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-method" id="class-storekitmanager-method-restore-purchases"><abbr title="No return value.">void</abbr> <strong>restore_purchases</strong>() <a class="reference internal" href="#class-storekitmanager-method-restore-purchases"><span class="std std-ref">🔗</span></a></p>
@@ -132,6 +137,10 @@
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="class_object.html">Object (Godot builtin)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>

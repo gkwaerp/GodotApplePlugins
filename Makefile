@@ -69,6 +69,7 @@ XCFRAMEWORK_GODOTAPPLEPLUGINS ?= $(CURDIR)/addons/GodotApplePlugins/bin/GodotApp
 gendocs:
 	(cd test-apple-godot-api; ~/cvs/master-godot/editor/bin/godot.macos.editor.dev.arm64 --headless --path . --doctool .. --gdextension-docs)
 	./fix_doc_enums.sh
+	$(MAKE) -C doctools html
 
 #
 # Quick hacks I use for rapid iteration

@@ -35,7 +35,7 @@
             
   <section id="asauthorizationcontroller">
 <span id="class-asauthorizationcontroller"></span><h1>ASAuthorizationController<a class="headerlink" href="#asauthorizationcontroller" title="Link to this heading">¶</a></h1>
-<p><strong>Inherits:</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
 <p>Manages authorization requests for Apple ID and other services.</p>
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -73,7 +73,7 @@
 <td><p><a class="reference internal" href="#class-asauthorizationcontroller-method-initiate-signin"><span class="std std-ref">initiate_signin</span></a>()</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-asauthorizationcontroller-method-perform-apple-id-request"><span class="std std-ref">perform_apple_id_request</span></a>(scopeStrings: <span class="xref std std-ref">Array</span>)</p></td>
+<td><p><a class="reference internal" href="#class-asauthorizationcontroller-method-perform-apple-id-request"><span class="std std-ref">perform_apple_id_request</span></a>(scopeStrings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -81,11 +81,11 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="signals">
 <h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
-<p class="classref-signal" id="class-asauthorizationcontroller-signal-authorization-completed"><strong>authorization_completed</strong>(credential: <span class="xref std std-ref">RefCounted</span>) <a class="reference internal" href="#class-asauthorizationcontroller-signal-authorization-completed"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-asauthorizationcontroller-signal-authorization-completed"><strong>authorization_completed</strong>(credential: <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a>) <a class="reference internal" href="#class-asauthorizationcontroller-signal-authorization-completed"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when the authorization request completes successfully.</p>
 <p><code class="docutils literal notranslate"><span class="pre">credential</span></code> is usually an <a class="reference internal" href="class_asauthorizationappleidcredential.html#class-asauthorizationappleidcredential"><span class="std std-ref">ASAuthorizationAppleIDCredential</span></a> or <a class="reference internal" href="class_aspasswordcredential.html#class-aspasswordcredential"><span class="std std-ref">ASPasswordCredential</span></a>. It can be null if the credential type is unsupported.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-asauthorizationcontroller-signal-authorization-failed"><strong>authorization_failed</strong>(error: <span class="xref std std-ref">String</span>) <a class="reference internal" href="#class-asauthorizationcontroller-signal-authorization-failed"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-asauthorizationcontroller-signal-authorization-failed"><strong>authorization_failed</strong>(error: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-asauthorizationcontroller-signal-authorization-failed"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when the authorization request fails.</p>
 <p><code class="docutils literal notranslate"><span class="pre">error</span></code> contains the localized description of the error.</p>
 </section>
@@ -95,7 +95,7 @@
 <p class="classref-method" id="class-asauthorizationcontroller-method-initiate-signin"><abbr title="No return value.">void</abbr> <strong>initiate_signin</strong>() <a class="reference internal" href="#class-asauthorizationcontroller-method-initiate-signin"><span class="std std-ref">🔗</span></a></p>
 <p>Initiates a Sign in with Apple request with default scopes (.fullName and .email). This is a convenience method for a standard sign-in flow.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-asauthorizationcontroller-method-perform-apple-id-request"><abbr title="No return value.">void</abbr> <strong>perform_apple_id_request</strong>(scopeStrings: <span class="xref std std-ref">Array</span>) <a class="reference internal" href="#class-asauthorizationcontroller-method-perform-apple-id-request"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-asauthorizationcontroller-method-perform-apple-id-request"><abbr title="No return value.">void</abbr> <strong>perform_apple_id_request</strong>(scopeStrings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-asauthorizationcontroller-method-perform-apple-id-request"><span class="std std-ref">🔗</span></a></p>
 <p>Performs an Apple ID authorization request with the specified scopes.</p>
 <p><code class="docutils literal notranslate"><span class="pre">scopeStrings</span></code> can include “full_name” and “email”.</p>
 </section>
@@ -128,6 +128,7 @@
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="class_object.html">Object (Godot builtin)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ASAuthorizationController</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>

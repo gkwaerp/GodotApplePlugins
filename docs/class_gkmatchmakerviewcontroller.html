@@ -35,7 +35,7 @@
             
   <section id="gkmatchmakerviewcontroller">
 <span id="class-gkmatchmakerviewcontroller"></span><h1>GKMatchmakerViewController<a class="headerlink" href="#gkmatchmakerviewcontroller" title="Link to this heading">¶</a></h1>
-<p><strong>Inherits:</strong> <span class="xref std std-ref">RefCounted</span> <strong>&lt;</strong> <span class="xref std std-ref">Object</span></p>
+<p><strong>Inherits:</strong> <a class="reference internal" href="class_refcounted.html#class-refcounted"><span class="std std-ref">RefCounted</span></a> <strong>&lt;</strong> <a class="reference internal" href="class_object.html#class-object"><span class="std std-ref">Object</span></a></p>
 <p>Presents Apple’s Game Center matchmaking UI.</p>
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
@@ -67,7 +67,7 @@
 <td><p><a class="reference internal" href="#class-gkmatchmakerviewcontroller-method-present"><span class="std std-ref">present</span></a>()</p></td>
 </tr>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-gkmatchmakerviewcontroller-method-request-match"><span class="std std-ref">request_match</span></a>(request: <a class="reference internal" href="class_gkmatchrequest.html#class-gkmatchrequest"><span class="std std-ref">GKMatchRequest</span></a>, callback: <span class="xref std std-ref">Callable</span>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
+<td><p><a class="reference internal" href="#class-gkmatchmakerviewcontroller-method-request-match"><span class="std std-ref">request_match</span></a>(request: <a class="reference internal" href="class_gkmatchrequest.html#class-gkmatchrequest"><span class="std std-ref">GKMatchRequest</span></a>, callback: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr></p></td>
 </tr>
 </tbody>
 </table>
@@ -75,16 +75,16 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="signals">
 <h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
-<p class="classref-signal" id="class-gkmatchmakerviewcontroller-signal-cancelled"><strong>cancelled</strong>(arg1: <span class="xref std std-ref">String</span>) <a class="reference internal" href="#class-gkmatchmakerviewcontroller-signal-cancelled"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gkmatchmakerviewcontroller-signal-cancelled"><strong>cancelled</strong>(arg1: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-gkmatchmakerviewcontroller-signal-cancelled"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when the user cancels the matchmaking UI. The string is empty on UIKit and contains an informational message on macOS.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gkmatchmakerviewcontroller-signal-did-find-hosted-players"><strong>did_find_hosted_players</strong>(arg1: <span class="xref std std-ref">Array</span>) <a class="reference internal" href="#class-gkmatchmakerviewcontroller-signal-did-find-hosted-players"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gkmatchmakerviewcontroller-signal-did-find-hosted-players"><strong>did_find_hosted_players</strong>(arg1: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-gkmatchmakerviewcontroller-signal-did-find-hosted-players"><span class="std std-ref">🔗</span></a></p>
 <p>Fired when GameKit returns players for a hosted-server scenario. The array contains <code class="docutils literal notranslate"><span class="pre">GKPlayer</span></code> instances.</p>
 <hr class="classref-item-separator docutils" />
 <p class="classref-signal" id="class-gkmatchmakerviewcontroller-signal-did-find-match"><strong>did_find_match</strong>(arg1: <a class="reference internal" href="class_gkmatch.html#class-gkmatch"><span class="std std-ref">GKMatch</span></a>) <a class="reference internal" href="#class-gkmatchmakerviewcontroller-signal-did-find-match"><span class="std std-ref">🔗</span></a></p>
 <p>Triggered when a peer-to-peer match has been found and is ready to start.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-signal" id="class-gkmatchmakerviewcontroller-signal-failed-with-error"><strong>failed_with_error</strong>(arg1: <span class="xref std std-ref">String</span>) <a class="reference internal" href="#class-gkmatchmakerviewcontroller-signal-failed-with-error"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-signal" id="class-gkmatchmakerviewcontroller-signal-failed-with-error"><strong>failed_with_error</strong>(arg1: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-gkmatchmakerviewcontroller-signal-failed-with-error"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted if Apple reports an error while matchmaking. The string contains <code class="docutils literal notranslate"><span class="pre">localizedDescription</span></code>.</p>
 </section>
 <hr class="classref-section-separator docutils" />
@@ -96,7 +96,7 @@
 <p class="classref-method" id="class-gkmatchmakerviewcontroller-method-present"><abbr title="No return value.">void</abbr> <strong>present</strong>() <a class="reference internal" href="#class-gkmatchmakerviewcontroller-method-present"><span class="std std-ref">🔗</span></a></p>
 <p>Presents the previously created view controller, handling both UIKit and AppKit dialog flows.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-gkmatchmakerviewcontroller-method-request-match"><abbr title="No return value.">void</abbr> <strong>request_match</strong>(request: <a class="reference internal" href="class_gkmatchrequest.html#class-gkmatchrequest"><span class="std std-ref">GKMatchRequest</span></a>, callback: <span class="xref std std-ref">Callable</span>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-gkmatchmakerviewcontroller-method-request-match"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-method" id="class-gkmatchmakerviewcontroller-method-request-match"><abbr title="No return value.">void</abbr> <strong>request_match</strong>(request: <a class="reference internal" href="class_gkmatchrequest.html#class-gkmatchrequest"><span class="std std-ref">GKMatchRequest</span></a>, callback: <a class="reference internal" href="class_callable.html#class-callable"><span class="std std-ref">Callable</span></a>) <abbr title="This method doesn't need an instance to be called, so it can be called directly using the class name.">static</abbr> <a class="reference internal" href="#class-gkmatchmakerviewcontroller-method-request-match"><span class="std std-ref">🔗</span></a></p>
 <p>Shows the matchmaking UI and invokes the callback with <code class="docutils literal notranslate"><span class="pre">(GKMatch</span> <span class="pre">match,</span> <span class="pre">Variant</span> <span class="pre">error)</span></code> where only one argument is non-<code class="docutils literal notranslate"><span class="pre">null</span></code>. Errors are reported as strings such as “cancelled” when the user dismisses the sheet.</p>
 </section>
 </section>
@@ -128,6 +128,10 @@
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="class_object.html">Object (Godot builtin)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationappleidcredential.html">ASAuthorizationAppleIDCredential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_asauthorizationcontroller.html">ASAuthorizationController</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class_aspasswordcredential.html">ASPasswordCredential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_avaudiosession.html">AVAudioSession</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_gamecentermanager.html">GameCenterManager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="class_gkachievement.html">GKAchievement</a></li>

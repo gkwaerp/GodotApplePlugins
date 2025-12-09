@@ -18,6 +18,9 @@ Other objects
     :name: toc-class-ref-objects
 
     class_object
+    class_asauthorizationappleidcredential
+    class_asauthorizationcontroller
+    class_aspasswordcredential
     class_avaudiosession
     class_gamecentermanager
     class_gkachievement
@@ -40,4 +43,3 @@ Other objects
     class_storeview
     class_subscriptionofferview
     class_subscriptionstoreview
-

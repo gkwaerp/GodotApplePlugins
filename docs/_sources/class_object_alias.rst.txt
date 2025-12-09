@@ -1,0 +1,6 @@
+:orphan:
+:github_url: hide
+
+.. _class_object:
+
+See :ref:`class_Object`.

@@ -1,0 +1,9 @@
+:orphan:
+:github_url: hide
+
+.. _enum_@GlobalScope_Error:
+
+@GlobalScope.Error (Godot builtin)
+===================================
+
+See `@GlobalScope.Error on docs.godotengine.org <https://docs.godotengine.org/en/stable/classes/class_@globalscope.html#enum-globalscope-error>`_.
