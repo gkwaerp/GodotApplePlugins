@@ -25,7 +25,10 @@ Description
 
 Guide sample showing matchmaking and signal hookups:
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var request := GKMatchRequest.new()
     request.max_players = 2
@@ -56,22 +59,34 @@ Guide sample showing matchmaking and signal hookups:
 
 
 
+
+
 Broadcast helper from the guide (assuming you keep the reference as ``game_match``):
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var data := "How do you do fellow kids".to_utf8_buffer()
     game_match.send_data_to_all_players(data, GKMatch.SendDataMode.reliable)
 
 
 
+
+
 Send to a subset of players (still using the ``game_match`` variable):
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var payload := PackedByteArray([1, 2, 3])
     var recipients := [first_player, second_player]
     game_match.send(payload, recipients, GKMatch.SendDataMode.reliable)
+
+
 
 .. rst-class:: classref-reftable-group
 

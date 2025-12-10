@@ -41,44 +41,48 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">GKLocalPlayer</span></code> to inspect authentication flags and to fetch the local player’s friends as shown in the “Players” section of <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code>. Every asynchronous call mirrors Apple’s API and invokes your <code class="docutils literal notranslate"><span class="pre">Callable</span></code> with the requested data plus an optional error <code class="docutils literal notranslate"><span class="pre">Variant</span></code>. Refer to Apple’s documentation at <a class="reference external" href="https://developer.apple.com/documentation/gamekit/gklocalplayer">Apple’s GKLocalPlayer reference</a> for platform-specific behavior.</p>
 <p>Sample from the guide that fetches the local player when your scene loads:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">game_center</span><span class="p">:</span> <span class="n">GameCenterManager</span>
-<span class="n">var</span> <span class="n">local</span><span class="p">:</span> <span class="n">GKLocalPlayer</span>
+<div class="tabs docutils container">
+<div class="code-tab code-tab-gdscript highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">game_center</span><span class="p">:</span><span class="w"> </span><span class="n">GameCenterManager</span>
+<span class="k">var</span><span class="w"> </span><span class="n">local</span><span class="p">:</span><span class="w"> </span><span class="n">GKLocalPlayer</span>
 
-<span class="n">func</span> <span class="n">_ready</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="n">game_center</span> <span class="o">=</span> <span class="n">GameCenterManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-    <span class="n">local</span> <span class="o">=</span> <span class="n">game_center</span><span class="o">.</span><span class="n">local_player</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ONREADY: local, is auth: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">local</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ONREADY: local, player ID: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">local</span><span class="o">.</span><span class="n">game_player_id</span><span class="p">)</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="n">game_center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GameCenterManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">    </span><span class="n">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">game_center</span><span class="o">.</span><span class="n">local_player</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ONREADY: local, is auth: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">local</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ONREADY: local, player ID: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">local</span><span class="o">.</span><span class="n">game_player_id</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
 <p>Friends-related helpers mirror the snippets in the guide (assuming you stored the player reference in <code class="docutils literal notranslate"><span class="pre">local</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loads the local player&#39;s friends list if access is granted.</span>
-<span class="n">local</span><span class="o">.</span><span class="n">load_friends</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">friends</span><span class="p">:</span> <span class="n">Array</span><span class="p">[</span><span class="n">GKPlayer</span><span class="p">],</span> <span class="n">error</span><span class="p">:</span> <span class="n">Variant</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">friend</span> <span class="ow">in</span> <span class="n">friends</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">friend</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
+<div class="tabs docutils container">
+<div class="code-tab code-tab-gdscript highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loads the local player&#39;s friends list if access is granted.</span>
+<span class="n">local</span><span class="o">.</span><span class="n">load_friends</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">friends</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">GKPlayer</span><span class="p">],</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">friend</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">friends</span><span class="p">:</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="n">friend</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Loads players the local user can challenge.</span>
-<span class="n">local</span><span class="o">.</span><span class="n">load_challengeable_friends</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">friends</span><span class="p">:</span> <span class="n">Array</span><span class="p">[</span><span class="n">GKPlayer</span><span class="p">],</span> <span class="n">error</span><span class="p">:</span> <span class="n">Variant</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">friend</span> <span class="ow">in</span> <span class="n">friends</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">friend</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
+<span class="n">local</span><span class="o">.</span><span class="n">load_challengeable_friends</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">friends</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">GKPlayer</span><span class="p">],</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">friend</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">friends</span><span class="p">:</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="n">friend</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Loads the friends or recent players list.</span>
-<span class="n">local</span><span class="o">.</span><span class="n">load_recent_friends</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">friends</span><span class="p">:</span> <span class="n">Array</span><span class="p">[</span><span class="n">GKPlayer</span><span class="p">],</span> <span class="n">error</span><span class="p">:</span> <span class="n">Variant</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">friend</span> <span class="ow">in</span> <span class="n">friends</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">friend</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
+<span class="n">local</span><span class="o">.</span><span class="n">load_recent_friends</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">friends</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">GKPlayer</span><span class="p">],</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">friend</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">friends</span><span class="p">:</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="n">friend</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </section>
 <section class="classref-reftable-group" id="properties">

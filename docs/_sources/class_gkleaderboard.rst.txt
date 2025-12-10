@@ -25,7 +25,10 @@ Description
 
 Submitting a score (guide sample):
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var local_player := GameCenterManager.new().local_player
 
@@ -44,9 +47,14 @@ Submitting a score (guide sample):
 
 
 
+
+
 Loading all versus specific leaderboards:
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     # Loads all leaderboards configured for the app.
     GKLeaderboard.load_leaderboards([], func(all_leaderboards: Array[GKLeaderboard], error: Variant) -> void:
@@ -57,6 +65,8 @@ Loading all versus specific leaderboards:
     GKLeaderboard.load_leaderboards(["My leaderboard"], func(named_leaderboards: Array[GKLeaderboard], error: Variant) -> void:
         print("Received %d specific leaderboards" % named_leaderboards.size())
     )
+
+
 
 .. rst-class:: classref-reftable-group
 

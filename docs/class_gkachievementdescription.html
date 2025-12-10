@@ -41,25 +41,29 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GKAchievementDescription</span></code> exposes the localized text, group assignments, and icon that you configure for each achievement. Use <a class="reference internal" href="#class-gkachievementdescription-method-load-achievement-descriptions"><span class="std std-ref">load_achievement_descriptions()</span></a> as shown in <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code> to list everything the player can unlock, even before they have reported progress. Apple’s documentation lives at <a class="reference external" href="https://developer.apple.com/documentation/gamekit/gkachievementdescription">Apple’s GKAchievementDescription reference</a>.</p>
 <p>Listing descriptions (guide sample):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GKAchievementDescription</span><span class="o">.</span><span class="n">load_achievement_descriptions</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">descriptions</span><span class="p">:</span> <span class="n">Array</span><span class="p">[</span><span class="n">GKAchievementDescription</span><span class="p">],</span> <span class="n">error</span><span class="p">:</span> <span class="n">Variant</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Load achievement description error </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">error</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">descriptions</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Achievement Description ID: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">description</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Unachieved: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">description</span><span class="o">.</span><span class="n">unachieved_description</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Achieved: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">description</span><span class="o">.</span><span class="n">achieved_description</span><span class="p">)</span>
+<div class="tabs docutils container">
+<div class="code-tab code-tab-gdscript highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="n">GKAchievementDescription</span><span class="o">.</span><span class="n">load_achievement_descriptions</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">descriptions</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">GKAchievementDescription</span><span class="p">],</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Load achievement description error </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">descriptions</span><span class="p">:</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Achievement Description ID: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">description</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Unachieved: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">description</span><span class="o">.</span><span class="n">unachieved_description</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Achieved: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">description</span><span class="o">.</span><span class="n">achieved_description</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
 <p>Loading an image sample (assuming <code class="docutils literal notranslate"><span class="pre">description</span></code> is one of the loaded entries):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>description.load_image(func(image: Image, error: Variant) -&gt; void:
-    if error == null:
-        $texture_rect.texture = ImageTexture.create_from_image(image)
-    else:
-        print(&quot;Error loading achievement image %s&quot; % error)
-)
+<div class="tabs docutils container">
+<div class="code-tab code-tab-gdscript highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="n">description</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="n">Image</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">        </span><span class="o">$</span><span class="n">texture_rect</span><span class="o">.</span><span class="n">texture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageTexture</span><span class="o">.</span><span class="n">create_from_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error loading achievement image </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </section>
 <section class="classref-reftable-group" id="properties">

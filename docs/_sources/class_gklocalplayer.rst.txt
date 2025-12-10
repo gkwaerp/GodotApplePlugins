@@ -25,7 +25,10 @@ Use ``GKLocalPlayer`` to inspect authentication flags and to fetch the local pla
 
 Sample from the guide that fetches the local player when your scene loads:
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var game_center: GameCenterManager
     var local: GKLocalPlayer
@@ -38,9 +41,14 @@ Sample from the guide that fetches the local player when your scene loads:
 
 
 
+
+
 Friends-related helpers mirror the snippets in the guide (assuming you stored the player reference in ``local``):
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     # Loads the local player's friends list if access is granted.
     local.load_friends(func(friends: Array[GKPlayer], error: Variant) -> void:
@@ -68,6 +76,8 @@ Friends-related helpers mirror the snippets in the guide (assuming you stored th
             for friend in friends:
                 print(friend.display_name)
     )
+
+
 
 .. rst-class:: classref-reftable-group
 

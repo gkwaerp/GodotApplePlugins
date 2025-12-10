@@ -27,7 +27,10 @@ You can use :ref:`perform_apple_id_request()<class_ASAuthorizationController_met
 
 
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var auth_controller = ASAuthorizationController.new()
 
@@ -50,6 +53,8 @@ You can use :ref:`perform_apple_id_request()<class_ASAuthorizationController_met
 
     func _on_authorization_failed(error_message):
         print("Authorization failed: ", error_message)
+
+
 
 .. rst-class:: classref-reftable-group
 

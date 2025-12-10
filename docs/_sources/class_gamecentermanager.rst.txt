@@ -25,7 +25,10 @@ Create a ``GameCenterManager`` when your game starts to present Apple's authenti
 
 Authentication example from the guide:
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var game_center: GameCenterManager
 
@@ -38,6 +41,8 @@ Authentication example from the guide:
         game_center.authentication_result.connect(func(status: bool) -> void:
             print("Authentication updated, status: %s" % status)
         )
+
+
 
 .. rst-class:: classref-reftable-group
 

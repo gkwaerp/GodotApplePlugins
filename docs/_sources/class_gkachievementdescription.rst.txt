@@ -25,7 +25,10 @@ Description
 
 Listing descriptions (guide sample):
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     GKAchievementDescription.load_achievement_descriptions(func(descriptions: Array[GKAchievementDescription], error: Variant) -> void:
         if error:
@@ -39,9 +42,14 @@ Listing descriptions (guide sample):
 
 
 
+
+
 Loading an image sample (assuming ``description`` is one of the loaded entries):
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     description.load_image(func(image: Image, error: Variant) -> void:
         if error == null:
@@ -49,6 +57,8 @@ Loading an image sample (assuming ``description`` is one of the loaded entries):
         else:
             print("Error loading achievement image %s" % error)
     )
+
+
 
 .. rst-class:: classref-reftable-group
 

@@ -42,14 +42,16 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GKPlayer</span></code> is the shared base type for friends, opponents, and the local user. Use it to access Apple-provided identifiers plus helper methods such as <a class="reference internal" href="#class-gkplayer-method-load-photo"><span class="std std-ref">load_photo()</span></a>, as referenced in the “Players” section of <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code>. Apple’s reference lives at <a class="reference external" href="https://developer.apple.com/documentation/gamekit/gkplayer">Apple’s GKPlayer documentation</a>.</p>
 <p>Loading a player photo (guide sample):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Put the downloaded image inside a TextureRect named $texture_rect.
-local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
-    if error == null:
-        $texture_rect.texture = ImageTexture.create_from_image(image)
-    else:
-        print(&quot;Could not load photo %s&quot; % error)
-)
+<div class="tabs docutils container">
+<div class="code-tab code-tab-gdscript highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put the downloaded image inside a TextureRect named $texture_rect.</span>
+<span class="n">local_player</span><span class="o">.</span><span class="n">load_photo</span><span class="p">(</span><span class="bp">true</span><span class="p">,</span><span class="w"> </span><span class="k">func</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="n">Image</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="n">Variant</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">:</span>
+<span class="w">        </span><span class="o">$</span><span class="n">texture_rect</span><span class="o">.</span><span class="n">texture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageTexture</span><span class="o">.</span><span class="n">create_from_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not load photo </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </section>
 <section class="classref-reftable-group" id="properties">
@@ -66,7 +68,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">game_player_id</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;3C1E0E1AFB4CE14B2789263F9041774335A69F09007DEF8088C0DA14878371D7&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;E6128E82101E734E4ED1EB4D44C837C7D622AA0608A69DC043569AB2FC6F5A30&quot;</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="class_bool.html#class-bool"><span class="std std-ref">bool</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkplayer-property-is-invitable"><span class="std std-ref">is_invitable</span></a></p></td>
@@ -74,7 +76,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a></p></td>
 <td><p><a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">team_player_id</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;3C2E6BCA29479141775B8E951D336FC46E31A6A79619816932D7D3544856DB69&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;5461824932DB5899A4B197DA19DD1C1B1FF645B34AE51149378D9DAEFE99BEDB&quot;</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -107,7 +109,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </ul>
 <p>Localized display name suited for UI.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkplayer-property-game-player-id"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>game_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;3C1E0E1AFB4CE14B2789263F9041774335A69F09007DEF8088C0DA14878371D7&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkplayer-property-game-player-id"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>game_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;E6128E82101E734E4ED1EB4D44C837C7D622AA0608A69DC043569AB2FC6F5A30&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-game-player-id"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
 <li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_game_player_id</strong>()</p></li>
 </ul>
@@ -119,7 +121,7 @@ local_player.load_photo(true, func(image: Image, error: Variant) -&gt; void:
 </ul>
 <p>True if the player allows Game Center invitations.</p>
 <hr class="classref-item-separator docutils" />
-<p class="classref-property" id="class-gkplayer-property-team-player-id"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>team_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;3C2E6BCA29479141775B8E951D336FC46E31A6A79619816932D7D3544856DB69&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">🔗</span></a></p>
+<p class="classref-property" id="class-gkplayer-property-team-player-id"><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>team_player_id</strong> = <code class="docutils literal notranslate"><span class="pre">&quot;5461824932DB5899A4B197DA19DD1C1B1FF645B34AE51149378D9DAEFE99BEDB&quot;</span></code> <a class="reference internal" href="#class-gkplayer-property-team-player-id"><span class="std std-ref">🔗</span></a></p>
 <ul class="classref-property-setget simple">
 <li><p><a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a> <strong>get_team_player_id</strong>()</p></li>
 </ul>

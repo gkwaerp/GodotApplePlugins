@@ -25,7 +25,10 @@ Instantiate ``GKMatchRequest``, set the minimum/maximum player counts and invite
 
 Configuration snippet from the guide:
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var request := GKMatchRequest.new()
     request.max_players = 2
@@ -34,6 +37,8 @@ Configuration snippet from the guide:
 
     var max_supported := GKMatchRequest.max_players_allowed_for_match(GKMatchRequest.MatchType.peerToPeer)
     print("Peer-to-peer supports up to %d players" % max_supported)
+
+
 
 .. rst-class:: classref-reftable-group
 

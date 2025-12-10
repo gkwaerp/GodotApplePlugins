@@ -25,7 +25,10 @@ Use this helper to show the stock ``GKMatchmakerViewController`` workflow descri
 
 Convenience usage from the guide:
 
-::
+
+.. tabs::
+
+ .. code-tab:: gdscript
 
     var request := GKMatchRequest.new()
     request.max_players = 2
@@ -39,6 +42,8 @@ Convenience usage from the guide:
             print("Match ready")
             # Store game_match and connect to its signals as needed.
     )
+
+
 
 .. rst-class:: classref-reftable-group
 

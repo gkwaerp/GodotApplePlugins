@@ -41,18 +41,20 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Create a <code class="docutils literal notranslate"><span class="pre">GameCenterManager</span></code> when your game starts to present Apple’s authentication UI and track whether the player is signed in, as described in <code class="docutils literal notranslate"><span class="pre">GameCenterGuide.md</span></code>. Once authenticated you can fetch the <a class="reference internal" href="#class-gamecentermanager-property-local-player"><span class="std std-ref">local_player</span></a> to access achievements, leaderboards, friends, and matchmaking helpers. See Apple’s documentation for <a class="reference external" href="https://developer.apple.com/documentation/gamekit/gklocalplayer">Apple’s GKLocalPlayer reference</a> to learn more about the underlying authentication flow.</p>
 <p>Authentication example from the guide:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">game_center</span><span class="p">:</span> <span class="n">GameCenterManager</span>
+<div class="tabs docutils container">
+<div class="code-tab code-tab-gdscript highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">game_center</span><span class="p">:</span><span class="w"> </span><span class="n">GameCenterManager</span>
 
-<span class="n">func</span> <span class="n">_ready</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="n">game_center</span> <span class="o">=</span> <span class="n">GameCenterManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="n">game_center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GameCenterManager</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
-    <span class="n">game_center</span><span class="o">.</span><span class="n">authentication_error</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">error</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received error </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">error</span><span class="p">)</span>
-    <span class="p">)</span>
-    <span class="n">game_center</span><span class="o">.</span><span class="n">authentication_result</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Authentication updated, status: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">status</span><span class="p">)</span>
-    <span class="p">)</span>
+<span class="w">    </span><span class="n">game_center</span><span class="o">.</span><span class="n">authentication_error</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received error </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="n">game_center</span><span class="o">.</span><span class="n">authentication_result</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">status</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Authentication updated, status: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">status</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </section>
 <section class="classref-reftable-group" id="properties">
