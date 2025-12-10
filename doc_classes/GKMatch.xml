@@ -4,10 +4,11 @@
 		Represents an active real-time Game Center match.
 	</brief_description>
 	<description>
-		[code]GKMatch[/code] wraps Apple's realtime networking object. After starting matchmaking with [code]GKMatchmakerViewController[/code] (see the "Realtime Matchmaking" section of [code]GameCenterGuide.md[/code]) you will receive a [code]GKMatch[/code] instance and can send data, monitor players, and respond to disconnections via Godot signals. For platform specifics see [url=https://developer.apple.com/documentation/gamekit/gkmatch]Apple's GKMatch reference[/url].
+		[code skip-lint]GKMatch[/code] wraps Apple's realtime networking object. After starting matchmaking with [code skip-lint]GKMatchmakerViewController[/code] (see the "Realtime Matchmaking" section of [code skip-lint]GameCenterGuide.md[/code]) you will receive a [code skip-lint]GKMatch[/code] instance and can send data, monitor players, and respond to disconnections via Godot signals. For platform specifics see [url=https://developer.apple.com/documentation/gamekit/gkmatch]Apple's GKMatch reference[/url].
 
 		Guide sample showing matchmaking and signal hookups:
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		var request := GKMatchRequest.new()
 		request.max_players = 2
 		request.min_players = 1
@@ -34,20 +35,25 @@
 		        print("Player %s changed to %s" % [player.display_name, connected])
 		    )
 		)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 
 		Broadcast helper from the guide (assuming you keep the reference as [code]game_match[/code]):
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		var data := "How do you do fellow kids".to_utf8_buffer()
 		game_match.send_data_to_all_players(data, GKMatch.SendDataMode.reliable)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 
 		Send to a subset of players (still using the [code]game_match[/code] variable):
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		var payload := PackedByteArray([1, 2, 3])
 		var recipients := [first_player, second_player]
 		game_match.send(payload, recipients, GKMatch.SendDataMode.reliable)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -55,7 +61,7 @@
 		<method name="disconnect">
 			<return type="void" />
 			<description>
-				Calls [code]GKMatch.disconnect()[/code] to leave the match immediately.
+				Calls [code skip-lint]GKMatch.disconnect()[/code] to leave the match immediately.
 			</description>
 		</method>
 		<method name="send">
@@ -64,7 +70,7 @@
 			<param index="1" name="toPlayers" type="Array" />
 			<param index="2" name="dataMode" type="int" />
 			<description>
-				Sends a payload to the specified [code]Array[GKPlayer][/code]. Returns a [enum @GlobalScope.Error] value ([code]OK[/code] on success, [code]FAILED[/code] when the payload could not be converted or Apple reported an error). Choose a [enum SendDataMode] constant for [param dataMode].
+				Sends a payload to the specified [code skip-lint]Array[GKPlayer][/code]. Returns a [enum @GlobalScope.Error] value ([code skip-lint]OK[/code] on success, [code skip-lint]FAILED[/code] when the payload could not be converted or Apple reported an error). Choose a [enum SendDataMode] constant for [param dataMode].
 			</description>
 		</method>
 		<method name="send_data_to_all_players">
@@ -81,10 +87,10 @@
 			The number of additional players that GameKit is recruiting before the match can begin.
 		</member>
 		<member name="players" type="Array" setter="" getter="get_players" default="[]">
-			Array of [code]GKPlayer[/code] instances that are currently connected.
+			Array of [code skip-lint]GKPlayer[/code] instances that are currently connected.
 		</member>
 		<member name="should_reinvite_disconnected_player" type="Variant" setter="set_should_reinvite_disconnected_player" getter="get_should_reinvite_disconnected_player">
-			Optional [code]Callable[/code] that receives a [code]GKPlayer[/code] and returns [code]true[/code] if the player should be reinvited after disconnecting (see the sample in [code]GameCenterGuide.md[/code]).
+			Optional [code skip-lint]Callable[/code] that receives a [code skip-lint]GKPlayer[/code] and returns [code]true[/code] if the player should be reinvited after disconnecting (see the sample in [code skip-lint]GameCenterGuide.md[/code]).
 		</member>
 	</members>
 	<signals>
@@ -106,7 +112,7 @@
 		<signal name="did_fail_with_error">
 			<param index="0" name="arg1" type="String" />
 			<description>
-				Fires when Apple reports a networking error. The [code]String[/code] argument contains the localized description.
+				Fires when Apple reports a networking error. The [code skip-lint]String[/code] argument contains the localized description.
 			</description>
 		</signal>
 		<signal name="player_changed">

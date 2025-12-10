@@ -4,10 +4,11 @@
 		Metadata for every achievement that is defined in App Store Connect.
 	</brief_description>
 	<description>
-		[code]GKAchievementDescription[/code] exposes the localized text, group assignments, and icon that you configure for each achievement. Use [method load_achievement_descriptions] as shown in [code]GameCenterGuide.md[/code] to list everything the player can unlock, even before they have reported progress. Apple's documentation lives at [url=https://developer.apple.com/documentation/gamekit/gkachievementdescription]Apple's GKAchievementDescription reference[/url].
+		[code skip-lint]GKAchievementDescription[/code] exposes the localized text, group assignments, and icon that you configure for each achievement. Use [method load_achievement_descriptions] as shown in [code skip-lint]GameCenterGuide.md[/code] to list everything the player can unlock, even before they have reported progress. Apple's documentation lives at [url=https://developer.apple.com/documentation/gamekit/gkachievementdescription]Apple's GKAchievementDescription reference[/url].
 
 		Listing descriptions (guide sample):
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		GKAchievementDescription.load_achievement_descriptions(func(descriptions: Array[GKAchievementDescription], error: Variant) -&gt; void:
 		    if error:
 		        print("Load achievement description error %s" % error)
@@ -17,17 +18,20 @@
 		            print("    Unachieved: %s" % description.unachieved_description)
 		            print("    Achieved: %s" % description.achieved_description)
 		)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 
 		Loading an image sample (assuming [code]description[/code] is one of the loaded entries):
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		description.load_image(func(image: Image, error: Variant) -&gt; void:
 		    if error == null:
 		        $texture_rect.texture = ImageTexture.create_from_image(image)
 		    else:
 		        print("Error loading achievement image %s" % error)
 		)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -36,7 +40,7 @@
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
-				Loads the entire catalog of achievement descriptions and calls the callback with [code]Array[GKAchievementDescription][/code] and a [code]Variant[/code] error ([code]null[/code] on success, or a string from GameKit).
+				Loads the entire catalog of achievement descriptions and calls the callback with [code skip-lint]Array[GKAchievementDescription][/code] and a [code skip-lint]Variant[/code] error ([code]null[/code] on success, or a string from GameKit).
 			</description>
 		</method>
 		<method name="load_image">

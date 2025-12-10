@@ -4,10 +4,11 @@
 		Represents the signed-in Game Center player and exposes local-only APIs.
 	</brief_description>
 	<description>
-		Use [code]GKLocalPlayer[/code] to inspect authentication flags and to fetch the local player's friends as shown in the "Players" section of [code]GameCenterGuide.md[/code]. Every asynchronous call mirrors Apple's API and invokes your [code]Callable[/code] with the requested data plus an optional error [code]Variant[/code]. Refer to Apple's documentation at [url=https://developer.apple.com/documentation/gamekit/gklocalplayer]Apple's GKLocalPlayer reference[/url] for platform-specific behavior.
+		Use [code skip-lint]GKLocalPlayer[/code] to inspect authentication flags and to fetch the local player's friends as shown in the "Players" section of [code skip-lint]GameCenterGuide.md[/code]. Every asynchronous call mirrors Apple's API and invokes your [code skip-lint]Callable[/code] with the requested data plus an optional error [code skip-lint]Variant[/code]. Refer to Apple's documentation at [url=https://developer.apple.com/documentation/gamekit/gklocalplayer]Apple's GKLocalPlayer reference[/url] for platform-specific behavior.
 
 		Sample from the guide that fetches the local player when your scene loads:
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		var game_center: GameCenterManager
 		var local: GKLocalPlayer
 
@@ -16,10 +17,12 @@
 		    local = game_center.local_player
 		    print("ONREADY: local, is auth: %s" % local.is_authenticated)
 		    print("ONREADY: local, player ID: %s" % local.game_player_id)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 
 		Friends-related helpers mirror the snippets in the guide (assuming you stored the player reference in [code]local[/code]):
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		# Loads the local player's friends list if access is granted.
 		local.load_friends(func(friends: Array[GKPlayer], error: Variant) -&gt; void:
 		    if error:
@@ -46,7 +49,8 @@
 		        for friend in friends:
 		            print(friend.display_name)
 		)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -85,7 +89,7 @@
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
-				Fetches the friends list. The callback receives [code](Array[GKPlayer] friends, Variant error)[/code]; a non-null error [code]Variant[/code] holds the localized error string.
+				Fetches the friends list. The callback receives [code](Array[GKPlayer] friends, Variant error)[/code]; a non-null error [code skip-lint]Variant[/code] holds the localized error string.
 			</description>
 		</method>
 		<method name="load_recent_friends">
@@ -110,7 +114,7 @@
 	</methods>
 	<members>
 		<member name="is_authenticated" type="bool" setter="" getter="get_is_authenticated" default="false">
-			Reflects [code]GKLocalPlayer.local.isAuthenticated[/code].
+			Reflects [code skip-lint]GKLocalPlayer.local.isAuthenticated[/code].
 		</member>
 		<member name="is_multiplayer_gaming_restricted" type="bool" setter="" getter="get_is_multiplayer_gaming_restricted" default="true">
 			True when multiplayer is disabled by parental controls.

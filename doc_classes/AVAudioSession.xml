@@ -4,7 +4,7 @@
 		Controls the shared iOS/tvOS audio session from GDScript.
 	</brief_description>
 	<description>
-		Use this helper to select one of Apple's predefined [code]AVAudioSession[/code] categories so your Godot project can mix or duck audio according to platform expectations. It is most useful on mobile builds where the engine needs to share the audio device with the system music player or with voice chat as described in [code]GameCenterGuide.md[/code]. See Apple's audio session overview at [url=https://developer.apple.com/documentation/avfaudio/avaudiosession]Apple's AVAudioSession reference[/url].
+		Use this helper to select one of Apple's predefined [code skip-lint]AVAudioSession[/code] categories so your Godot project can mix or duck audio according to platform expectations. It is most useful on mobile builds where the engine needs to share the audio device with the system music player or with voice chat as described in [code skip-lint]GameCenterGuide.md[/code]. See Apple's audio session overview at [url=https://developer.apple.com/documentation/avfaudio/avaudiosession]Apple's AVAudioSession reference[/url].
 	</description>
 	<tutorials>
 	</tutorials>

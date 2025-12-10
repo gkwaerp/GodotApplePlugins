@@ -8,7 +8,8 @@
 
 		You can use [method perform_apple_id_request] to request specific scopes (e.g., full name and email) or [method initiate_signin] for a default sign-in flow.
 
-		[codeblock]
+		[codeblocks]
+		[gdscript]
 		var auth_controller = ASAuthorizationController.new()
 
 		func _ready():
@@ -30,7 +31,8 @@
 
 		func _on_authorization_failed(error_message):
 		    print("Authorization failed: ", error_message)
-		[/codeblock]
+		[/gdscript]
+		[/codeblocks]
 	</description>
 	<tutorials>
 	</tutorials>
