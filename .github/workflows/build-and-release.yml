@@ -54,7 +54,7 @@ jobs:
           for fw in addons/*/bin/*.framework; do
             if [[ -d "$fw" ]]; then
               echo "Signing $fw"
-	      signfile=`find $fw -type f -a -perm -u+x -maxdepth 1`
+              signfile=`find $fw -type f -a -perm -u+x -maxdepth 1`
               codesign --keychain $RUNNER_TEMP/app-signing.keychain-db --force --options runtime \
                 --sign "$SIGNING_IDENTITY" \
                 $signfile
