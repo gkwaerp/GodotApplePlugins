@@ -23,7 +23,7 @@ This class handles the presentation and management of authorization flows, such 
 
 
 
-You can use :ref:`perform_apple_id_request()<class_ASAuthorizationController_method_perform_apple_id_request>` to request specific scopes (e.g., full name and email) or :ref:`initiate_signin()<class_ASAuthorizationController_method_initiate_signin>` for a default sign-in flow.
+You can use :ref:`signin_with_scopes()<class_ASAuthorizationController_method_signin_with_scopes>` to request specific scopes (e.g., full name and email) or :ref:`signin()<class_ASAuthorizationController_method_signin>` for a default sign-in flow.
 
 
 
@@ -40,7 +40,7 @@ You can use :ref:`perform_apple_id_request()<class_ASAuthorizationController_met
 
     func _on_sign_in_button_pressed():
         # Request full name and email
-        auth_controller.perform_apple_id_request(["full_name", "email"])
+        auth_controller.signin_with_scopes(["full_name", "email"])
 
     func _on_authorization_completed(credential):
         if credential is ASAuthorizationAppleIDCredential:
@@ -64,11 +64,11 @@ Methods
 .. table::
    :widths: auto
 
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`initiate_signin<class_ASAuthorizationController_method_initiate_signin>`\ (\ )                                                             |
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`perform_apple_id_request<class_ASAuthorizationController_method_perform_apple_id_request>`\ (\ scopeStrings\: :ref:`Array<class_Array>`\ ) |
-   +--------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`signin<class_ASAuthorizationController_method_signin>`\ (\ )                                                                   |
+   +--------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`signin_with_scopes<class_ASAuthorizationController_method_signin_with_scopes>`\ (\ scopeStrings\: :ref:`Array<class_Array>`\ ) |
+   +--------+--------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -112,27 +112,29 @@ Emitted when the authorization request fails.
 Method Descriptions
 -------------------
 
-.. _class_ASAuthorizationController_method_initiate_signin:
+.. _class_ASAuthorizationController_method_signin:
 
 .. rst-class:: classref-method
 
-|void| **initiate_signin**\ (\ ) :ref:`🔗<class_ASAuthorizationController_method_initiate_signin>`
+|void| **signin**\ (\ ) :ref:`🔗<class_ASAuthorizationController_method_signin>`
 
-Initiates a Sign in with Apple request with default scopes (.fullName and .email). This is a convenience method for a standard sign-in flow.
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. rst-class:: classref-item-separator
 
 ----
 
-.. _class_ASAuthorizationController_method_perform_apple_id_request:
+.. _class_ASAuthorizationController_method_signin_with_scopes:
 
 .. rst-class:: classref-method
 
-|void| **perform_apple_id_request**\ (\ scopeStrings\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_ASAuthorizationController_method_perform_apple_id_request>`
+|void| **signin_with_scopes**\ (\ scopeStrings\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_ASAuthorizationController_method_signin_with_scopes>`
 
-Performs an Apple ID authorization request with the specified scopes.
+.. container:: contribute
 
-\ ``scopeStrings`` can include "full_name" and "email".
+	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`

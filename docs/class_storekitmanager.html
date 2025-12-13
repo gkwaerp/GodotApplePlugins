@@ -39,7 +39,14 @@
 <p>Manages StoreKit interactions such as requesting products, purchasing, and restoring purchases.</p>
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
-<p>This class handles the core StoreKit functionality. It provides methods to fetch product information from the App Store, initiate purchases, and restore previous purchases. It emits signals to notify the application about the status of these operations.</p>
+<p>This class handles the core StoreKit functionality. It provides methods to fetch product information from the App Store, initiate purchases,</p>
+<blockquote>
+<div><p>restore previous purchases and be notified of the current status of the purchase upon startup.</p>
+<p>Upon creation, this class will start immediately to raise the <code class="docutils literal notranslate"><span class="pre">transaction_updated</span></code> signal</p>
+<p>to notify you of the status of purchases as well as the <code class="docutils literal notranslate"><span class="pre">purchase_intent</span></code> signal</p>
+<p>letting you know any purchase intents.   You should register the signals immediately after</p>
+<p>instantiating.</p>
+</div></blockquote>
 </section>
 <section class="classref-reftable-group" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
@@ -62,14 +69,23 @@
 <h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">¶</a></h2>
 <p class="classref-signal" id="class-storekitmanager-signal-products-request-completed"><strong>products_request_completed</strong>(products: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>, status: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-products-request-completed"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when a product request completes.</p>
-<p><code class="docutils literal notranslate"><span class="pre">products</span></code> is an Array of <a class="reference internal" href="class_storeproduct.html#class-storeproduct"><span class="std std-ref">StoreProduct</span></a>s (or nulls).</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">products</span></code> is an Array of <a class="reference internal" href="class_storeproduct.html#class-storeproduct"><span class="std std-ref">StoreProduct</span></a>s (or nulls).</p>
 <p><code class="docutils literal notranslate"><span class="pre">status</span></code> indicates success or failure.</p>
+</div></blockquote>
 <hr class="classref-item-separator docutils" />
 <p class="classref-signal" id="class-storekitmanager-signal-purchase-completed"><strong>purchase_completed</strong>(transaction: <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a>, status: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, error_message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-purchase-completed"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when a purchase completes.</p>
-<p><code class="docutils literal notranslate"><span class="pre">transaction</span></code> is the <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a> on success.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">transaction</span></code> is the <a class="reference internal" href="class_storetransaction.html#class-storetransaction"><span class="std std-ref">StoreTransaction</span></a> on success.</p>
 <p><code class="docutils literal notranslate"><span class="pre">status</span></code> indicates the result (OK, cancelled, invalid product, etc.).</p>
 <p><code class="docutils literal notranslate"><span class="pre">error_message</span></code> contains error details if failed.</p>
+</div></blockquote>
+<hr class="classref-item-separator docutils" />
+<p class="classref-signal" id="class-storekitmanager-signal-purchase-intent"><strong>purchase_intent</strong>(arg1: <a class="reference internal" href="class_storeproduct.html#class-storeproduct"><span class="std std-ref">StoreProduct</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-purchase-intent"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this signal. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
 <hr class="classref-item-separator docutils" />
 <p class="classref-signal" id="class-storekitmanager-signal-restore-completed"><strong>restore_completed</strong>(status: <a class="reference internal" href="class_int.html#class-int"><span class="std std-ref">int</span></a>, error_message: <a class="reference internal" href="class_string.html#class-string"><span class="std std-ref">String</span></a>) <a class="reference internal" href="#class-storekitmanager-signal-restore-completed"><span class="std std-ref">🔗</span></a></p>
 <p>Emitted when the restore process completes. <code class="docutils literal notranslate"><span class="pre">status</span></code> is the <a class="reference internal" href="#enum-storekitmanager-storekitstatus"><span class="std std-ref">StoreKitStatus</span></a>, and <code class="docutils literal notranslate"><span class="pre">error_message</span></code> is an error string if applicable.</p>

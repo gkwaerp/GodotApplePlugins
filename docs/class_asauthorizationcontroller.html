@@ -40,7 +40,7 @@
 <section class="classref-introduction-group" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>This class handles the presentation and management of authorization flows, such as Sign in with Apple. It interacts with the <a class="reference internal" href="class_asauthorizationappleidcredential.html#class-asauthorizationappleidcredential"><span class="std std-ref">ASAuthorizationAppleIDCredential</span></a> and <a class="reference internal" href="class_aspasswordcredential.html#class-aspasswordcredential"><span class="std std-ref">ASPasswordCredential</span></a> classes to return the result of an authorization request.</p>
-<p>You can use <a class="reference internal" href="#class-asauthorizationcontroller-method-perform-apple-id-request"><span class="std std-ref">perform_apple_id_request()</span></a> to request specific scopes (e.g., full name and email) or <a class="reference internal" href="#class-asauthorizationcontroller-method-initiate-signin"><span class="std std-ref">initiate_signin()</span></a> for a default sign-in flow.</p>
+<p>You can use <a class="reference internal" href="#class-asauthorizationcontroller-method-signin-with-scopes"><span class="std std-ref">signin_with_scopes()</span></a> to request specific scopes (e.g., full name and email) or <a class="reference internal" href="#class-asauthorizationcontroller-method-signin"><span class="std std-ref">signin()</span></a> for a default sign-in flow.</p>
 <div class="tabs docutils container">
 <div class="code-tab code-tab-gdscript highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">auth_controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASAuthorizationController</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
@@ -50,7 +50,7 @@
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_sign_in_button_pressed</span><span class="p">():</span>
 <span class="w">    </span><span class="c1"># Request full name and email</span>
-<span class="w">    </span><span class="n">auth_controller</span><span class="o">.</span><span class="n">perform_apple_id_request</span><span class="p">([</span><span class="s2">&quot;full_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="n">auth_controller</span><span class="o">.</span><span class="n">signin_with_scopes</span><span class="p">([</span><span class="s2">&quot;full_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
 
 <span class="k">func</span><span class="w"> </span><span class="n">_on_authorization_completed</span><span class="p">(</span><span class="n">credential</span><span class="p">):</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">ASAuthorizationAppleIDCredential</span><span class="p">:</span>
@@ -72,10 +72,10 @@
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-asauthorizationcontroller-method-initiate-signin"><span class="std std-ref">initiate_signin</span></a>()</p></td>
+<td><p><a class="reference internal" href="#class-asauthorizationcontroller-method-signin"><span class="std std-ref">signin</span></a>()</p></td>
 </tr>
 <tr class="row-even"><td><p><abbr title="No return value.">void</abbr></p></td>
-<td><p><a class="reference internal" href="#class-asauthorizationcontroller-method-perform-apple-id-request"><span class="std std-ref">perform_apple_id_request</span></a>(scopeStrings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
+<td><p><a class="reference internal" href="#class-asauthorizationcontroller-method-signin-with-scopes"><span class="std std-ref">signin_with_scopes</span></a>(scopeStrings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -94,12 +94,15 @@
 <hr class="classref-section-separator docutils" />
 <section class="classref-descriptions-group" id="method-descriptions">
 <h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Link to this heading">¶</a></h2>
-<p class="classref-method" id="class-asauthorizationcontroller-method-initiate-signin"><abbr title="No return value.">void</abbr> <strong>initiate_signin</strong>() <a class="reference internal" href="#class-asauthorizationcontroller-method-initiate-signin"><span class="std std-ref">🔗</span></a></p>
-<p>Initiates a Sign in with Apple request with default scopes (.fullName and .email). This is a convenience method for a standard sign-in flow.</p>
+<p class="classref-method" id="class-asauthorizationcontroller-method-signin"><abbr title="No return value.">void</abbr> <strong>signin</strong>() <a class="reference internal" href="#class-asauthorizationcontroller-method-signin"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
 <hr class="classref-item-separator docutils" />
-<p class="classref-method" id="class-asauthorizationcontroller-method-perform-apple-id-request"><abbr title="No return value.">void</abbr> <strong>perform_apple_id_request</strong>(scopeStrings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-asauthorizationcontroller-method-perform-apple-id-request"><span class="std std-ref">🔗</span></a></p>
-<p>Performs an Apple ID authorization request with the specified scopes.</p>
-<p><code class="docutils literal notranslate"><span class="pre">scopeStrings</span></code> can include “full_name” and “email”.</p>
+<p class="classref-method" id="class-asauthorizationcontroller-method-signin-with-scopes"><abbr title="No return value.">void</abbr> <strong>signin_with_scopes</strong>(scopeStrings: <a class="reference internal" href="class_array.html#class-array"><span class="std std-ref">Array</span></a>) <a class="reference internal" href="#class-asauthorizationcontroller-method-signin-with-scopes"><span class="std std-ref">🔗</span></a></p>
+<div class="contribute docutils container">
+<p>There is currently no description for this method. Please help us by <a class="reference external" href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+</div>
 </section>
 </section>
 
