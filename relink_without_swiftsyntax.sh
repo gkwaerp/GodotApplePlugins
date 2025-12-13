@@ -96,7 +96,11 @@ FRAMEWORK_DIR="$PRODUCTS_DIR/PackageFrameworks/$FRAMEWORK.framework"
 if [[ ! -d "$FRAMEWORK_DIR" ]]; then
 	FRAMEWORK_DIR="$PRODUCTS_DIR/$FRAMEWORK.framework"
 fi
-FRAMEWORK_BINARY="$FRAMEWORK_DIR/$FRAMEWORK"
+if test x$PLATFORM = xmacos; then
+    FRAMEWORK_BINARY="$FRAMEWORK_DIR/$FRAMEWORK/Versions/A/$FRAMEWORK"
+else
+    FRAMEWORK_BINARY="$FRAMEWORK_DIR/$FRAMEWORK"
+fi
 
 if [[ ! -f "$FRAMEWORK_BINARY" ]]; then
 	echo "Framework binary not found at $FRAMEWORK_BINARY, skipping relink." >&2

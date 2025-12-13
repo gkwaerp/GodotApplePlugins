@@ -6,7 +6,7 @@
 	<description>
 		This class handles the presentation and management of authorization flows, such as Sign in with Apple. It interacts with the [ASAuthorizationAppleIDCredential] and [ASPasswordCredential] classes to return the result of an authorization request.
 
-		You can use [method perform_apple_id_request] to request specific scopes (e.g., full name and email) or [method initiate_signin] for a default sign-in flow.
+		You can use [method signin_with_scopes] to request specific scopes (e.g., full name and email) or [method signin] for a default sign-in flow.
 
 		[codeblocks]
 		[gdscript]
@@ -18,7 +18,7 @@
 
 		func _on_sign_in_button_pressed():
 		    # Request full name and email
-		    auth_controller.perform_apple_id_request(["full_name", "email"])
+		    auth_controller.signin_with_scopes(["full_name", "email"])
 
 		func _on_authorization_completed(credential):
 		    if credential is ASAuthorizationAppleIDCredential:
@@ -37,18 +37,15 @@
 	<tutorials>
 	</tutorials>
 	<methods>
-		<method name="initiate_signin">
+		<method name="signin">
 			<return type="void" />
 			<description>
-				Initiates a Sign in with Apple request with default scopes (.fullName and .email). This is a convenience method for a standard sign-in flow.
 			</description>
 		</method>
-		<method name="perform_apple_id_request">
+		<method name="signin_with_scopes">
 			<return type="void" />
 			<param index="0" name="scopeStrings" type="Array" />
 			<description>
-				Performs an Apple ID authorization request with the specified scopes.
-				[param scopeStrings] can include "full_name" and "email".
 			</description>
 		</method>
 	</methods>

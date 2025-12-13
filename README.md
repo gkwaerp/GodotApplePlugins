@@ -2,6 +2,11 @@
 
 Godot Plugins for deep Apple platform integration, works on MacOS and iOS.
 
+<p align="center">
+<strong>
+	<a href="https://migueldeicaza.github.io/GodotApplePlugins/index.html">API Documentation</a> | Download: <a href="https://godotengine.org/asset-library/asset/4552">Godot Asset Library</a> | Download: <a href="https://github.com/migueldeicaza/GodotApplePlugins/releases">GitHub Releases</a>
+</strong>
+</p>
 
 You can get a ready-to-use binary from the "releases" tab, just drag the contents  into 
 your addons directory.   You can start testing right away  on a Mac project, and for iOS, 
@@ -9,9 +14,9 @@ export your iOS project and run.
 
 This add-on currently includes comprehensive support for:
 
-* GameCenter [API Docs](https://migueldeicaza.github.io/GodotApplePlugins/class_gamecentermanager.html)[GameCenter Integration Guide](Sources/GodotApplePlugins/GameCenter/GameCenterGuide.md)
-* StoreKit2 [API Docs](https://migueldeicaza.github.io/GodotApplePlugins/class_storekitmanager.html)
-* AuthenticationServices ("sign-in with Apple")
+* GameCenter [GameCenter Integration Guide](Sources/GodotApplePlugins/GameCenter/GameCenterGuide.md)
+* StoreKit2 (https://migueldeicaza.github.io/GodotApplePlugins/class_storekitmanager.html)
+* Sign-in with Apple (AuthenticationServices)
 
 The release contains both binaries for MacOS as dynamic libraries and
 an iOS xcframework compiled with the "Mergeable Library" feature.
@@ -21,10 +26,6 @@ to be copied on every build speeding your development, but you can
 switch to "Release Mode" and set "Create Merged Binary" to "Manual"
 and you will further reduce the size of your executable (about 1.7
 megs at the time of this writing).
-
-The "AuthenticationServices" code was derived from [Dragos Daian's/
-Nirmal Ac's](https://github.com/appsinacup/godot-apple-login) binding and 
-Xogot's own use.
 
 # API Design
 
@@ -65,7 +66,7 @@ func _ready():
 
 func _on_sign_in_button_pressed():
     # Request full name and email
-    auth_controller.perform_apple_id_request(["full_name", "email"])
+    auth_controller.signin_with_scopes(["full_name", "email"])
 
 func _on_authorization_completed(credential):
     if credential is ASAuthorizationAppleIDCredential:
@@ -133,3 +134,10 @@ If you manually disable mergeable libraries and build your own addon:
 Debug:   114 MB
 Release: 105 MB
 ```
+
+# Credits
+
+The "AuthenticationServices" code was derived from [Dragos Daian's/
+Nirmal Ac's](https://github.com/appsinacup/godot-apple-login) binding and 
+Xogot's own use.   Dragos also provided extensive technical guidance on 
+putting together this addon for distribution.   Thank you!

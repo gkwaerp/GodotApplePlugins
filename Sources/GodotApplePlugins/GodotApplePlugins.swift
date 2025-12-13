@@ -53,4 +53,6 @@ import SwiftGodotRuntime
 
         ASAuthorizationAppleIDCredential.UserDetectionStatus.self,
         ASAuthorizationAppleIDCredential.UserAgeRange.self
-    ])
+    ],
+    registerDocs: true
+)

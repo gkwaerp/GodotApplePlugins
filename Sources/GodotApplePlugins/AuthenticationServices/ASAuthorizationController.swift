@@ -59,7 +59,7 @@ class ASAuthorizationController: RefCounted, @unchecked Sendable {
 
     // The more specific version of it
     @Callable
-    func perform_apple_id_request(scopeStrings: VariantArray) {
+    func signin_with_scopes(scopeStrings: VariantArray) {
         var requestedScopes: [ASAuthorization.Scope] = []
         for vscope in scopeStrings {
             guard let scope = String(vscope) else { continue }
@@ -93,7 +93,7 @@ class ASAuthorizationController: RefCounted, @unchecked Sendable {
 
     // Just a general purpose easy-to-use version
     @Callable
-    func initiate_signin() {
+    func signin() {
         MainActor.assumeIsolated {
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             let request = appleIDProvider.createRequest()

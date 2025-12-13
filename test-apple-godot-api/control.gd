@@ -19,7 +19,9 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	# Request full name and email
-	auth_controller.perform_apple_id_request(["full_name", "email"])
+	auth_controller.signin_with_scopes(["full_name", "email"])
+	var d = GKMatch.new()
+	
 
 func _on_authorization_completed(credential):
 	if credential is ASAuthorizationAppleIDCredential:
