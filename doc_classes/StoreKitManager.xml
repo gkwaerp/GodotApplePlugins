@@ -5,12 +5,12 @@
 	</brief_description>
 	<description>
 		This class handles the core StoreKit functionality. It provides methods to fetch product information from the App Store, initiate purchases,
-        restore previous purchases and be notified of the current status of the purchase upon startup.
+		        restore previous purchases and be notified of the current status of the purchase upon startup.
 
-        You should call [code]start[/code] in this class to start processing the transactions and
-        purchase intent notifications.   After that methos is called, the object will raise
-        the [code]transaction_updated[/code] signal to notify you of the status of purchases
-        as well as the [code]purchase_intent[/code] signal letting you know any purchase intents.
+		        You should call [code]start[/code] in this class to start processing the transactions and
+		        purchase intent notifications.   After that methos is called, the object will raise
+		        the [code]transaction_updated[/code] signal to notify you of the status of purchases
+		        as well as the [code]purchase_intent[/code] signal letting you know any purchase intents.
 	</description>
 	<tutorials>
 	</tutorials>
@@ -20,6 +20,14 @@
 			<param index="0" name="product" type="StoreProduct" />
 			<description>
 				Initiates the purchase of a specific product, e.g. [code]purchase(product)[/code].
+			</description>
+		</method>
+		<method name="purchase_with_options">
+			<return type="void" />
+			<param index="0" name="product" type="StoreProduct" />
+			<param index="1" name="options" type="Array[StoreProductPurchaseOption]" />
+			<description>
+				Initiates the purchase of a specific product, e.g. [code]purchase(product)[/code], and allows you to provide additional purchase options.
 			</description>
 		</method>
 		<method name="request_products">
@@ -38,23 +46,23 @@
 	</methods>
 	<signals>
 		<signal name="products_request_completed">
-			<param index="0" name="products" type="Array" />
-			<param index="1" name="status" type="int" />
+			<param index="0" name="arg1" type="Array[StoreProduct]" />
+			<param index="1" name="arg2" type="int" />
 			<description>
 				Emitted when a product request completes.
-                [param products] is an Array of [StoreProduct]s (or nulls).
-                [param status] indicates success or failure.
+				                [param products] is an Array of [StoreProduct]s (or nulls).
+				                [param status] indicates success or failure.
 			</description>
 		</signal>
 		<signal name="purchase_completed">
-			<param index="0" name="transaction" type="StoreTransaction" />
-			<param index="1" name="status" type="int" />
-			<param index="2" name="error_message" type="String" />
+			<param index="0" name="arg1" type="StoreTransaction" />
+			<param index="1" name="arg2" type="int" />
+			<param index="2" name="arg3" type="String" />
 			<description>
 				Emitted when a purchase completes.
-                [param transaction] is the [StoreTransaction] on success.
-                [param status] indicates the result (OK, cancelled, invalid product, etc.).
-                [param error_message] contains error details if failed.
+				                [param transaction] is the [StoreTransaction] on success.
+				                [param status] indicates the result (OK, cancelled, invalid product, etc.).
+				                [param error_message] contains error details if failed.
 			</description>
 		</signal>
 		<signal name="purchase_intent">
@@ -63,14 +71,14 @@
 			</description>
 		</signal>
 		<signal name="restore_completed">
-			<param index="0" name="status" type="int" />
-			<param index="1" name="error_message" type="String" />
+			<param index="0" name="arg1" type="int" />
+			<param index="1" name="arg2" type="String" />
 			<description>
 				Emitted when the restore process completes. `arg1` is the [enum StoreKitStatus], and `arg2` is an error message if applicable.
 			</description>
 		</signal>
 		<signal name="transaction_updated">
-			<param index="0" name="transaction" type="StoreTransaction" />
+			<param index="0" name="arg1" type="StoreTransaction" />
 			<description>
 				Emitted when a transaction is updated (e.g., a subscription renews or a purchase is approved externally). `arg1` is the updated [StoreTransaction].
 			</description>

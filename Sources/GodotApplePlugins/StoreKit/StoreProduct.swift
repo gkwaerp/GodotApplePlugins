@@ -55,7 +55,7 @@ class StoreProductPurchaseOption: RefCounted, @unchecked Sendable {
         guard let skoffer = offer?.offer else {
             return nil
         }
-        if #available(iOS 17.0, macOS 15.0, *) {
+        if #available(iOS 18.0, macOS 15.0, *) {
             let purchaseOption = Product.PurchaseOption.winBackOffer(skoffer)
             return StoreProductPurchaseOption(purchaseOption)
         } else {
@@ -71,5 +71,10 @@ class StoreProductPurchaseOption: RefCounted, @unchecked Sendable {
     @Callable
     static func introductory_offer_elligibility(jws: String) -> StoreProductPurchaseOption? {
         return StoreProductPurchaseOption(Product.PurchaseOption.introductoryOfferEligibility(compactJWS: jws))
+    }
+
+    @Callable
+    static func simulate_ask_to_buy_in_sandbox(enabled: Bool) -> StoreProductPurchaseOption? {
+        return StoreProductPurchaseOption(Product.PurchaseOption.simulatesAskToBuyInSandbox(enabled))
     }
 }

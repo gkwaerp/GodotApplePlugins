@@ -10,25 +10,25 @@
 	</tutorials>
 	<members>
 		<member name="description_value" type="String" setter="" getter="get_description_value" default="&quot;&quot;">
-			A localized description of the product.
+			The description of the product, used for display in the UI.
 		</member>
 		<member name="display_name" type="String" setter="" getter="get_display_name" default="&quot;&quot;">
-			The localized name of the product.
+			The localized display name of the product.
 		</member>
 		<member name="display_price" type="String" setter="" getter="get_display_price" default="&quot;&quot;">
-			The formatted price of the product, including currency symbol (e.g., "$0.99").
+			The formatted price of the product, including the currency symbol (e.g. "$0.99").
 		</member>
 		<member name="is_family_shareable" type="bool" setter="" getter="get_is_family_shareable" default="false">
-			Whether the product is shareable with family members.
+			Indicates whether the product can be shared with family members.
 		</member>
 		<member name="json_representation" type="String" setter="" getter="get_json_representation" default="&quot;&quot;">
-			A JSON string representation of the underlying StoreKit product, useful for debugging or accessing properties not exposed directly.
+			A JSON debug representation of the product.
 		</member>
 		<member name="price" type="float" setter="" getter="get_price" default="0.0">
-			The price of the product as a number.
+			The price of the product in the local currency.
 		</member>
 		<member name="product_id" type="String" setter="" getter="get_product_id" default="&quot;&quot;">
-			The unique identifier of the product.
+			The unique identifier for the product.
 		</member>
 	</members>
 </class>

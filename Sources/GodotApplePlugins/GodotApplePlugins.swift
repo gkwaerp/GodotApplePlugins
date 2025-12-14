@@ -11,6 +11,9 @@ import SwiftGodotRuntime
     cdecl: "godot_apple_plugins_start",
     types: [
         AVAudioSession.self,
+
+        Foundation.self,
+        
         GameCenterManager.self,
         GKAchievement.self,
         GKAchievementDescription.self,
