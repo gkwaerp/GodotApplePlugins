@@ -42,6 +42,7 @@ public class StoreKitManager: RefCounted, @unchecked Sendable {
 
     required init(_ context: InitContext) {
         super.init(context)
+        GD.print("Remember that you have now to connect your signals and call 'start'")
     }
     
     deinit {

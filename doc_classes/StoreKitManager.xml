@@ -7,10 +7,17 @@
 		This class handles the core StoreKit functionality. It provides methods to fetch product information from the App Store, initiate purchases,
 		        restore previous purchases and be notified of the current status of the purchase upon startup.
 
-		        You should call [code]start[/code] in this class to start processing the transactions and
-		        purchase intent notifications.   After that methos is called, the object will raise
-		        the [code]transaction_updated[/code] signal to notify you of the status of purchases
-		        as well as the [code]purchase_intent[/code] signal letting you know any purchase intents.
+                Once you instantiate this class, connect to the the [signal transaction_updated] signal to
+                get notification related to the status of your purchases - these are delivered to notify
+                your application of what products your user is entitled to at startup.   If you are using
+                Apple's PurchaseIntent, you will also want to connect to the [signal purchas_intent].
+
+                After you have set up your signals, you need to call [method start] when you are ready
+                to receive those events.
+
+                In addition, when you call the [method purchase] or [method purchase_with_options] you will
+                want to setup a handler for the [signal purchase_completed] signal which is raised in
+                response to different events during the purchasing.
 	</description>
 	<tutorials>
 	</tutorials>
@@ -19,7 +26,9 @@
 			<return type="void" />
 			<param index="0" name="product" type="StoreProduct" />
 			<description>
-				Initiates the purchase of a specific product, e.g. [code]purchase(product)[/code].
+				Initiates the purchase of a specific product, e.g. [code]purchase(product)[/code].   This will raise the
+                [signal purchase_completed] signal, either to indicate that an error took place, or the status of the
+                purchase.
 			</description>
 		</method>
 		<method name="purchase_with_options">
@@ -28,6 +37,9 @@
 			<param index="1" name="options" type="Array[StoreProductPurchaseOption]" />
 			<description>
 				Initiates the purchase of a specific product, e.g. [code]purchase(product)[/code], and allows you to provide additional purchase options.
+                This will raise the
+                [signal purchase_completed] signal, either to indicate that an error took place, or the status of the
+                purchase.
 			</description>
 		</method>
 		<method name="request_products">
@@ -35,12 +47,14 @@
 			<param index="0" name="productIds" type="PackedStringArray" />
 			<description>
 				Requests product information for a list of product identifiers, e.g. [code]request_products(["com.example.product1", "com.example.product2"])[/code].
+                This method will raise the [signal products_request_completed] signal when the information is retrieved.
 			</description>
 		</method>
 		<method name="restore_purchases">
 			<return type="void" />
 			<description>
-				Restores previously purchased non-consumable products and auto-renewable subscriptions.
+				Restores previously purchased non-consumable products and auto-renewable subscriptions.   This will raise the
+                [signal restore_completed] signal when the product purchased have been restored.
 			</description>
 		</method>
 	</methods>
