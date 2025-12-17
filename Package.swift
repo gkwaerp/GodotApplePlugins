@@ -29,9 +29,9 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/migueldeicaza/SwiftGodot", revision: "f60a71fd22f932f3eed2626e2282386f9ce7d14a")
+        .package(url: "https://github.com/migueldeicaza/SwiftGodot", revision: "9aa4b4aa84880fca9e6be80a7813b15365f2262c")
         // For local development:
-        //.package(path: "../splitSwiftGodot")
+        //.package(path: "../SwiftGodot")
     ],
     targets: [
         .target(

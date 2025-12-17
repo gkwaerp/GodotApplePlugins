@@ -11,6 +11,9 @@ import SwiftGodotRuntime
     cdecl: "godot_apple_plugins_start",
     types: [
         AVAudioSession.self,
+
+        Foundation.self,
+        
         GameCenterManager.self,
         GKAchievement.self,
         GKAchievementDescription.self,
@@ -28,6 +31,10 @@ import SwiftGodotRuntime
         ProductView.self,
         StoreKitManager.self,
         StoreProduct.self,
+        StoreProductPurchaseOption.self,
+        StoreProductSubscriptionOffer.self,
+        StoreProductPaymentMode.self,
+        StoreProductSubscriptionPeriod.self,
         StoreTransaction.self,
         StoreView.self,
         SubscriptionOfferView.self,
@@ -50,6 +57,8 @@ import SwiftGodotRuntime
         ProductView.ViewStyle.self,
         StoreKitManager.StoreKitStatus.self,
         SubscriptionStoreView.ControlStyle.self,
+        StoreProductSubscriptionOffer.OfferType.self,
+        StoreProductSubscriptionPeriod.Unit.self,
 
         ASAuthorizationAppleIDCredential.UserDetectionStatus.self,
         ASAuthorizationAppleIDCredential.UserAgeRange.self

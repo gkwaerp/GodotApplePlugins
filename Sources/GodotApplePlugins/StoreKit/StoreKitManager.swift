@@ -11,16 +11,16 @@ import StoreKit
 @Godot
 public class StoreKitManager: RefCounted, @unchecked Sendable {
     // [StoreProduct], StoreKitStatus
-    @Signal var products_request_completed: SignalWithArguments<TypedArray<StoreProduct?>, Int>
+    @Signal("products", "status") var products_request_completed: SignalWithArguments<TypedArray<StoreProduct?>, Int>
     // StoreTransaction, StoreKitStatus, error message
-    @Signal var purchase_completed: SignalWithArguments<StoreTransaction?, Int, String>
+    @Signal("transaction", "status", "message") var purchase_completed: SignalWithArguments<StoreTransaction?, Int, String>
     // StoreTransaction
-    @Signal var transaction_updated: SignalWithArguments<StoreTransaction?>
+    @Signal("transaction") var transaction_updated: SignalWithArguments<StoreTransaction?>
     // StoreProduct
-    @Signal var purchase_intent: SignalWithArguments<StoreProduct?>
+    @Signal("product") var purchase_intent: SignalWithArguments<StoreProduct?>
 
     // StoreKitStatus, error_message (empty on success)
-    @Signal var restore_completed: SignalWithArguments<Int, String>
+    @Signal("status", "message") var restore_completed: SignalWithArguments<Int, String>
 
     public enum StoreKitStatus: Int, CaseIterable {
         case ok
@@ -42,17 +42,30 @@ public class StoreKitManager: RefCounted, @unchecked Sendable {
 
     required init(_ context: InitContext) {
         super.init(context)
-
-        // Give a chance for the user code to set up signals before we start emitting events
-        DispatchQueue.main.async {
-            self.startTransactionListener()
-            self.startPurchaseIntentListener()
-        }
+        GD.print("Remember that you have now to connect your signals and call 'start'")
     }
     
     deinit {
         updatesTask?.cancel()
         intentsTask?.cancel()
+    }
+
+    var started = false
+
+    func start() {
+        if started { return }
+        startTransactionListener()
+        startPurchaseIntentListener()
+        started = true
+    }
+
+    func stop() {
+        guard started else { return }
+        updatesTask?.cancel()
+        intentsTask?.cancel()
+        updatesTask = nil
+        intentsTask = nil
+        started = false
     }
 
     private func startTransactionListener() {
@@ -69,6 +82,8 @@ public class StoreKitManager: RefCounted, @unchecked Sendable {
                  for await intent in PurchaseIntent.intents {
                      let storeProduct = StoreProduct(intent.product)
                      await MainActor.run {
+                         GD.print("Posting purchase_intent")
+
                          _ = self.purchase_intent.emit(storeProduct)
                      }
                  }
@@ -90,10 +105,12 @@ public class StoreKitManager: RefCounted, @unchecked Sendable {
             
             // Emit signal on main thread
             Task { @MainActor in
+                GD.print("Posting transaction_updated")
                 self.transaction_updated.emit(storeTransaction)
             }
         case .unverified(_, _):
             // TODO: would be nice to raise this one
+            GD.print("Transaction: got an unverified one")
             break
         }
     }
@@ -126,15 +143,25 @@ public class StoreKitManager: RefCounted, @unchecked Sendable {
 
     @Callable
     func purchase(product: StoreProduct) {
+        purchase_with_options(product: product, options: [])
+    }
+
+    @Callable
+    func purchase_with_options(product: StoreProduct, options: TypedArray<StoreProductPurchaseOption?>) {
         guard let skProduct = product.product else {
             self.purchase_completed.emit(nil, StoreKitStatus.invalidProduct.rawValue, "Invalid Product")
             return
         }
-        
+
+        var optionSet = Set<Product.PurchaseOption>()
+        for option in options {
+            guard let option, let llOption = option.purchaseOption else { continue }
+            optionSet.insert(llOption)
+        }
         Task {
             do {
-                let result = try await skProduct.purchase()
-                
+                let result = try await skProduct.purchase(options: optionSet)
+
                 switch result {
                 case .success(let verification):
                     switch verification {
