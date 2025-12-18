@@ -1,4 +1,4 @@
-.PHONY: run xcframework
+.PHONY: run xcframework check_swiftsyntax
 
 # Allow overriding common build knobs.
 CONFIG ?= Release
@@ -50,6 +50,30 @@ build:
 		fi; \
 	    done;  \
 	done; \
+
+check_swiftsyntax:
+	set -e; \
+	pattern='SwiftSyntax|SwiftParser|SwiftDiagnostics|SwiftParserDiagnostics|SwiftBasicFormat|_SwiftSyntaxCShims'; \
+	failed=0; \
+	check_one() { \
+		sdk="$$1"; bin="$$2"; label="$$3"; \
+		if [ ! -f "$$bin" ]; then \
+			echo "SKIP: $$label (missing: $$bin)"; \
+			return 0; \
+		fi; \
+		if xcrun --sdk "$$sdk" nm -gU "$$bin" 2>/dev/null | grep -Eq "$$pattern"; then \
+			echo "FAIL: $$label still contains SwiftSyntax-related symbols"; \
+			failed=1; \
+		else \
+			echo "OK:   $$label"; \
+		fi; \
+	}; \
+	for framework in $(FRAMEWORK_NAMES); do \
+		check_one iphoneos "$(DERIVED_DATA)/Build/Products/$(CONFIG)-iphoneos/PackageFrameworks/$$framework.framework/$$framework" "iOS/$$framework"; \
+		check_one macosx "$(DERIVED_DATA)arm64/Build/Products/$(CONFIG)/PackageFrameworks/$$framework.framework/$$framework" "macOS arm64/$$framework"; \
+		check_one macosx "$(DERIVED_DATA)x86_64/Build/Products/$(CONFIG)/PackageFrameworks/$$framework.framework/$$framework" "macOS x86_64/$$framework"; \
+	done; \
+	test "$$failed" -eq 0
 
 package: build dist
 

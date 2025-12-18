@@ -96,14 +96,37 @@ FRAMEWORK_DIR="$PRODUCTS_DIR/PackageFrameworks/$FRAMEWORK.framework"
 if [[ ! -d "$FRAMEWORK_DIR" ]]; then
 	FRAMEWORK_DIR="$PRODUCTS_DIR/$FRAMEWORK.framework"
 fi
-if test x$PLATFORM = xmacos; then
-    FRAMEWORK_BINARY="$FRAMEWORK_DIR/$FRAMEWORK/Versions/A/$FRAMEWORK"
-else
-    FRAMEWORK_BINARY="$FRAMEWORK_DIR/$FRAMEWORK"
+FRAMEWORK_BINARY="$FRAMEWORK_DIR/$FRAMEWORK"
+
+# On macOS, the framework binary at $FRAMEWORK_DIR/$FRAMEWORK is typically a symlink
+# to Versions/Current/$FRAMEWORK. We want to replace the real file, not the symlink,
+# otherwise we'd destroy the framework's versioned layout.
+FRAMEWORK_BINARY_REAL=""
+if [[ -e "$FRAMEWORK_BINARY" ]]; then
+	FRAMEWORK_BINARY_REAL=$(python3 - <<'PY' "$FRAMEWORK_BINARY"
+import os, sys
+print(os.path.realpath(sys.argv[1]))
+PY
+)
 fi
 
-if [[ ! -f "$FRAMEWORK_BINARY" ]]; then
-	echo "Framework binary not found at $FRAMEWORK_BINARY, skipping relink." >&2
+if [[ -z "$FRAMEWORK_BINARY_REAL" || ! -f "$FRAMEWORK_BINARY_REAL" ]]; then
+	if [[ "$platform_lc" = "macos" ]]; then
+		for candidate in \
+			"$FRAMEWORK_DIR/Versions/A/$FRAMEWORK" \
+			"$FRAMEWORK_DIR/Versions/Current/$FRAMEWORK"; do
+			if [[ -f "$candidate" ]]; then
+				FRAMEWORK_BINARY_REAL="$candidate"
+				break
+			fi
+		done
+	else
+		FRAMEWORK_BINARY_REAL="$FRAMEWORK_BINARY"
+	fi
+fi
+
+if [[ -z "$FRAMEWORK_BINARY_REAL" || ! -f "$FRAMEWORK_BINARY_REAL" ]]; then
+	echo "Framework binary not found at $FRAMEWORK_BINARY (resolved: ${FRAMEWORK_BINARY_REAL:-<none>}), skipping relink." >&2
 	exit 0
 fi
 
@@ -123,7 +146,8 @@ if [[ -z "$link_file" ]]; then
 fi
 
 filtered_file=$(mktemp "/tmp/${FRAMEWORK}.NoSwiftSyntax.LinkFileList.XXXXXX")
-trap 'rm -f "$filtered_file" "$tmp_binary"' EXIT
+tmp_binary=""
+trap 'rm -f "$filtered_file" "${tmp_binary:-}"' EXIT
 python3 - <<'PY' "$link_file" "$filtered_file"
 import sys
 source, dest = sys.argv[1:3]
@@ -182,7 +206,14 @@ DEVELOPER_FRAMEWORKS="$PLATFORM_PATH/Developer/Library/Frameworks"
 SDK_DEVELOPER_FRAMEWORKS="$SDK_PATH/Developer/Library/Frameworks"
 
 TARGET_TRIPLE="${ARCH}-apple-${TRIPLE_BASE}${TARGET_VERSION}"
-INSTALL_NAME="@rpath/$FRAMEWORK.framework/$FRAMEWORK"
+INSTALL_NAME=$(otool -D "$FRAMEWORK_BINARY_REAL" 2>/dev/null | sed -n '2p' || true)
+if [[ -z "$INSTALL_NAME" ]]; then
+	if [[ "$platform_lc" = "macos" ]]; then
+		INSTALL_NAME="@rpath/$FRAMEWORK.framework/Versions/A/$FRAMEWORK"
+	else
+		INSTALL_NAME="@rpath/$FRAMEWORK.framework/$FRAMEWORK"
+	fi
+fi
 
 tmp_binary=$(mktemp "$FRAMEWORK_DIR/.relinked-$ARCH-XXXXXX")
 
@@ -254,12 +285,12 @@ if [[ -n "$linker_resp" ]]; then
 	link_args+=("@$linker_resp")
 fi
 
-echo "Relinking $FRAMEWORK_BINARY without SwiftSyntax (${platform_lc}/${ARCH})..."
-before_size=$(stat -f%z "$FRAMEWORK_BINARY" 2>/dev/null || stat -c%s "$FRAMEWORK_BINARY")
+echo "Relinking $FRAMEWORK_BINARY_REAL without SwiftSyntax (${platform_lc}/${ARCH})..."
+before_size=$(stat -f%z "$FRAMEWORK_BINARY_REAL" 2>/dev/null || stat -c%s "$FRAMEWORK_BINARY_REAL")
 
 "${link_args[@]}"
-mv "$tmp_binary" "$FRAMEWORK_BINARY"
-chmod +x "$FRAMEWORK_BINARY"
+mv "$tmp_binary" "$FRAMEWORK_BINARY_REAL"
+chmod +x "$FRAMEWORK_BINARY_REAL"
 
-after_size=$(stat -f%z "$FRAMEWORK_BINARY" 2>/dev/null || stat -c%s "$FRAMEWORK_BINARY")
+after_size=$(stat -f%z "$FRAMEWORK_BINARY_REAL" 2>/dev/null || stat -c%s "$FRAMEWORK_BINARY_REAL")
 echo "Relinked successfully: $before_size bytes -> $after_size bytes"
