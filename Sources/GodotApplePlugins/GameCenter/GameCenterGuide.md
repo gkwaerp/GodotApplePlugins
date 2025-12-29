@@ -33,7 +33,7 @@ quickly on your projects.
 
 ### Entitlements
 
-For your sofwtare to be able to use the GameKit APIs, you will need
+For your software to be able to use the GameKit APIs, you will need
 your Godot engine to have the `com.apple.developer.game-center`
 entitlements.  The easiest way to do this is to use Xcode to add the
 entitlement to your iOS project.
