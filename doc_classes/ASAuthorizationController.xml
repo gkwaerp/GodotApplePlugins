@@ -40,9 +40,8 @@
 		<method name="signin">
 			<return type="void" />
 			<description>
-				Call this method to initiate the signin with Apple workflow with the default scopes ([code]email[/code], [code]full_name[/code}]),
-				                this will raise the signal [signal authorization_completed] upon
-				                success, or the [signal authorization_failed] on failure.
+				Call this method to initiate the signin with Apple workflow with the default scopes ([code]email[/code], [code]full_name[/code]),
+				this will raise the signal [signal authorization_completed] upon success, or the [signal authorization_failed] on failure.
 			</description>
 		</method>
 		<method name="signin_with_scopes">
@@ -64,7 +63,7 @@
 			</description>
 		</signal>
 		<signal name="authorization_failed">
-			<param index="0" name="message" type="String" />
+			<param index="0" name="error" type="String" />
 			<description>
 				Emitted when the authorization request fails.
 				[param error] contains the localized description of the error.

@@ -7,7 +7,7 @@
 import SwiftGodotRuntime
 
 extension AVAudioSession {
-    public enum SessionCategory: Int64, CaseIterable {
+    public enum SessionCategory: Int, CaseIterable {
         case AMBIENT
         case MULTI_ROUTE
         case PLAY_AND_RECORD
@@ -17,7 +17,7 @@ extension AVAudioSession {
         case UNKNOWN
     }
 
-    public enum SessionMode: Int64, CaseIterable {
+    public enum SessionMode: Int, CaseIterable {
         case DEFAULT
         case GAME_CHAT
         case MEASUREMENT
@@ -28,14 +28,14 @@ extension AVAudioSession {
         case VOICE_PROMPT
     }
 
-    public enum RouteSharingPolicy: Int64, CaseIterable {
-        case DEFAULT
+    public enum RouteSharingPolicy: Int, CaseIterable {
+        case ROUTE_SHARING_DEFAULT
         case LONG_FORM_AUDIO
         case INDEPENDENT
         case LONG_FORM
     }
     
-    public enum CategoryOptions: Int64, CaseIterable {
+    public enum CategoryOptions: Int, CaseIterable {
         case MIX_WITH_OTHERS = 1
         case DUCK_OTHERS = 2
         case ALLOW_BLUETOOTH = 4
@@ -88,7 +88,7 @@ extension AVAudioSession.SessionMode {
 extension AVAudioSession.RouteSharingPolicy {
     func toAVAudioSessionRouteSharingPolicy() -> AVFoundation.AVAudioSession.RouteSharingPolicy {
         switch self {
-        case .DEFAULT: return .default
+        case .ROUTE_SHARING_DEFAULT: return .default
         case .LONG_FORM_AUDIO: return .longFormAudio
         case .INDEPENDENT: return .independent
         case .LONG_FORM: return .longFormAudio
@@ -121,7 +121,7 @@ public class AVAudioSession: RefCounted, @unchecked Sendable {
     }
 
     @Callable
-    public func set_category(category: SessionCategory, mode: SessionMode, policy: RouteSharingPolicy, options: Int64 = 0) -> GodotError {
+    public func set_category(category: SessionCategory, mode: SessionMode, policy: RouteSharingPolicy, options: Int = 0) -> GodotError {
        do {
            try AVFoundation.AVAudioSession.sharedInstance().setCategory(
                category.toAVAudioSessionCategory(),
@@ -148,7 +148,7 @@ public class AVAudioSession: RefCounted, @unchecked Sendable {
     }
 
     @Callable
-    public func set_category(category: SessionCategory, mode: SessionMode, policy: RouteSharingPolicy, options: Int64 = 0) -> GodotError {
+    public func set_category(category: SessionCategory, mode: SessionMode, policy: RouteSharingPolicy, options: Int = 0) -> GodotError {
         return .ok
     }
 }

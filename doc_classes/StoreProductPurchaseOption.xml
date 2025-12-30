@@ -4,7 +4,7 @@
 		Represents an option that can be supplied when purchasing a [StoreProduct].
 	</brief_description>
 	<description>
-		You create instances of this class and you can pass those to [method purchase_with_options].
+		You create instances of this class and you can pass those to [method StoreKitManager.purchase_with_options].
 	</description>
 	<tutorials>
 	</tutorials>

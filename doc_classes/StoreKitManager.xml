@@ -12,8 +12,7 @@
 		                your application of what products your user is entitled to at startup.   If you are using
 		                Apple's PurchaseIntent, you will also want to connect to the [signal purchase_intent].
 
-		                After you have set up your signals, you need to call [method start] when you are ready
-		                to receive those events.
+		                After you have set up your signals, you are ready to receive those events.
 
 		                In addition, when you call the [method purchase] or [method purchase_with_options] you will
 		                want to setup a handler for the [signal purchase_completed] signal which is raised in
@@ -34,7 +33,7 @@
 		<method name="purchase_with_options">
 			<return type="void" />
 			<param index="0" name="product" type="StoreProduct" />
-			<param index="1" name="options" type="Array[StoreProductPurchaseOption]" />
+			<param index="1" name="options" type="Array" />
 			<description>
 				Initiates the purchase of a specific product, e.g. [code]purchase(product)[/code], and allows you to provide additional purchase options.
 				                This will raise the
@@ -60,7 +59,7 @@
 	</methods>
 	<signals>
 		<signal name="products_request_completed">
-			<param index="0" name="products" type="Array[StoreProduct]" />
+			<param index="0" name="products" type="Array" />
 			<param index="1" name="status" type="int" />
 			<description>
 				Emitted when a product request completes.
@@ -71,7 +70,7 @@
 		<signal name="purchase_completed">
 			<param index="0" name="transaction" type="StoreTransaction" />
 			<param index="1" name="status" type="int" />
-			<param index="2" name="message" type="String" />
+			<param index="2" name="error_message" type="String" />
 			<description>
 				Emitted when a purchase completes.
 				                [param transaction] is the [StoreTransaction] on success.
@@ -86,7 +85,7 @@
 		</signal>
 		<signal name="restore_completed">
 			<param index="0" name="status" type="int" />
-			<param index="1" name="message" type="String" />
+			<param index="1" name="error_message" type="String" />
 			<description>
 				Emitted when the restore process completes. `arg1` is the [enum StoreKitStatus], and `arg2` is an error message if applicable.
 			</description>

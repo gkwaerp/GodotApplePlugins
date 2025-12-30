@@ -32,6 +32,7 @@ CODEBLOCK_OPEN_PATTERN = re.compile(r'(^[ \t]*)\[codeblock\]', re.MULTILINE)
 CODEBLOCK_CLOSE_PATTERN = re.compile(r'(^[ \t]*)\[/codeblock\]', re.MULTILINE)
 
 TYPE_ALIASES = {
+    "GKAccessPoint": {"State"},
     "GKGameCenterViewController": {"PlayerScope", "TimeScope", "State"},
     "GKMatch": {"SendDataMode"},
     "GKMatchRequest": {"MatchType"},
